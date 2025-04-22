@@ -1,0 +1,47 @@
+@import './../../../../styles.scss';
+
+.darkBox {
+    width: 100%;
+    background-color: $colorDark;
+    @include dflex();
+}
+
+.mainBox {
+    width: 100%;
+    max-width: 1440px;
+    color: white;
+    margin: 32px 0px 32px 0px;
+    @include dflex($fd:column);
+    >h2 {
+        color: $colorBlueLight;        
+    }
+    >h2, span {
+        padding-bottom: 32px;
+        
+    }
+}
+
+.textBox {
+    border: dotted 2px $colorBlue;
+    border-radius: 16px;
+    padding: 16px;
+    width: 75%;
+    margin-bottom: 16px;
+    position: relative;
+    left: -64px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+h3 {
+    color: $colorGrey;
+    padding-bottom: 12px;
+}
+
+.right {
+    left: 64px !important;
+}
+
+table {
+    padding-left: 64px;
+}

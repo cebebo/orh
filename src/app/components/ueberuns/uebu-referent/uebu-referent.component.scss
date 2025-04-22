@@ -1,0 +1,41 @@
+@import './../../../../styles.scss';
+
+.greyBox {
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 64px;
+    background-color: $colorGrey;
+    @include dflex();
+}
+
+h1 {
+    font-size: 26px;
+}
+
+.mainBox {
+    width: 100%;
+    max-width: 1440px;
+    color: $colorBlue;
+    @include dflex($fd: column);
+    >h2 {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        color: $colorBlue;
+    }
+    
+
+    .contentBox {
+        width: 50%;
+        >h1 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        >h2, h3, span, li, p {
+            color: black;
+            line-height: 24px;
+        }
+        >p {
+            margin-bottom: 24px;
+        }
+    }
+}

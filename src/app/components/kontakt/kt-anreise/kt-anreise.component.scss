@@ -1,0 +1,74 @@
+@import './../../../../styles.scss';
+
+.blueBox {
+    width: 100%;
+    padding-top: 32px;
+    background-color: $colorBlue;
+    @include dflex();
+}
+
+.mainBox {
+    width: 90%;
+    max-width: 1440px;
+    @include dflex($fd: column);
+    text-align: center;
+    >h2 {
+        color: white;
+        padding-bottom: 12px;
+    }
+}
+
+span {
+    color: white;
+    margin-bottom: 16px;
+}
+
+.navi {
+    background-color: $colorBlueLight;
+    width: 80%;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    @include dflex($fd:column);
+}
+
+.naviBox {
+    @include dflex($jc:center);
+    width: 100%;
+}
+
+.fromCity {
+    font-size: 18px;
+    height: 50px;
+    width: 200px;
+    @include dflex($ai:center);
+    background-color: $colorBlueBright;
+    &:hover {
+        cursor: pointer;
+        background-color: $colorBlue;
+    }
+}
+
+.top {
+    border-top-left-radius: 16px;
+}
+
+.fromDescription {
+    background-color: white;
+    height: 250px;
+    width: 800px;
+    border-top-right-radius: 16px;
+    @include dflex($jc:flex-start);
+}
+
+ul {
+    padding-left: 128px;
+}
+
+li {
+    line-height: 20px;
+    text-align: left;
+}
+
+.activeReg {
+    background-color: white;
+}

@@ -1,0 +1,103 @@
+<div class="blueBox">
+    <div class="mainBox">
+        <h2>FIT 4 LIFE</h2>
+        <h2>Stark fürs Leben</h2>
+        <div class="textBox">
+            <span>Unser dreitägiges Fit-4-Life-Programm ist ein erlebnispädagogisches Angebot des
+                Otto-Riethmüller-Hauses.
+                Es richtet sich an Schüler ab der 5. Klasse aus Rheinland-Pfalz.</span>
+            <table [cellSpacing]="0">
+                <colgroup>
+                    <col style="width: 15%;">
+                    <col style="width: 85%;">
+                </colgroup>
+                <tbody>
+                    <tr class="lightBlue">
+                        <td><b>Inhalt</b></td>
+                        <td>Fit-4-Forest: Natur entdecken<br>Fit-4-Friends: Kommunikation und Teamfähigkeit<br>Fit-4-Fight: 
+                            Konflikte meistern<br>Fit-4-Future: Meine Zukunft<br>Das sind die thematischen Schwerpunkte
+                            unseres Fit-4-Life-Programms. Sie entscheiden selbst, welches Thema für Ihre Klasse
+                            interessant ist. Zusätzliche Angebote, wie der angeleitete Kletterpark in Otterberg, können
+                            je nach Verfügbarkeit hinzugebucht werden.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Ziel</b></td>
+                        <td>Mit Fit-4-Life wollen wir die Sozialkompetenzen von Schülern in den Bereichen der
+                            Kommunikation, der Konfliktlösung und des sozialen und ökologischen Umgangs stärken. Unser
+                            zwölfstündiges Seminarprogramm erstreckt sich über drei Tage. Unsere Mitarbeiter wollen
+                            sowohl theoretische Inhalte vermitteln als auch den Praxisbezug herstellen.</td>
+                    </tr>
+                    <tr class="lightBlue">
+                        <td><b>Mitarbeiter</b></td>
+                        <td>Das Programm wird ausschließlich von den Fit-4-Life-Mitarbeitern mit den Schülern gestaltet.
+                            Interessierte Lehrer dürfen das Seminar als Beobachter verfolgen. Für die Gestaltung des
+                            Abendprogramms sind die Lehrer selbst verantwortlich. Dabei stehen wir Ihnen gerne beratend
+                            zur Seite. Für zehn zahlende Schüler gewähren wir einem Lehrer einen Freiplatz.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Ablauf</b></td>
+                        <td>Unsere Fit-4-Life-Programme finden jeweils von Montag bis Mittwoch oder von Mittwoch bis
+                            Freitag statt. Das Programm beginnt am Anreisetag nach dem Mittagessen und endet gegen 17
+                            Uhr. Am zweiten Tag starten wir nach dem Frühstück mit dem Programm und enden wie am Vortag
+                            gegen 17 Uhr. Am dritten Tag endet das Programm kurz vor Mittag, sodass Sie gegen 12 Uhr
+                            abreisen können. Wenn Sie möchten, können Sie gegen einen Aufpreis ein zusätzliches
+                            Mittagessen dazu buchen.</td>
+                    </tr>
+                    <tr class="lightBlue">
+                        <td><b>Unterbringung</b></td>
+                        <td>Die Unterbringung der Schüler erfolgt in modernen 4-Bett-Zimmern mit Dusche und WC. Im Preis
+                            enthalten sind Unterkunft, Verpflegung und Programmkosten. Für die An- und Abreise mit Auto,
+                            Bus oder Bahn sind die Gruppen selbst verantwortlich. Ein Gepäcktransport vom Bahnhof zum
+                            Haus ist möglich.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Kosten</b></td>
+                        <td>Auf Anfrage teilen wir Ihnen gerne mit, wie viel Sie das Programm kosten würde.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="titleBox">
+                <h3>Unsere Angebote:</h3>
+            </div>
+            <div class="fitCatBox">                
+                <div class="fitCatReg" style="background-color: rgb(177, 245, 188);" [class.activeReg]="register == 'forest'" (click)="register = 'forest'">Fit-4-Forest</div>
+                <div class="fitCatReg" style="background-color: rgb(245, 255, 159);" [class.activeReg]="register == 'friends'" (click)="register = 'friends'">Fit-4-Friends</div>
+                <div class="fitCatReg" style="background-color: rgb(186, 251, 253);" [class.activeReg]="register == 'fight'" (click)="register = 'fight'">Fit-4-Fight</div>
+                <div class="fitCatReg" style="background-color: rgb(248, 184, 184);" [class.activeReg]="register == 'future'" (click)="register = 'future'">Fit-4-Future</div>
+            </div>
+            <div class="description">
+                <div *ngIf="register == 'forest'">
+                    <h3>Natur entdecken</h3>
+                    <span>Fernsehen, Computerspiele und andere Medienangebote nehmen heute einen Großteil unseres Alltags ein.
+                        Bewegungsreiche Spiele in Wald und Natur werden immer mehr zur Nebensache. In unserem Fit-4-Forest-Programm 
+                        sollen gerade jüngere Schüler einen Bezug zu Natur und Umwelt bekommen. Unsere naturbezogenen und spielerischen 
+                        Übungen vermitteln sowohl Wissensinhalte als auch Umweltbewusstsein. Ziel ist es außerdem, die Kreativität zu 
+                        fördern.</span>
+                </div>
+                <div *ngIf="register == 'friends'">
+                    <h3>Kommunikation und Teamfähigkeit</h3>
+                    <span>Eine gute Klassengemeinschaft ist eine gute Basis für ein produktives Lernen und einen fairen Umgang 
+                        miteinander. Während des dreitägigen Programms wollen wir die Klassengemeinschaft stärken. Der Team-Gedanke soll 
+                        geweckt und gefördert werden. Unser Ziel ist es, den Weg zu einer Gemeinschaft aufzuzeigen, die Vertrauen schafft. 
+                        Sozialkompetenzen in den Bereichen der Kommunikation, der Selbst- und Fremdeinschätzung, der Empathie und des 
+                        Umgangs mit Kritik stehen im Vordergrund.</span>
+                </div>
+                <div *ngIf="register == 'fight'">
+                    <h3>Konflikte meistern</h3>
+                    <span>Ein ganz aktuelles Thema in den Schulen ist der Umgang mit Aggressionen und Konflikten vieler Schüler. 
+                        Das Fit-4-Fight-Programm ermöglicht es den Schülern, sich mit diesem Thema auseinanderzusetzen. Durch 
+                        theoretische Beispiele und praktische Übungen lernen sie, Konflikte zu erkennen und mit ihnen umzugehen. 
+                        Übungen in den Bereichen der Kommunikation, der Deeskalation und der eigenen Grenzerfahrung stärken die 
+                        Sozialkompetenzen der Schüler.</span>
+                </div>
+                <div *ngIf="register == 'future'">
+                    <h3>Meine Zukunft</h3>
+                    <span>Mit dem Abschluss der Schule und dem Einstieg ins Berufsleben beginnt der Ernst des Lebens. Wir wollen Schüler 
+                        auf diesen Wechsel vorbereiten. Sie sollen für die Herausforderungen, die auf sie zukommen, gerüstet sein. Unser 
+                        Programm trainiert Schüler in den Bereichen Kommunikation, Selbst- und Fremdwahrnehmung, Teamfähigkeit, Umgang mit 
+                        Konflikten, Grenzerfahrung und Bewerbung. So können sie sich frühzeitig auf die Berufswelt einstellen.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="darkBox">
+    <div class="mainBox">
+        <h2>Jugend in Aktion</h2>
+        <span>Die Evangelische Gemeindejugend der Pfalz bietet überregionale Veranstaltungen wie Freizeiten,
+            Studienfahrten und Jugendtreffen an. Zudem bildet sie in Schulungen ehrenamtliche Mitarbeiter für
+            den Dienst in ihrer Gemeinde aus. Hier bekommen Sie einen Überblick über die in diesem Jahr
+            geplanten Events:</span>
+        <div class="titleBox">
+            <h3>Freizeitangebote {{ year }}:</h3>
+        </div>
+        <div class="categoryBox">
+            <h3 class="categoryRegister" style="background-color: white;" [class.activeReg]="register == 'all'" (click)="register = 'all'">ALLE</h3>
+            <h3 class="categoryRegister" style="background-color: rgb(93, 178, 248);" [class.activeReg]="register == 'kids'" (click)="register = 'kids'">Kinder</h3>
+            <h3 class="categoryRegister" style="background-color: rgb(90, 247, 98);" [class.activeReg]="register == 'teens'" (click)="register = 'teens'">Jugendliche</h3>
+            <h3 class="categoryRegister" style="background-color: orange;" [class.activeReg]="register == 'education'" (click)="register = 'education'">Schulungen</h3>
+        </div>
+
+        <div class="campContainer">
+            <div *ngFor="let camp of freizeiten">
+                <div class="thumbnail" [class.catKids]="camp.category == 'kids'" [class.catTeens]="camp.category == 'teens'" [class.catEdu]="camp.category == 'education'"  [ngStyle]="{'background-image':'url(./../../../../assets/img/' + camp.img + ')'}" (click)="chooseCamp(camp)" *ngIf="register == camp.category || register == 'all'">
+                    <span class="blue">{{ camp.date }}</span>
+                    <h3>{{ camp.title }}</h3>
+                    <span>{{ camp.age }} Jahre</span>
+                    <span><b>{{ camp.price }},- €</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popUp" *ngIf="popup">
+    <div class="detailContainer" [class.catKids]="activeCamp.category == 'kids'" [class.catTeens]="activeCamp.category == 'teens'" [class.catEdu]="activeCamp.category == 'education'">
+        <div class="roundBtn closer" (click)="popup = false; none = false">X</div>
+        <div class="roundBtn back" (click)="none = false" *ngIf="none"><</div>
+        <h2 *ngIf="none">Anmeldung zur:</h2>
+        <h2>{{ activeCamp.title }}</h2>
+        <div class="mainInfo" [class.none]="none">
+            <table style="width: 120%;">
+                <tbody>
+                    <tr>
+                        <td>Zeitraum:</td>
+                        <td>{{ activeCamp.date }}</td>
+                    </tr>
+                    <tr>
+                        <td>Teilnahmealter:</td>
+                        <td>{{ activeCamp.age }} Jahre</td>
+                    </tr>
+                    <tr>
+                        <td>Veranstaltungsort:</td>
+                        <td>{{ activeCamp.location }}</td>
+                    </tr>
+                    <tr>
+                        <td>Kosten:</td>
+                        <td>{{ activeCamp.price }},- Euro</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="description" [class.none]="none">
+            <span>{{ activeCamp.description }}</span>
+        </div>
+        <div class="signUp" *ngIf="none">
+            <span>Hiermit möchte ich mein Kind verbindlich zur {{ activeCamp.title }} vom {{ activeCamp.date }} in {{ activeCamp.location }} anmelden.</span>
+            <input placeholder="Vorname Teilnehmer:in">
+            <input placeholder="Nachname Teilnehmer:in">
+            <input placeholder="Straße, Hausnummer">
+            <input placeholder="PLZ">
+            <input placeholder="Wohnort">
+            <input placeholder="Geburtstag Teilnehmer:in">
+            <input placeholder="E-Mail-Adresse">
+            <input placeholder="Telefon-/Mobilfunknummer">
+        </div>
+        <button (click)="none = true" *ngIf="!none">Zur Anmeldung</button>
+    </div>    
+</div>

@@ -1,0 +1,48 @@
+@import './../../../../styles.scss';
+
+.greyBox {
+    width: 100%;
+    background-color: $colorGrey;
+    padding: 32px 0px 32px 0px;
+    @include dflex();
+}
+
+.mainBox {
+    width: 90%;
+    max-width: 1440px;
+    @include dflex($fd: column);
+    text-align: center;
+    >h2 {
+        color: $colorBlue;
+        padding-bottom: 32px;
+    }
+    >span {
+        width: 80%;
+    }
+}
+
+.textBox {
+    background-color: $colorBlueLight;
+    padding: 12px;
+    width: 90%;
+    border-radius: 16px;
+    @include dflex($fd:column);
+    padding-bottom: 56px;
+}
+
+table {
+    width: 80%;
+    line-height: 22px;
+}
+
+td {
+    text-align: left;
+    vertical-align: top;
+    font-size: 18px;
+    padding: 12px 0px 12px 0px;
+}
+
+span {
+    font-size: 18px;
+    line-height: 22px;
+}

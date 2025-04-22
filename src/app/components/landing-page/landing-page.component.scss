@@ -1,0 +1,162 @@
+@import './../../../styles.scss';
+
+.container {
+    width: 100%;
+}
+
+.ovalOverlay {
+    background-color: #D9D9D9;
+    height: 400px;
+    width: 120%;
+    text-align: center;
+    border-top-left-radius: 100%; 
+    border-top-right-radius: 100%; 
+    margin-left: -10%;
+    display: flex;
+    justify-content: center;
+    >div {
+        margin-top: 64px;
+        padding-top: 12px;
+    }
+    margin-bottom: -225px;
+}
+
+.background {
+    width: 100%;
+    padding-top: 64px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0071BC;
+    border-radius: 20px;
+    padding: 12px;
+    color: white;
+    height: 24px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    &:hover {
+        cursor: pointer;
+        background-color: $colorBlueLight;
+    }
+}
+
+.newsTicker {
+    width: 100%;
+    background-color: $colorDark;
+    height: 128px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+    >h3 {
+        font-size: 26px;
+    }
+    >p {
+        font-size: 24px;
+    }
+}
+
+
+.textBoxes {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 120px;
+}
+
+
+.singleTextBox {
+    @include textBox($w:30%);
+}
+
+
+//  RESPONSIVNESS
+
+@media (max-width: 1500px) {
+
+    .textBoxes {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+}
+
+
+@media (max-width: 1100px) {
+
+    .singleTextBox {
+        width: 27%;
+    }
+
+    .ovalOverlay {
+        width: 160%;
+        margin-left: -30%;
+    }
+
+    .newsTicker {
+        height: 96px;
+        >h3 {
+            font-size: 18px;
+        }
+        >p {
+            font-size: 16px;
+        }
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .textBoxes {
+        flex-direction: column;
+    }
+
+    .singleTextBox {
+        width: 93%;
+        margin-bottom: 12px;
+        >p {
+            font-size: 14px;
+            line-height: 15px;
+        }
+    }
+
+    .ovalOverlay {
+        width: 200%;
+        margin-left: -50%;
+    }
+
+    .newsTicker {
+        height: 80px;
+        >h3 {
+            font-size: 14px;
+        }
+        >p {
+            font-size: 12px;
+        }
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .singleTextBox {
+        width: 90%;
+    }
+
+    .button {
+        font-size: 16px;
+    }
+
+}

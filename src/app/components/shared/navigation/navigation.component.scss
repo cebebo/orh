@@ -1,0 +1,129 @@
+@import './../../../../styles.scss';
+h3 {
+    font-size: 18px;
+    line-height: 17px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    filter: drop-shadow(0px 0px 2px grey)
+}
+
+.mainContainer {
+    width: 100%;
+    background: linear-gradient(180deg,rgba(0, 113, 188, 1) 0%, rgba(0, 113, 188, 0) 100%);
+    display: flex;
+    justify-content: center;
+    margin-bottom: -100px;
+    z-index: 20;
+}
+
+.nav {
+    width: 100%;
+    max-width: 1400px;
+    @include dflex();
+    >img {
+        height: 100px;
+    }
+}
+
+
+.text {
+    width: 100%;
+    @include dflex($jc:space-between);
+    padding-left: 16px;
+}
+
+
+.name {
+    color: white;
+}
+
+
+.menu {
+    display: flex;
+    >a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+
+.link {
+    padding-left: 24px;
+    padding-right: 24px;
+    font-weight: bold;
+    color: white;  
+    border-radius: 16px; 
+    filter: drop-shadow(0px 0px 2px black); 
+    &:hover {
+        color: $colorDark;
+        background-color: $colorBlueLight;
+        cursor: pointer;
+    }
+}
+
+//  RESPONSIVNESS
+
+@media (max-width: 1500px) {
+
+    .nav {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+}
+
+
+@media (max-width: 1100px) {
+
+    .menu {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .nav {
+        padding-left: 12px;
+        padding-right: 12px;
+        >img {
+            height: 64px;
+        }
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .nav {
+        padding-left: 8px;
+        padding-right: 8px;
+        >img {
+            height: 56px;
+        }
+    }
+
+    h3 {
+        font-size: 13px;
+        letter-spacing: 0;
+    }
+
+    h2 {
+        font-size: 15px;
+    }
+
+    .text {
+        padding-left: 8px;
+    }
+
+}

@@ -1,0 +1,45 @@
+@import './../../../../styles.scss';
+
+.container {
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.ovalOverlay {
+    background-color: #D9D9D9;
+    height: 400px;
+    width: 120%;
+    text-align: center;
+    border-top-left-radius: 100%; 
+    border-top-right-radius: 100%; 
+    margin-left: -10%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -225px;
+}
+
+.textBoxes {
+    max-width: 1440px;
+    width: 60%;
+    height: auto;    
+    @include dflex($fd:column);
+    margin-top: -150px;
+    >h2 {
+        color: $colorBlue;
+        padding-bottom: 32px;
+    }
+}
+
+.singleTextBox {
+    @include textBox($w:100%);
+}
+
+//  RESPONSIVNESS
+
+@media (max-width: 600px) {
+
+    .vid {
+        height: 480px;
+    }
+
+}

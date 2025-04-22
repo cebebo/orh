@@ -1,0 +1,238 @@
+<div class="greyBox">
+    <div class="mainBox">
+        <h2>Preise</h2>
+        <span>Sie können das Otto-Riethmüller-Haus als Selbstversorger oder mit Verpflegung buchen.
+            Werfen Sie doch einen Blick auf unsere Preise:</span>
+        <div class="typeBox">
+            <h2 (click)="setValue('type', 2)">Selbstversorger</h2>
+            <div class="switchCase" (click)="changeType()">
+                <div class="switchButton {{switchClassType}}"></div>
+            </div>
+            <h2 (click)="setValue('type', 1)">Verpfleger</h2>
+        </div>
+        <div class="contentBox">
+            <div class="yearBox">
+                <h2 (click)="setValue('year', 2)">{{ pricelist[0].year }}</h2>
+                <div class="switchCase" (click)="changeYear()">
+                    <div class="switchButton {{switchClassYear}}"></div>
+                </div>
+                <h2 (click)="setValue('year', 1)">{{ pricelist[1].year }}</h2>
+            </div>
+            <div class="priceBox">
+                <div class="leftBox">
+                    <div *ngIf="type == 1">
+                        <h3>Übernachtung bei Selbstversorgung <b>{{ pricelist[year-1].year }}</b></h3><br>
+                        <p><b>Übernachtungspreise:</b></p>
+                        <table style="table-layout: fixed; width: 100%; text-align: left;">
+                            <colgroup>
+                                <col style="width: 50%;">
+                                <col style="width: 25%;">
+                                <col style="width: 25%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th><b>Personen</b></th>
+                                    <th><b>Kinder/<br>Jugendliche</b></th>
+                                    <th><b>Erwachsene<br>ab 27 Jahre</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bis 60 (pauschal pro Nacht)</td>
+                                    <td>{{ pricelist[year-1].to60kids | number:'1.2-2' }} €</td>
+                                    <td>{{ pricelist[year-1].to60adults | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Ab 60 (pro Person/Nacht)</td>
+                                    <td>{{ pricelist[year-1].up60kids | number:'1.2-2' }} €</td>
+                                    <td>{{ pricelist[year-1].up60adults | number:'1.2-2' }} €</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="table-layout: fixed; width: 100%; text-align: left;">
+                            <colgroup>
+                                <col style="width: 50%;">
+                                <col style="width: 50%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td>zuzügliche Endreinigung pauschal</td>
+                                    <td>{{ pricelist[year-1].cleanUp | number:'1.2-2' }} €</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div *ngIf="type == 2">
+                        <h3>Übernachtung mit Verpflegung <b>{{ pricelist[year-1].year }}</b></h3><br>
+                        <p><b>(inkl. Mithilfe beim Küchendienst)<br>
+                                <i>pro Person/Nacht bei 3 Mahlzeiten:</i></b></p>
+                        <table style="table-layout: fixed; width: 100%; text-align: left;">
+                            <colgroup>
+                                <col style="width: 85%;">
+                                <col style="width: 15%;">
+                            </colgroup>
+                            <tr>
+                                <td>Kinder 4 - 10 Jahre</td>
+                                <td>{{ pricelist[year-1].kids | number:'1.2-2' }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Kinder und Jugendliche 11 - 17 Jahre</td>
+                                <td>{{ pricelist[year-1].teens | number:'1.2-2' }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Erwachsene 18 - 26 Jahre</td>
+                                <td>{{ pricelist[year-1].adults | number:'1.2-2' }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Betreuer ab 27 Jahre für Kinder-/Jugendveranstaltungen</td>
+                                <td>{{ pricelist[year-1].counselor | number:'1.2-2' }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Erwachsene ab 27 Jahre</td>
+                                <td>{{ pricelist[year-1].seniorAdults | number:'1.2-2' }} €</td>
+                            </tr>
+                        </table>
+                        <p><b>Zuschläge <i>pro Person/Nacht:</i></b></p>
+                        <table style="table-layout: fixed; width: 100%; text-align: left;">
+                            <colgroup>
+                                <col style="width: 85%;">
+                                <col style="width: 15%;">
+                            </colgroup>
+                            <tr>
+                                <td>Einzelzimmerzuschlag</td>
+                                <td>{{ pricelist[year-1].singleRoom | number:'1.2-2' }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Doppelzimmerzuschlag</td>
+                                <td>{{ pricelist[year-1].doubleRoom | number:'1.2-2' }} €</td>
+                            </tr>
+                            <tr>
+                                <td>bei nur einer Übernachtung</td>
+                                <td>{{ pricelist[year-1].singleNight | number:'1.2-2' }} €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="line">&nbsp;</div>
+                <div class="rightBox">
+                    <div *ngIf="type == 1">
+                        <p><b>Sonstiges:</b></p>
+                        <table style="table-layout: fixed; width: 100%; text-align: left;">
+                            <colgroup>
+                                <col style="width: 70%;">
+                                <col style="width: 30%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td>Strom, Heizung und Wasser</td>
+                                    <td>inbegriffen</td>
+                                </tr>
+                                <tr>
+                                    <td>Kinder bis 3 Jahre ohne eigenes Bett</td>
+                                    <td>frei</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Bettwäsche (3-tlg) einmalig pro Person</td>
+                                    <td>{{ pricelist[year-1].sheets | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Badehandtuch pro Stück </td>
+                                    <td>{{ pricelist[year-1].towelBig | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Handtuch pro Stück</td>
+                                    <td>{{ pricelist[year-1].towelSmall | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Schürze pro Stück</td>
+                                    <td>{{ pricelist[year-1].apron | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Geschirrtuch pro Stück</td>
+                                    <td>{{ pricelist[year-1].teaTowel | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Spüllappen pro Stück</td>
+                                    <td>{{ pricelist[year-1].dishcloth | number:'1.2-2' }} €</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="type == 2">
+                        <p><b>Ermäßigung <i>pro Person/Nacht:</i></b></p>
+                        <table style="table-layout: fixed; width: 100%; text-align: left;">
+                            <colgroup>
+                                <col style="width: 85%;">
+                                <col style="width: 15%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td>Gruppen aus der Pfälzischen Landeskirche</td>
+                                    <td>{{ pricelist[year-1].churchGroup | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Kinder bei Familienfreizeiten bis 3 Jahre ohne eigenes Bett</td>
+                                    <td>frei</td>
+                                </tr>
+                                <tr>
+                                    <td>Betreuer von Kindergärten und Schulklassen<br>erhalten von Montag – Freitag bei
+                                        einer Gruppenstärke<br>ab 20 Personen</td>
+                                    <td>2 Freiplätze</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><b>Sonderleistungen:</b></p>
+                        <table style="table-layout: fixed; width: 100%; text-align: left;">
+                            <colgroup>
+                                <col style="width: 85%;">
+                                <col style="width: 15%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td>Nachmittagskaffee Kinder 4 - 10 Jahre</td>
+                                    <td>{{ pricelist[year-1].coffeeCakeKids | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Nachmittagskaffee Kinder und Jugendliche 11 - 17 Jahre</td>
+                                    <td>{{ pricelist[year-1].coffeeCakeTeens | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Nachmittagskaffee Erwachsene ab 18 Jahre</td>
+                                    <td>{{ pricelist[year-1].coffeeCakeAdults | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Grillen pro Person*</td>
+                                    <td>{{ pricelist[year-1].grill | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>"ohne Küchendienst" pro Person/Mahlzeit</td>
+                                    <td>{{ pricelist[year-1].kitchenDuty | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Bettwäsche (3-tlg) einmalig pro Person</td>
+                                    <td>{{ pricelist[year-1].sheets | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Badehandtuch pro Stück </td>
+                                    <td>{{ pricelist[year-1].towelBig | number:'1.2-2' }} €</td>
+                                </tr>
+                                <tr>
+                                    <td>Leihgebühr Handtuch pro Stück</td>
+                                    <td>{{ pricelist[year-1].towelSmall | number:'1.2-2' }} €</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br><p><i>*Wir stellen das Essen und Grillkohle, Sie organisieren das Grillen.</i></p>
+                    </div>
+                </div>
+            </div>
+            <h3>Mehrwertsteuer:</h3>
+            <p class="mwst">Die Preise enthalten die gesetzliche Mehrwertstreuer für Erwachsene über 27 Jahre
+                von zur Zeit 7% auf die Übernachtungspreise und 19% auf die Verpflegungspreise.</p>
+            <div class="downloadBox">
+                <h3>Die angezeigte Preisliste als PDF herunterladen.</h3>
+            </div>
+        </div>
+    </div>
+</div>

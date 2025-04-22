@@ -1,0 +1,101 @@
+@import './../../../../styles.scss';
+
+.blueBox {
+    width: 100%;
+    padding: 32px 0px 64px 0px;
+    @include dflex();
+    background-color: $colorBlue;
+}
+
+.mainBox {
+    width: 90%;
+    max-width: 1440px;
+    @include dflex($fd: column);
+    text-align: center;
+    >h2 {
+        color: white;
+        padding-bottom: 32px;
+    }
+}
+
+.textBox {
+    background-color: $colorBlueLight;
+    padding: 12px;
+    width: 90%;
+    border-radius: 16px;
+    @include dflex($fd:column);
+    padding-bottom: 56px;
+}
+
+table {
+    width: 90%;
+    table-layout: fixed;
+    text-align: justify;
+    padding-top: 48px;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+td {
+    vertical-align: top;
+    padding: 12px 24px 12px 24px;
+}
+
+span {
+    font-size: 20px;
+    width: 80%;
+    margin-top: 32px;
+    line-height: 22px;
+}
+
+.lightBlue {
+    background-color: $colorBlueBright;
+}
+
+.fitCatBox {
+    width: 45%;
+    @include dflex($ai: flex-start);
+    margin-bottom: 12px;
+}
+
+.fitCatReg {
+    width: 25%;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    @include dflex($ai: flex-end);
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid $colorDark;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(2);
+    }
+}
+
+.titleBox {
+    width: 50%;
+    background-color: $colorBlue;
+    border-radius: 12px;
+    margin-top: 48px;
+    @include dflex();
+    >h3 {
+        color: white;
+    }
+}
+
+.activeReg {
+    height: 48px;
+}
+
+.description {
+    width: 70%;
+    background-color: $colorBlueBright;
+    padding: 16px;
+    border-radius: 16px;
+    >div {
+        >span {
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+}

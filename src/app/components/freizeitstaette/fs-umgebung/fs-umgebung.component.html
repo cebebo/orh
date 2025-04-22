@@ -1,0 +1,144 @@
+<div class="greyBox">
+    <div class="mainBox">
+        <h2>Ausflugsmöglichkeiten in der Umgebung</h2>
+        <span>In und um Weidenthal herum gibt es für Ihre Gruppe einiges zu erkunden.
+            Hier geben wir Ihnen einen kleinen Überblick:</span>
+        <div class="register">
+            <div class="topic" [class.activeTopic]="topic == 1">
+                <h3 (click)="changeTopic(1)">Aktiv in Weidenthal</h3>
+            </div>
+            <div class="topic" [class.activeTopic]="topic == 2">
+                <h3 (click)="changeTopic(2)">Umliegende Städte</h3>
+            </div>
+            <div class="topic" [class.activeTopic]="topic == 3">
+                <h3 (click)="changeTopic(3)">Schwimmbäder</h3>
+            </div>
+            <div class="topic" [class.activeTopic]="topic == 4">
+                <h3 (click)="changeTopic(4)">Weitere Ziele</h3>
+            </div>
+        </div>
+        <div class="contentBox">
+            <div *ngIf="topic == 1">
+                <table style="table-layout: fixed; width: 100%; text-align: left;">
+                    <colgroup>
+                        <col style="width: 40%;">
+                        <col style="width: 30%;">
+                        <col style="width: 30%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Bezeichnung</th>
+                            <th>Entfernung</th>
+                            <th>Webseite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of weidenthal">
+                            <td>{{ row.title }}</td>
+                            <td>{{ row.distance }}</td>
+                            <td><a [href]="'http://' + row.url" target="_blanc">{{ row.url }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="topic == 2">
+                <table style="table-layout: fixed; width: 100%; text-align: left;">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 10%;">
+                        <col style="width: 10%;">
+                        <col style="width: 20%;">
+                        <col style="width: 25%;">
+                        <col style="width: 15%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Stadt</th>
+                            <th>Entfernung</th>
+                            <th>Autofahrt</th>
+                            <th>ÖPNV</th>
+                            <th>Attraktionen</th>
+                            <th>Webseite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of citys">
+                            <td>{{ row.city }}</td>
+                            <td>{{ row.distance }}</td>
+                            <td>{{ row.car }}</td>
+                            <td>{{ row.train }}</td>
+                            <td>
+                                <div *ngFor="let attr of row.attractions">{{ attr }}</div>
+                            </td>
+                            <td><a [href]="'http://' + row.url" target="_blanc">{{ row.url }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="topic == 3">
+                <table style="table-layout: fixed; width: 100%; text-align: left;">
+                    <colgroup>
+                        <col style="width: 15%;">
+                        <col style="width: 10%;">
+                        <col style="width: 10%;">
+                        <col style="width: 25%;">
+                        <col style="width: 15%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Entfernung</th>
+                            <th>Autofahrt</th>
+                            <th>ÖPNV</th>
+                            <th>Stadt</th>
+                            <th>Webseite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of swimming">
+                            <td>{{ row.name }}</td>
+                            <td>{{ row.distance }}</td>
+                            <td>{{ row.car }}</td>
+                            <td>{{ row.train }}</td>
+                            <td>{{ row.city }}</td>
+                            <td><a [href]="'http://' + row.url" target="_blanc">{{ row.url }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="topic == 4">
+                <table style="table-layout: fixed; width: 100%; text-align: left;">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 10%;">
+                        <col style="width: 10%;">
+                        <col style="width: 25%;">
+                        <col style="width: 15%;">
+                        <col style="width: 20%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Entfernung</th>
+                            <th>Autofahrt</th>
+                            <th>ÖPNV</th>
+                            <th>Attraktion</th>
+                            <th>Webseite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of more">
+                            <td>{{ row.name }}</td>
+                            <td>{{ row.distance }}</td>
+                            <td>{{ row.car }}</td>
+                            <td>{{ row.train }}</td>
+                            <td>{{ row.attraction }}</td>
+                            <td><a [href]="'http://' + row.url" target="_blanc">{{ row.url }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

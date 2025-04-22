@@ -1,0 +1,46 @@
+<div class="darkBox">
+    <div class="mainBox">
+        <h2>Evangelische Gemeindejugend der Pfalz</h2>
+        <div class="textBox">
+            <h3>Unsere Ziele</h3>
+            <span>Die Freizeit- und Bildungsstätte Otto-Riethmüller-Haus ist eine Einrichtung
+                der Evangelischen Gemeindejugend der Pfalz. Unser Verein hat es sich zum Ziel
+                gesetzt, Kinder und Jugendliche für Jesus Christus zu gewinnen und ihren Glauben
+                zu vertiefen. Darüber hinaus wollen wir ihnen helfen, ihr Leben zu gestalten und
+                zu bewältigen sowie Gemeinschaft zu erfahren. Gelebte Diakonie und die Förderung
+                von Lehre und Bildung sind außerdem unsere Ziele.</span>
+        </div>
+        <div class="textBox right">
+            <h3>Unsere Angebote</h3>
+            <span>Die Evangelische Gemeindejugend der Pfalz hat ihre Basis in den Kirchengemeinden.
+                Wir unterstützen den Aufbau und die Betreuung von Jugendgruppen vor Ort. Weiter
+                bieten wir überregionale Veranstaltungen wie Freizeiten, Studienfahrten und Jugendtreffen
+                an. Zudem bilden wir ehrenamtliche Mitarbeiter für den Dienst in ihrer Gemeinde aus.
+                Das Otto-Riethmüller-Haus steht sowohl für Veranstaltungen des Vereins als auch für
+                Veranstaltungen anderer Gruppen zur Verfügung.</span>
+        </div>
+        <div class="textBox">
+            <h3>Unser Grundsatz</h3>
+            <span>„Wir müssen die Botschaft so sagen können, dass es die heutige Jugend hört und fassen
+                kann.“ An diesem Grundsatz Otto Riethmüllers, dem Begründer der Gemeindejugendbewegung,
+                orientieren wir uns. Unsere Kinder- und Jugendarbeit umfasst neben Bibelarbeiten, Andachten,
+                thematischen Einheiten, Gesprächen und Seelsorge auch Musik, Sport, Spiel und Kreativangebote.</span>
+        </div>
+        <div class="textBox right">
+            <h3>Unsere Struktur</h3>
+            <span>Der Vorstand unseres Vereins besteht aus fünf Personen:</span>
+            <table>
+                <tbody>
+                    <tr *ngFor="let person of vorstand">
+                        <td><b>{{ person.amt }}:</b></td>
+                        <td>{{ person.name }} aus {{ person.city }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span>Der Vorstand beruft den Mitarbeiterkreis, der für die Gestaltung der Jugendarbeit
+                verantwortlich ist. Mitgliedschaft im Verein geschieht auf Antrag. Als Jugendgemeinschaft sind wir
+                Mitglied in der Landesjugendkammer der Evangelischen Kirche der Pfalz.</span>
+        </div>
+
+    </div>
+</div>

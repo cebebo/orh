@@ -1,0 +1,25 @@
+@import './../../../../styles.scss';
+
+.greyBox {
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: $colorGrey;
+    @include dflex();
+}
+
+.mainBox {
+    width: 90%;
+    max-width: 1440px;
+    @include dflex($fd: column);
+    text-align: center;
+    >h2 {
+        color: $colorBlue;
+        padding-bottom: 12px;
+    }
+}
+
+span {
+    color: black;
+    margin-bottom: 16px;
+}

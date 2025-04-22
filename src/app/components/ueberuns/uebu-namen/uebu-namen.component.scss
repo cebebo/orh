@@ -1,0 +1,83 @@
+@import './../../../../styles.scss';
+
+.blueBox {
+    width: 100%;
+    background-color: $colorBlue;
+    @include dflex($fd: column);
+}
+
+.mainBox {
+    width: 100%;
+    max-width: 1440px;
+    color: white;
+    @include dflex($fd: column);
+    >h2 {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+    >div {
+        @include dflex();
+    }
+}
+
+.titleBox {
+    width:50%;
+    background-color: $colorBlue;
+    border-radius: 12px;
+    @include dflex();
+    margin-bottom: 16px;
+}
+
+.infoBox {
+    @include dflex($fd:column);
+    width: 90%;
+}
+
+.infoText {
+    width: 90%;
+    font-size: 17px;
+    line-height: 24px;
+    @include dflex($fd:column, $jc:space-between);
+}
+
+p {
+    font-size: 24px;
+    text-align: center;
+    color: $colorBlue;
+    padding-top: 32px;
+}
+
+h3 {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+span {
+    color: $colorDark;
+}
+
+.fixedSize {
+    height: 150px;
+    text-align: justify;
+}
+
+.screen {
+    width: 80%;
+    padding: 0px 24px 0px 24px;
+    height: 300px;
+    border-radius: 32px;
+    background-color: $colorBlueLight;
+    @include dflex($jc:space-around);
+    margin-bottom: 64px;
+    >h2 {
+        font-size: 48px;
+        color: $colorBlue !important;
+        &:hover {
+            filter: drop-shadow(0px 0px 3px white);
+            cursor: pointer;
+            color: $colorDark;
+        }
+    }
+}
+

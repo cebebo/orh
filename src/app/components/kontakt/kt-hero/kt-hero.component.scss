@@ -1,0 +1,32 @@
+@import './../../../../styles.scss';
+
+.ovalOverlay {
+    background-color: #D9D9D9;
+    height: 400px;
+    width: 120%;
+    text-align: center;
+    border-top-left-radius: 100%; 
+    border-top-right-radius: 100%; 
+    margin-left: -10%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -80px;
+}
+
+.textBoxes {
+    max-width: 1440px;
+    width: 60%;
+    height: auto;    
+    @include dflex($fd:column);
+    margin-top: -80px;
+    >h2 {
+        color: $colorBlue;
+        padding-bottom: 32px;
+    }
+}
+
+.singleTextBox {
+    @include textBox($w:100%);
+    @include dflex($fd:column);
+}
+
