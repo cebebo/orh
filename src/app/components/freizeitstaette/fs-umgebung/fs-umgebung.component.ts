@@ -15,7 +15,7 @@ export class FsUmgebungComponent {
     {
       "title": "Naturbadeweiher",
       "distance": "5 Minuten zu Fuß",
-      "url": "www.weidenthal.de/naturbadeweiher"
+      "url": "www.weidenthal.de/badeweiher"
     },
     {
       "title": "Letterboxing: Schatzsuche mit Kompass",

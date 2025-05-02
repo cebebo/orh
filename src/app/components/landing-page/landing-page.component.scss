@@ -5,26 +5,27 @@
 }
 
 .ovalOverlay {
-    background-color: #D9D9D9;
-    height: 400px;
-    width: 120%;
+    
+    background-color: $colorGrey;
+    height: 300px;
+    width: 100%;
     text-align: center;
-    border-top-left-radius: 100%; 
-    border-top-right-radius: 100%; 
-    margin-left: -10%;
+    border-top-left-radius: 150%; 
+    border-top-right-radius: 150%; 
+    // margin-left: 0%;
     display: flex;
     justify-content: center;
     >div {
         margin-top: 64px;
         padding-top: 12px;
     }
-    margin-bottom: -225px;
+    margin-bottom: -125px;
 }
 
 .background {
     width: 100%;
     padding-top: 64px;
-    background-color: #D9D9D9;
+    background-color: $colorGrey;
     display: flex;
     justify-content: center;
 }
@@ -32,10 +33,11 @@
 
 
 .button {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0071BC;
+    background-color: $colorBlue;
     border-radius: 20px;
     padding: 12px;
     color: white;
@@ -57,6 +59,7 @@
     align-items: center;
     color: white;
     flex-direction: column;
+    margin-top: 30px;
     >h3 {
         font-size: 26px;
     }
@@ -98,10 +101,10 @@
         width: 27%;
     }
 
-    .ovalOverlay {
-        width: 160%;
-        margin-left: -30%;
-    }
+    // .ovalOverlay {
+    //     width: 160%;
+    //     margin-left: -30%;
+    // }
 
     .newsTicker {
         height: 96px;
@@ -116,10 +119,11 @@
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .textBoxes {
         flex-direction: column;
+        padding-bottom: 20px;
     }
 
     .singleTextBox {
@@ -131,12 +135,24 @@
         }
     }
 
+    .button {
+        margin-top: 12px;
+    }
+
     .ovalOverlay {
-        width: 200%;
-        margin-left: -50%;
+        height:100px;
+        margin-top: -250px;
+        >div {
+            margin-top: 30px;
+        }
+    }
+
+    .background {
+        padding-top: 24px;
     }
 
     .newsTicker {
+        margin-top: 18px;
         height: 80px;
         >h3 {
             font-size: 14px;
@@ -146,6 +162,13 @@
         }
     }
 
+}
+
+.heroWaveOverlay {
+    margin-top: -81px;
+    width:100%;
+    display: flex;
+    justify-content: center;
 }
 
 

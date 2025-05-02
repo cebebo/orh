@@ -17,25 +17,73 @@ h1 {
     max-width: 1440px;
     color: $colorBlue;
     @include dflex($fd: column);
+
     >h2 {
         padding-top: 32px;
         padding-bottom: 32px;
         color: $colorBlue;
     }
-    
+}
+
+
+.contentBox {
+    width: 50%;
+
+    >h1 {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    >h2,
+    h3,
+    span,
+    li,
+    p {
+        color: black;
+        line-height: 24px;
+    }
+
+    >p {
+        margin-bottom: 24px;
+    }
+}
+
+
+
+// RESPONSIVNESS
+
+@media(max-width: 1200px) {
 
     .contentBox {
-        width: 50%;
-        >h1 {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        >h2, h3, span, li, p {
-            color: black;
-            line-height: 24px;
-        }
-        >p {
-            margin-bottom: 24px;
-        }
+        width: 100%;
     }
+
+    .mainBox {
+        width: 90%;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    li {
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
 }

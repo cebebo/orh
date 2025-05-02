@@ -1,8 +1,8 @@
 // VARIABLES
 
 $colorBlue: #0071BC;
-$colorGrey: #D9D9D9;
-$colorDark: #1E1E1E;
+$colorGrey: #ececec;
+$colorDark: #302f2f;
 $colorBlueLight: #44b1fa;
 $colorBlueBright: #7fc7f7;
 
@@ -53,7 +53,9 @@ button {
   }
 }
 
-
+.heroWave {
+  width: 100%;
+}
 
 
 
@@ -115,4 +117,32 @@ button {
     font-style: normal;
     font-weight: 800;
     src: url('./assets/fonts/almarai-v18-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+
+
+
+  //  RESPONSIVNESS
+
+  @media(max-width: 1500px) {
+
+    .heroWave {
+      height: 120px;
+    }
+
+  }
+
+
+  @media(max-width: 700px) {
+
+    .heroWave {
+      height: 50px;
+    }
+
+    .greyField {
+      height: 50px;
+      margin-top: -10px;
+      background-color: $colorGrey;
+    }
+
   }

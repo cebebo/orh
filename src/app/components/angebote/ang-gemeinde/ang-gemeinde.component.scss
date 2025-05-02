@@ -46,3 +46,44 @@ span {
     font-size: 18px;
     line-height: 22px;
 }
+
+.tableResponsiv {
+    display: none;
+}
+
+
+
+// RESPONSIVNESS
+
+@media(max-width: 1000px) {
+
+    table {
+        display: none;
+    }
+
+    .tableResponsiv {
+        display: block;
+    }
+
+    .mainBox {
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 600px) {
+    
+    li, span {
+        font-size: 16px;
+        line-height: 17px;
+    }
+
+    table {
+        width: 95%;
+    }
+
+    ul {
+        padding-inline-start: 16px;
+    }
+
+}

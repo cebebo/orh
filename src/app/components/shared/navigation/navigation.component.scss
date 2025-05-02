@@ -1,4 +1,5 @@
 @import './../../../../styles.scss';
+
 h3 {
     font-size: 18px;
     line-height: 17px;
@@ -9,7 +10,7 @@ h3 {
 
 .mainContainer {
     width: 100%;
-    background: linear-gradient(180deg,rgba(0, 113, 188, 1) 0%, rgba(0, 113, 188, 0) 100%);
+    background: linear-gradient(180deg, rgba(0, 113, 188, 1) 0%, rgba(0, 113, 188, 0) 100%);
     display: flex;
     justify-content: center;
     margin-bottom: -100px;
@@ -20,6 +21,7 @@ h3 {
     width: 100%;
     max-width: 1400px;
     @include dflex();
+
     >img {
         height: 100px;
     }
@@ -28,7 +30,7 @@ h3 {
 
 .text {
     width: 100%;
-    @include dflex($jc:space-between);
+    @include dflex($jc: space-between);
     padding-left: 16px;
 }
 
@@ -40,6 +42,10 @@ h3 {
 
 .menu {
     display: flex;
+    z-index: 20;
+    height: 100px;
+    @include dflex();
+
     >a {
         text-decoration: none;
         color: inherit;
@@ -51,15 +57,147 @@ h3 {
     padding-left: 24px;
     padding-right: 24px;
     font-weight: bold;
-    color: white;  
-    border-radius: 16px; 
-    filter: drop-shadow(0px 0px 2px black); 
+    color: white;
+    border: solid 0px rgba(0, 0, 0, 0);
+    filter: drop-shadow(0px 0px 2px black);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 80%;
+    border-top-color: rgba(0, 0, 0, 0);
+    border-top-left-radius: 80%;
+    border-top-right-radius: 20%;
+    transition: filter .15s, border-bottom-color .15s, border-top-color .15s ease-in-out;
+
     &:hover {
-        color: $colorDark;
-        background-color: $colorBlueLight;
-        cursor: pointer;
+        filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.4));
+        border-bottom: solid 3px $colorBlueBright;
+        border-top: solid 3px $colorBlueBright;
+        border-left: 0;
+        border-right: 0;
+        color: yellow;
+    }
+
+    &:active {
+        background-color: $colorBlueBright;
+        color: red;
     }
 }
+
+.currentSite {
+    border-left: solid 2px white;
+    border-right: solid 2px white;
+    background-color: rgba(0, 113, 188, 0.3);
+    color: $colorBlueLight;
+}
+
+.overlayMenu {
+    display: none;
+    font-size: 10px;
+    line-height: 10px;
+    position: absolute;
+    right: 12px;
+    top: 16px;
+    background-color: $colorBlue;
+    padding: 6px 30px 24px 30px;
+    border: 2px solid white;
+    border-top-left-radius: 80%;
+    border-bottom-left-radius: 20%;
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 80%;
+
+    color: white;
+    filter: drop-shadow(0px 0px 2px black);
+
+    &:hover {
+        filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.4));
+        cursor: pointer;
+        background-color: white;
+        color: $colorBlue;
+        border: 2px solid $colorBlue;
+
+    }
+}
+
+.mobileMenu {    
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(3px);
+        z-index: 40;
+        @include dflex($fd: column, $jc: center);    
+}
+
+a {
+    width: 100%;
+    text-decoration: none;
+}
+
+.ovalMenu {
+    color: white;
+    padding: 5vh 0px 5vh 0px;
+    margin: 6px 0px 6px 0px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $colorBlue;
+    }
+}
+
+.openMobileMenu {
+    animation: user-Menu-incoming .5s ease-in-out forwards;
+}
+
+.closeMobileMenu {
+    animation: user-Menu-outgoing .5s ease-in-out forwards;
+}
+
+.closer {
+    background-color: $colorBlue;
+    color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    @include dflex();
+    font-size: 24px;
+    margin-bottom: 48px;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    &:hover {
+        cursor: pointer;
+        background-color: $colorBlueLight;
+    }
+}
+
+@keyframes user-Menu-incoming {
+    from {
+        left: 100%;
+        opacity: 0;
+    }
+
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes user-Menu-outgoing {
+    from {
+        left: 0;
+        opacity: 1;
+    }
+
+    to {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+
 
 //  RESPONSIVNESS
 
@@ -79,6 +217,10 @@ h3 {
         display: none;
     }
 
+    .overlayMenu {
+        display: block;
+    }
+
 }
 
 
@@ -87,17 +229,36 @@ h3 {
     .nav {
         padding-left: 12px;
         padding-right: 12px;
+
         >img {
             height: 64px;
         }
     }
 
-    h3 {
-        font-size: 15px;
+    .subname{
+        >h3 {
+            font-size: 15px;
+        }
     }
 
-    h2 {
-        font-size: 20px;
+    .name {
+        >h2 {
+            font-size: 20px;
+        }
+    }
+
+    .overlayMenu {
+        top: 0;
+    }
+
+    .ovalMenu {
+        >h2 {
+            font-size: 24px;
+        }
+    }
+
+    .mobileMenu {
+        margin-top: 35px;
     }
 
 }
@@ -108,6 +269,7 @@ h3 {
     .nav {
         padding-left: 8px;
         padding-right: 8px;
+
         >img {
             height: 56px;
         }
@@ -124,6 +286,11 @@ h3 {
 
     .text {
         padding-left: 8px;
+    }
+
+    .overlayMenu {
+        top: 4px;
+        padding: 0px 30px 14px 20px;
     }
 
 }

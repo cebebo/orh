@@ -37,6 +37,14 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="tableResponsiv">
+                <tbody>
+                    <tr *ngFor="let person of vorstand">
+                        <td><b>{{ person.amt }}:</b><br>
+                        {{ person.name }} aus {{ person.city }}</td>
+                    </tr>
+                </tbody>
+            </table>
             <span>Der Vorstand beruft den Mitarbeiterkreis, der für die Gestaltung der Jugendarbeit
                 verantwortlich ist. Mitgliedschaft im Verein geschieht auf Antrag. Als Jugendgemeinschaft sind wir
                 Mitglied in der Landesjugendkammer der Evangelischen Kirche der Pfalz.</span>

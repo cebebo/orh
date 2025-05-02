@@ -3,7 +3,7 @@
 .greyBox {
     width: 100%;
     background-color: $colorGrey;
-    @include dflex($fd:column);
+    @include dflex($fd: column);
     padding-top: 32px;
     padding-bottom: 64px;
 }
@@ -11,12 +11,16 @@
 .mainBox {
     width: 90%;
     max-width: 1200px;
-    @include dflex($fd:column);
+    @include dflex($fd: column);
+
     >h2 {
-        color: $colorBlue;        
+        color: $colorBlue;
     }
-    >h2, span {
+
+    >h2,
+    span {
         padding-bottom: 32px;
+        text-align: center;
     }
 }
 
@@ -32,6 +36,7 @@
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     padding: 8px 0px 8px 0px;
+
     &:hover {
         background-color: $colorBlue;
     }
@@ -39,14 +44,15 @@
 
 .contentBox {
     width: 100%;
-    height: 400px; 
-    background-color: white;   
+    height: 400px;
+    background-color: white;
     border-radius: 16px;
     padding: 32px;
 }
 
 .activeTopic {
     background-color: white;
+
     &:hover {
         background-color: white !important;
     }
@@ -63,3 +69,89 @@ a {
     text-decoration: none;
 }
 
+.quarders {
+    @include dflex($ai: flex-start);
+    flex-wrap: wrap;
+    width: 100%;
+    display: none;
+}
+
+.quarder {
+    @include dflex($fd: column);
+    width: 250px;
+    background-color: $colorDark;
+    border-radius: 16px;
+    color: white;
+    margin: 8px;
+    padding: 12px;
+
+    >h3 {
+        line-height: 20px;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    >span {
+        padding-bottom: 2px;
+        color: $colorBlueLight;
+    }
+
+    >p {
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    >a {
+        >p {
+            color: white;
+        }
+    }
+}
+
+
+//  RESPONSIV
+
+
+@media(max-width:1200px) {
+    
+    .quarders {
+        display: flex;
+    }
+
+    .contentBox {
+        height: auto;
+        >div {
+            >table {
+                display: none;
+            }
+        }
+    }
+}
+
+@media(max-width:700px) {
+    
+    .quarders {
+        display: flex;
+    }
+
+    .contentBox {
+        height: auto;
+        padding: 0;
+        >div {
+            >table {
+                display: none;
+            }
+        }
+    }
+
+    .topic {
+        writing-mode: vertical-lr;
+        @include dflex($jc:flex-end);
+    }
+
+    .register {
+        display: flex;
+        align-items: flex-end;
+        width: 90%;
+    }
+}

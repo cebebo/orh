@@ -81,3 +81,59 @@ span {
     }
 }
 
+
+// RESPONSIVNESS
+
+@media(max-width: 1000px) {
+
+    .titleBox {
+        width: 100%;
+    }
+
+    .screen {
+        height: 400px;
+    }
+
+    .infoBox {
+        width: 100%;;
+    }
+
+    .fixedSize {
+        height: 250px;
+    }
+
+}
+
+@media(max-width: 650px) {
+
+    .screen {
+        height: 500px;
+    }
+
+    .fixedSize {
+        height: 350px;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .screen {
+        height: 650px;
+    }
+
+    .fixedSize {
+        height: 500px;
+    }
+
+}
+
+@media(max-width: 400px) {
+
+    .fixedSize {
+        >span {
+            font-size: 14px;
+        }
+    }
+
+}

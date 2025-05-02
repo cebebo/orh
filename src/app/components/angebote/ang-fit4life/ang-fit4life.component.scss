@@ -99,3 +99,110 @@ span {
         }
     }
 }
+
+.colLeft {
+    width: 20%;
+}
+
+.colRight {
+    width: 80%;
+}
+
+.tableResponsiv {
+    display: none;
+}
+
+
+
+// RESPONSIVNESS
+
+
+@media(max-width: 1300px) {
+
+    .titleBox {
+        width: 70%;
+    }
+
+    .fitCatBox {
+        width: 65%;
+    }
+
+}
+
+@media(max-width: 1000px) {
+
+    .titleBox {
+        width: 90%;
+    }
+
+    .fitCatBox, .description {
+        width: 85%;
+    }
+
+}
+
+@media(max-width: 800px) {
+
+    .mainBox {
+        width: 100%;
+    }
+
+    .textBox {
+        width: 95%;
+    }
+    
+    .colLeft {
+        width: 30%;
+    }
+    
+    .colRight {
+        width: 70%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .titleBox {
+        width: 100%;
+    }
+
+    .fitCatBox, .description {
+        width: 95%;
+    }
+
+    .fitCatReg {
+        font-size: 14px;
+    }
+
+}
+
+@media(max-width: 450px) {
+
+    table {
+        display: none;
+    }
+
+    .tableResponsiv {
+        display: block;
+    }
+
+    span {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .fitCatReg {
+        font-size: 10px;
+        padding: 8px 0px 8px 0px;
+    }
+
+    .fitCatBox, .description {
+        width: 92%;
+    }
+
+}

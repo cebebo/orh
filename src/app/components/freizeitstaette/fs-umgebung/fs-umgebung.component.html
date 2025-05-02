@@ -4,17 +4,17 @@
         <span>In und um Weidenthal herum gibt es für Ihre Gruppe einiges zu erkunden.
             Hier geben wir Ihnen einen kleinen Überblick:</span>
         <div class="register">
-            <div class="topic" [class.activeTopic]="topic == 1">
-                <h3 (click)="changeTopic(1)">Aktiv in Weidenthal</h3>
+            <div class="topic" [class.activeTopic]="topic == 1" (click)="changeTopic(1)">
+                <h3>Aktiv in Weidenthal</h3>
             </div>
-            <div class="topic" [class.activeTopic]="topic == 2">
-                <h3 (click)="changeTopic(2)">Umliegende Städte</h3>
+            <div class="topic" [class.activeTopic]="topic == 2" (click)="changeTopic(2)">
+                <h3>Umliegende Städte</h3>
             </div>
-            <div class="topic" [class.activeTopic]="topic == 3">
-                <h3 (click)="changeTopic(3)">Schwimmbäder</h3>
+            <div class="topic" [class.activeTopic]="topic == 3" (click)="changeTopic(3)">
+                <h3>Schwimmbäder</h3>
             </div>
-            <div class="topic" [class.activeTopic]="topic == 4">
-                <h3 (click)="changeTopic(4)">Weitere Ziele</h3>
+            <div class="topic" [class.activeTopic]="topic == 4" (click)="changeTopic(4)">
+                <h3>Weitere Ziele</h3>
             </div>
         </div>
         <div class="contentBox">
@@ -40,6 +40,15 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="quarders">
+                    <div class="quarder" *ngFor="let quad of weidenthal">
+                        <h3>{{ quad.title }}</h3>
+                        <span>Entfernung:</span>
+                        <p>{{ quad.distance }}</p>
+                        <span>Webseite:</span>
+                        <a [href]="'http://' + quad.url" target="_blanc"><p>{{ quad.url }}</p></a>
+                    </div>
+                </div>
             </div>
             <div *ngIf="topic == 2">
                 <table style="table-layout: fixed; width: 100%; text-align: left;">
@@ -74,6 +83,29 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="quarders">
+                    <div class="quarder" *ngFor="let quad of citys">
+                        <h3>{{ quad.city }}</h3>
+                        <span>Entfernung:</span>
+                        <p>{{ quad.distance }}</p>
+                        <span>Autofahrt:</span>
+                        <p>{{ quad.car }}</p>
+                        <span>ÖPVN:</span>
+                        <p>{{ quad.train }}</p>
+                        <span>Attraktionen:</span>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div *ngFor="let attr of quad.attractions">{{ attr }}</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <span>Webseite:</span>
+                        <a [href]="'http://' + quad.url" target="_blanc"><p>{{ quad.url }}</p></a>
+                    </div>
+                </div>
             </div>
             <div *ngIf="topic == 3">
                 <table style="table-layout: fixed; width: 100%; text-align: left;">
@@ -106,6 +138,21 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="quarders">
+                    <div class="quarder" *ngFor="let quad of swimming">
+                        <h3>{{ quad.city }}</h3>
+                        <span>Entfernung:</span>
+                        <p>{{ quad.distance }}</p>
+                        <span>Autofahrt:</span>
+                        <p>{{ quad.car }}</p>
+                        <span>ÖPVN:</span>
+                        <p>{{ quad.train }}</p>
+                        <span>Stadt:</span>
+                        <p>{{ quad.city }}</p>
+                        <span>Webseite:</span>
+                        <a [href]="'http://' + quad.url" target="_blanc"><p>{{ quad.url }}</p></a>
+                    </div>
+                </div>
             </div>
             <div *ngIf="topic == 4">
                 <table style="table-layout: fixed; width: 100%; text-align: left;">
@@ -138,6 +185,21 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="quarders">
+                    <div class="quarder" *ngFor="let quad of more">
+                        <h3>{{ quad.name }}</h3>
+                        <span>Entfernung:</span>
+                        <p>{{ quad.distance }}</p>
+                        <span>Autofahrt:</span>
+                        <p>{{ quad.car }}</p>
+                        <span>ÖPVN:</span>
+                        <p>{{ quad.train }}</p>
+                        <span>Attraktion:</span>
+                        <p>{{ quad.city }}</p>
+                        <span>Webseite:</span>
+                        <a [href]="'http://' + quad.url" target="_blanc"><p>{{ quad.url }}</p></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
