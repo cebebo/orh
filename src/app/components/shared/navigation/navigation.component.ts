@@ -15,17 +15,36 @@ export class NavigationComponent {
 
   main = inject(MainService);
 
+  public overlayOpen = false;
+  public overlayClosing = false;
+  
+  toggleMenu(): void {
+    if (this.overlayOpen) {
+      // Starte Schließen-Animation
+      this.overlayClosing = true;
+      setTimeout(() => {
+        this.overlayClosing = false;
+        this.overlayOpen = false;
+      }, 500); // Entspricht deiner CSS-Animationsdauer: .5s
+    } else {
+      this.overlayOpen = true;
+      this.overlayClosing = false;
+    }
+  }
+  
 
   changeSite(num:number) {
     this.main.current = num;
     this.main.overlay = false;
+    this.toggleMenu(); 
   }
 
-  noScroll(val:boolean) {
-    if (val) {
-      document.documentElement.style.overflow = 'hidden';
-    } else {
-      document.documentElement.style.overflow = 'auto';
+  adminCounter() {
+    this.main.adminCount++;
+    if (this.main.adminCount >= 1) {
+      setTimeout( () => {
+        this.main.adminCount = 0;
+      }, 15000);
     }
   }
 

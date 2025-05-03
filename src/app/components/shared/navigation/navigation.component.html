@@ -1,6 +1,6 @@
 <div class="mainContainer">
     <div class="nav">
-        <img src="assets/img/orh-logo.png">
+        <img src="assets/img/orh-logo.png" (click)="adminCounter()">
         <div class="text">
             <div class="name">
                 <h2>Otto-Riethmüller-Haus</h2>
@@ -21,7 +21,7 @@
                     <p class="link" [class.currentSite]="main.current == 3" (click)="main.current = 3">Angebote</p>
                 </a>
                 <a routerLink="/ueberuns">
-                    <p class="link" [class.currentSite]="main.current == 4" (click)="main.current = 4">Über uns</p>
+                    <p class="link" [class.currentSite]="main.current == 4" (click)="main.current = 4">Über&nbsp;uns</p>
                 </a>
                 <a routerLink="/kontakt">
                     <p class="link" [class.currentSite]="main.current == 5" (click)="main.current = 5">Kontakt</p>
@@ -33,35 +33,32 @@
 
 
 </div>
-<div class="overlayMenu" (click)="main.overlay = !main.overlay; noScroll(true)">
-    <h1>____</h1>
-    <h1>____</h1>
-    <h1>____</h1>
-</div>
-<div class="mobileMenu" *ngIf="main.overlay" [ngClass]="{'openMobileMenu': main.overlay}">
-    <div class="closer" (click)="noScroll(false); main.overlay=false">X</div>
+
+<img class="overlayMenu" src="./../../../../assets/img/menu-bar.png" (click)="toggleMenu(); main.noScroll(overlayOpen)">
+<div class="mobileMenu" *ngIf="overlayOpen || overlayClosing" [ngClass]="{'openMobileMenu': overlayOpen && !overlayClosing, 'closeMobileMenu': overlayClosing}">
+    <div class="closer" (click)="toggleMenu(); main.noScroll(false); main.overlay=false">X</div>
     <a routerLink="/">
-        <div class="ovalMenu" (click)="changeSite(1); noScroll(false)">
+        <div class="ovalMenu" (click)="changeSite(1); main.noScroll(false)">
             <h2>Home</h2>
         </div>
     </a>
     <a routerLink="/freizeitstaette">
-        <div class="ovalMenu" (click)="changeSite(2); noScroll(false)">
+        <div class="ovalMenu" (click)="changeSite(2); main.noScroll(false)">
             <h2>Freizeitstätte</h2>
         </div>
     </a>
     <a routerLink="/angebote">
-        <div class="ovalMenu" (click)="changeSite(3); noScroll(false)">
+        <div class="ovalMenu" (click)="changeSite(3); main.noScroll(false)">
             <h2>Angebote</h2>
         </div>
     </a>
     <a routerLink="/ueberuns">
-        <div class="ovalMenu" (click)="changeSite(4); noScroll(false)">
+        <div class="ovalMenu" (click)="changeSite(4); main.noScroll(false)">
             <h2>Über uns</h2>
         </div>
     </a>
     <a routerLink="/kontakt">
-        <div class="ovalMenu" (click)="changeSite(5); noScroll(false)">
+        <div class="ovalMenu" (click)="changeSite(5); main.noScroll(false)">
             <h2>Kontakt</h2>
         </div>
     </a>

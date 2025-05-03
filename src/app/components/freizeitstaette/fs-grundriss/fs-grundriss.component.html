@@ -1,3 +1,36 @@
 <div class="darkBox">
-
+    <div class="mainBox">
+        <h2>Grundrisse</h2>
+        <span>Das Otto-Riethmüller-Haus besteht aus zwei Gebäuden.</span>
+        <span>
+            Im Hauptgebäude (Haus 1) befinden sich 48 Betten, aufgeteilt in 9 Vierer-Zimmer und 2 Sechser-Zimmer
+            (behindertengerecht).<br>
+            Ebenso befindet sich der Speisesaal, die Küche und der kleine Seminarraum in diesem Gebäude.</span>
+        <span>Im Nebengebäude (Haus 2) befinden sich 40 Betten, aufgeteilt in 10 Vierer-Zimmer. <br>Im Erdgeschoss
+            befinden sich der Clubraum, der große Seminarraum, der Kreativraum und der Mehrzweckraum mit
+            Tischtennisplatte.
+        </span>
+        <span>
+            Werfen Sie einen Blick auf die Grundrisse beider Häuser:<br>
+            <i>(Auf eines der beiden Dächer klicken/drücken!)</i>
+        </span>
+        <div class="buildingBox">
+            <img [src]="isHovered2 ? hover2 : normal2" (mouseenter)="isHovered2 = true"
+                (mouseleave)="isHovered2 = false" (click)="house = 2; showPopup = true; main.noScroll(true)">
+            <img [src]="isHovered1 ? hover1 : normal1" (mouseenter)="isHovered1 = true"
+                (mouseleave)="isHovered1 = false" (click)="house = 1; showPopup = true; main.noScroll(true)">
+        </div>
+        <div class="popup" *ngIf="showPopup">
+            <div class="roundBtn" (click)="showPopup = false; main.noScroll(false)">X</div>
+            <h1>Haus {{ house }}</h1>
+            <h2 *ngIf="deck == 1">Obergeschoss</h2>
+            <div class="bubble" [class.small]="deck == 0" [class.big]="deck == 1" (mouseenter)="deck=1">
+                <img [src]="house == 1 ? haus1o : haus2o" (click)="deck = 1">
+            </div>
+            <h2 *ngIf="deck == 0">Erdgeschoss</h2>
+            <div class="bubble" [class.small]="deck == 1" [class.big]="deck == 0" (mouseenter)="deck=0">
+                <img [src]="house == 1 ? haus1u : haus2u" (click)="deck = 0">
+            </div>
+        </div>
+    </div>
 </div>
