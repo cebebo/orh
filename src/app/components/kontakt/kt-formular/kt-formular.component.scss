@@ -23,3 +23,60 @@ span {
     color: black;
     margin-bottom: 16px;
 }
+
+.contactBox {
+    width: 95%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 48px 24px 48px 24px;
+    margin: 36px 0px 24px 0px;
+    @include dflex($fd:column);
+}
+
+form {
+    @include dflex($fd:column);
+    width: 100%;
+}
+
+input, textarea {
+    width: 80%;
+    border: solid 1px $colorBlue;
+    border-radius: 10px;
+    padding: 15px 25px;
+    background-color: white;
+    margin-bottom: 20px;
+    transition: border .15s ease-in-out;
+    color: $colorDark;
+    font-size: 20px;
+    font-family: 'Almarai', sans-serif;
+    scale: 1;
+}
+
+label {
+    width: 200px;
+    margin-bottom: -10px;
+    z-index: 1;
+    background-color: $colorBlue;
+    border: 1px solid $colorBlue;
+    color: white;
+    border-radius: 8px;
+}
+
+.button {
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorBlue;
+    border-radius: 20px;
+    padding: 12px;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border: 0;
+    &:hover {
+        background-color: $colorBlueLight;
+        cursor: pointer;
+    }
+}

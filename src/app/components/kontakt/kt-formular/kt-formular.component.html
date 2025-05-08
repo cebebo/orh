@@ -1,8 +1,29 @@
 <div class="greyBox">
     <div class="mainBox">
         <h2>Kontaktformular</h2>
-        <!-- <div class="form"> -->
-            <!-- <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+        <div class="contactBox">
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+                <label for="name">Vor- und Nachname</label>
+                <input #name="ngModel" [(ngModel)]="contactData.name" minlength="3" type="text" id="name" name="name"
+                    placeholder="Ihr Vor- und Nachname" required>
+
+                <label for="email">E-Mail-Adresse</label>
+                <input [(ngModel)]="contactData.email" minlength="6" type="text" id="email" name="email"
+                    placeholder="Ihre E-Mail-Adresse" required
+                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+
+                <label for="message">Nachricht</label>
+                <textarea #message="ngModel" minlength="5" [(ngModel)]="contactData.message" id="message" name="message"
+                    placeholder="Ihre Nachricht" style="height:200px" required></textarea>
+                @if (!message.valid && message.touched) {
+                <span>Bitte eine Nachricht eintragen!</span>
+                }
+                
+                <input class="button" type="submit" value="Versenden">
+            </form>
+        </div>
+        <!-- <div class="form"> 
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
                 <input #name="ngModel" minlength="3" [(ngModel)]="contactData.name" type="text" id="name" name="name"
                     placeholder="Vor- und Nachname" required
                     (blur)="inputName = !name.valid || !name.touched ? false : true; checkValidation()">
@@ -11,7 +32,7 @@
                 <input type="submit" class="submitButton" [class.enabled]="!validCheck" [disabled]="!validCheck"
                     value="Versenden">
                 }
-            </form> -->
-        <!-- </div> -->
+            </form>
+        </div> -->
     </div>
 </div>

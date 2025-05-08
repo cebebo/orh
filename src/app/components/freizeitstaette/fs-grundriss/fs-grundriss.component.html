@@ -20,6 +20,7 @@
             <img [src]="isHovered1 ? hover1 : normal1" (mouseenter)="isHovered1 = true"
                 (mouseleave)="isHovered1 = false" (click)="house = 1; showPopup = true; main.noScroll(true)">
         </div>
+        <h3>Alle Grundrisse als PDF <a href="./../../../../assets/pdf/Grundrisse-ORH.pdf" target="_blanc">herunterladen</a>.</h3>
         <div class="popup" *ngIf="showPopup">
             <div class="roundBtn" (click)="showPopup = false; main.noScroll(false)">X</div>
             <h1>Haus {{ house }}</h1>

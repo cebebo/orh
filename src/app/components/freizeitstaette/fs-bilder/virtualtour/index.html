@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Otto-Riethmüller-Haus</title>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<style> @-ms-viewport { width: device-width; } </style>
+<link rel="stylesheet" href="vendor/reset.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="multiple-scenes ">
+
+<div id="pano"></div>
+
+<div id="sceneList">
+  <ul class="scenes">
+    
+      <a href="javascript:void(0)" class="scene" data-id="0-parkplatz-wiese">
+        <li class="text">Parkplatz-Wiese</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="1-parkplatz-mlltonnen">
+        <li class="text">Parkplatz-Mülltonnen</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="2-einfahrt-zum-orh">
+        <li class="text">Einfahrt zum ORH</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="3-nebengebude-garage">
+        <li class="text">Nebengebäude-Garage</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="4-hauptgebude-eingang">
+        <li class="text">Hauptgebäude-Eingang</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="5-personalgebude">
+        <li class="text">Personalgebäude</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="6-grillhtte">
+        <li class="text">Grillhütte</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="7-kche-eingangsbereich-hauptgebude">
+        <li class="text">Küche-Eingangsbereich (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="8-kche-splecke">
+        <li class="text">Küche-Spülecke</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="9-kche-khlschrank">
+        <li class="text">Küche-Kühlschrank</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="10-kche-kochbereich">
+        <li class="text">Küche-Kochbereich</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="11-mehrzweckraum-nebengebude">
+        <li class="text">Mehrzweckraum (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="12-toilette-damen-nebengebude">
+        <li class="text">Toilette-Damen (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="13-toilette-herren-nebengebude">
+        <li class="text">Toilette-Herren (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="14-nebengebude-flur-2-stock-ecke">
+        <li class="text">Nebengebäude-Flur-2. Stock-Ecke</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="15-nebengebude-flur-1-stock-treppenhaus-eingang">
+        <li class="text">Nebengebäude-Flur-1. Stock-Treppenhaus-Eingang</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="16-nebengebude-flur-2-stock-treppenhaus-oben">
+        <li class="text">Nebengebäude-Flur-2. Stock-Treppenhaus-oben</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="17-speisesaal-buffet">
+        <li class="text">Speisesaal-Buffet</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="18-speisesaal-fenster-links">
+        <li class="text">Speisesaal-Fenster-Links</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="19-speisesaal-fenster-rechts">
+        <li class="text">Speisesaal-Fenster-Rechts</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="20-speisesaal-leiterzimmer">
+        <li class="text">Speisesaal-Leiterzimmer</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="21-speisesaal-mitte">
+        <li class="text">Speisesaal-Mitte</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="22-speisesaal-treppe">
+        <li class="text">Speisesaal-Treppe</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="23-volleyballfeld">
+        <li class="text">Volleyballfeld</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="24-waldweg-volleyballfeld">
+        <li class="text">Waldweg-Volleyballfeld</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="25-auengelnde-hauptgebude-grillhtte">
+        <li class="text">Außengelände-Hauptgebäude-Grillhütte</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="26-auengelnde-nebengebude-grillhtte">
+        <li class="text">Außengelände-Nebengebäude-Grillhütte</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="27-anfahrt-orh-wacker">
+        <li class="text">Anfahrt ORH-Wacker</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="28-anfahrt-orh-kurve">
+        <li class="text">Anfahrt ORH-Kurve</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="29-anfahrt-orh-sportplatz">
+        <li class="text">Anfahrt ORH-Sportplatz</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="30-eingangstor-orh">
+        <li class="text">Eingangstor-ORH</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="31-wiese-eingang-nebengebude">
+        <li class="text">Wiese-Eingang Nebengebäude</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="32-wiese-spielplatz">
+        <li class="text">Wiese-Spielplatz</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="33-zimmer-1-nebengebude">
+        <li class="text">Zimmer 1 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="34-zimmer-1-bad-nebengebude">
+        <li class="text">Zimmer 1-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="35-zimmer-2-nebengebude">
+        <li class="text">Zimmer 2 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="36-zimmer-2-bad-nebengebude">
+        <li class="text">Zimmer 2-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="37-zimmer-2-flur-nebengebude">
+        <li class="text">Zimmer 2-Flur (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="38-zimmer-3-nebengebude">
+        <li class="text">Zimmer 3 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="39-zimmer-3-bad-nebengebude">
+        <li class="text">Zimmer 3-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="40-zimmer-3-flur-nebengebude">
+        <li class="text">Zimmer 3-Flur (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="41-zimmer-4-nebengebude">
+        <li class="text">Zimmer 4 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="42--zimmer-4-bad--nebengebude">
+        <li class="text"> Zimmer 4-Bad  (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="43-zimmer-5-nebengebude">
+        <li class="text">Zimmer 5 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="44-zimmer-5-bad-nebengebude">
+        <li class="text">Zimmer 5-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="45-zimmer-6-nebengebude">
+        <li class="text">Zimmer 6 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="46-zimmer-6-bad-nebengebude">
+        <li class="text">Zimmer 6-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="47-zimmer-7-nebengebude">
+        <li class="text">Zimmer 7 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="48-zimmer-7-bad-nebengebude">
+        <li class="text">Zimmer 7-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="49-zimmer-8-nebengebude">
+        <li class="text">Zimmer 8 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="50-zimmer-8-bad-nebengebude">
+        <li class="text">Zimmer 8-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="51-zimmer-8-flur-nebengebude">
+        <li class="text">Zimmer 8-Flur (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="52-zimmer-9-nebengebude">
+        <li class="text">Zimmer 9 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="53-zimmer-9-bad-nebengebude">
+        <li class="text">Zimmer 9-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="54-zimmer-10-nebengebude">
+        <li class="text">Zimmer 10 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="55-zimmer-10-bad-nebengebude">
+        <li class="text">Zimmer 10-Bad (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="56-zimmer-17-hauptgebude">
+        <li class="text">Zimmer 17 (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="57-zimmer-17-bad-hauptgebude">
+        <li class="text">Zimmer 17-Bad (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="58-zimmer-20-hauptgebude">
+        <li class="text">Zimmer 20 (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="59-zimmer-20-bad-hauptgebude">
+        <li class="text">Zimmer 20-Bad (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="60-zimmer-21-hauptgebude">
+        <li class="text">Zimmer 21 (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="61-zimmer-21-bad-hauptgebude">
+        <li class="text">Zimmer 21-Bad (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="62-zimmer-21-flur-hauptgebude">
+        <li class="text">Zimmer 21-Flur (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="63-clubraum-nebengebude">
+        <li class="text">Clubraum (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="64-flur-bro-hauptgebude">
+        <li class="text">Flur-Büro (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="65-flur-groer-seminarraum-nebengebude">
+        <li class="text">Flur-Großer Seminarraum (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="66-flur-kleiner-seminarraum-hauptgebude">
+        <li class="text">Flur-Kleiner Seminarraum (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="67-flur-kreativraum-nebengebude">
+        <li class="text">Flur-Kreativraum (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="68-flur-zimmer-1-2-nebengebude">
+        <li class="text">Flur-Zimmer 1-2 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="69-flur-zimmer-3-4-nebengebude">
+        <li class="text">Flur-Zimmer 3-4 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="70-flur-zimmer-5-6-nebengebude">
+        <li class="text">Flur-Zimmer 5-6 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="71-flur-zimmer-7-8-nebengebude">
+        <li class="text">Flur-Zimmer 7-8 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="72-flur-zimmer-9-10-nebengebude">
+        <li class="text">Flur-Zimmer 9-10 (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="73-flur-zimmer-11-14-notausgang-hauptgebude">
+        <li class="text">Flur-Zimmer 11-14 Notausgang (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="74-flur-zimmer-11-14-tr-hauptgebude">
+        <li class="text">Flur-Zimmer 11-14 Tür (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="75-flur-zimmer-16-19-notausgang-hauptgebude">
+        <li class="text">Flur-Zimmer 16-19 Notausgang (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="76-flur-zimmer-16-19-tr-hauptgebude">
+        <li class="text">Flur-Zimmer 16-19 Tür (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="77-flur-zimmer-20-21-hauptgebude">
+        <li class="text">Flur-Zimmer 20-21 (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="78-foyer-eingang-hauptgebude">
+        <li class="text">Foyer-Eingang (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="79-foyer-sitzbereich--hauptgebude">
+        <li class="text">Foyer-Sitzbereich  (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="80-foyer-kioskautomat--hauptgebude">
+        <li class="text">Foyer-Kioskautomat  (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="81-foyer-treppe-hauptgebude">
+        <li class="text">Foyer-Treppe (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="82-groer-seminarraum-whiteboard--nebengebude">
+        <li class="text">Großer Seminarraum-Whiteboard  (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="83-groer-seminarraum-tr-nebengebude">
+        <li class="text">Großer Seminarraum-Tür (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="84-toilette-damen-hauptgebude">
+        <li class="text">Toilette-Damen (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="85-toilette-herren-hauptgebude">
+        <li class="text">Toilette-Herren (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="86-kleiner-seminarraum-fenster-hauptgebude">
+        <li class="text">Kleiner Seminarraum-Fenster (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="87-kleiner-seminarraum-tr-hauptgebude">
+        <li class="text">Kleiner Seminarraum-Tür (Hauptgebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="88-kreativraum-eingang-nebengebude">
+        <li class="text">Kreativraum-Eingang (Nebengebäude)</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="89-kreativraum-werktisch-nebengebude">
+        <li class="text">Kreativraum-Werktisch (Nebengebäude)</li>
+      </a>
+    
+  </ul>
+</div>
+
+<div id="titleBar">
+  <h1 class="sceneName"></h1>
+</div>
+
+<a href="javascript:void(0)" id="autorotateToggle">
+  <img class="icon off" src="img/play.png">
+  <img class="icon on" src="img/pause.png">
+</a>
+
+<a href="javascript:void(0)" id="fullscreenToggle">
+  <img class="icon off" src="img/fullscreen.png">
+  <img class="icon on" src="img/windowed.png">
+</a>
+
+<a href="javascript:void(0)" id="sceneListToggle">
+  <img class="icon off" src="img/expand.png">
+  <img class="icon on" src="img/collapse.png">
+</a>
+
+<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+  <img class="icon" src="img/up.png">
+</a>
+<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+  <img class="icon" src="img/down.png">
+</a>
+<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+  <img class="icon" src="img/left.png">
+</a>
+<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
+  <img class="icon" src="img/right.png">
+</a>
+<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+  <img class="icon" src="img/plus.png">
+</a>
+<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+  <img class="icon" src="img/minus.png">
+</a>
+
+<script src="vendor/screenfull.min.js" ></script>
+<script src="vendor/bowser.min.js" ></script>
+<script src="vendor/marzipano.js" ></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>

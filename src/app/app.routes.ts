@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { FreizeitstaetteComponent } from './components/freizeitstaette/freizeitstaette/freizeitstaette.component';
 import { AngeboteComponent } from './components/angebote/angebote/angebote.component';
@@ -12,3 +12,8 @@ export const routes: Routes = [
     { path: 'ueberuns', component: UeberunsComponent },
     { path: 'kontakt', component: KontaktComponent },
 ];
+
+export const AppRoutingModule = RouterModule.forRoot(routes, {
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled'
+  });

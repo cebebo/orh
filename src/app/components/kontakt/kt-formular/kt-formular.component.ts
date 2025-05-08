@@ -21,48 +21,45 @@ export class KtFormularComponent {
 
   // mailTest = false;
 
-  // http = inject(HttpClient);
+  http = inject(HttpClient);
 
-  // contactData = {
-  //   name: "",
-  //   email: "",
-  //   message: ""
-  // }
+  contactData = {
+    name: "",
+    email: "",
+    message: ""
+  }
 
-  // post = {
-  //   endPoint: 'https://www.orh.de/sndml.php',
-  //   body: (payload: any) => JSON.stringify(payload),
-  //   options: {
-  //     headers: {
-  //       'Content-Type': 'text/plain',
-  //       responseType: 'text',
-  //     },
-  //   },
-  // };
+    mailTest = true;
 
+  post = {
+    endPoint: 'https://deineDomain.de/sendMail.php',
+    body: (payload: any) => JSON.stringify(payload),
+    options: {
+      headers: {
+        'Content-Type': 'text/plain',
+        responseType: 'text',
+      },
+    },
+  };
 
-  // onSubmit(ngForm: NgForm) {
-  //   if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
+  onSubmit(ngForm: NgForm) {
+    if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
+      this.http.post(this.post.endPoint, this.post.body(this.contactData))
+        .subscribe({
+          next: (response) => {
 
-  //     this.http.post(this.post.endPoint, this.post.body(this.contactData),
-  //       { params: { '2f': this.contactData.email } })
-  //       .subscribe({
-  //         next: (response) => {
-  //           this.success = true;
-  //           ngForm.resetForm();
-  //         },
-  //         error: (error) => {
-  //           console.error(error);
-  //         },
-  //         complete: () => console.info(''),
-  //       });
-  //   } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-  //     ngForm.resetForm();
-  //     this.success = true;
-  //     setTimeout(() => { this.success = false; }, 2000);
-  //     this.validCheck = false;
-  //   }
-  // }
+            ngForm.resetForm();
+          },
+          error: (error) => {
+            console.error(error);
+          },
+          complete: () => console.info('send post complete'),
+        });
+    } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
+
+      ngForm.resetForm();
+    }
+  }
 
   // checkValidation() {
   //   if (this.inputName && this.inputEmail && this.inputMessage) {

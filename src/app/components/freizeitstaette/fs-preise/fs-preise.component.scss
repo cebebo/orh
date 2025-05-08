@@ -11,22 +11,27 @@
 .mainBox {
     width: 90%;
     max-width: 1200px;
-    @include dflex($fd:column);
+    @include dflex($fd: column);
+
     >h2 {
-        color: $colorBlue;        
+        color: $colorBlue;
     }
-    >h2, span {
+
+    >h2,
+    span {
         padding-bottom: 32px;
     }
 }
 
 .typeBox {
     width: 400px;
-    @include dflex($jc:space-around);
+    @include dflex($jc: space-around);
     margin-bottom: 32px;
     margin-Left: -64px;
+
     >h2 {
         cursor: pointer;
+
         &:hover {
             color: red;
         }
@@ -40,10 +45,12 @@
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
     color: white;
+
     >h2 {
         margin-left: 32px;
         margin-right: 32px;
         cursor: pointer;
+
         &:hover {
             color: red;
         }
@@ -79,17 +86,17 @@
     border-radius: 16px;
     padding: 16px;
     width: 100%;
-    @include dflex($fd:column);
+    @include dflex($fd: column);
 }
 
 .priceBox {
-    @include dflex($ai:flex-start);
+    @include dflex($ai: flex-start);
     margin-top: 32px;
     margin-bottom: 48px;
 }
 
 .rightBox {
-    padding-top:48px;
+    padding-top: 48px;
 }
 
 .line {
@@ -108,6 +115,16 @@
     color: white;
     margin-top: 32px;
     padding: 8px 0px 8px 0px;
+
+    >h3 {
+        >a {
+            text-decoration: none;
+            color: white;
+            &:hover {
+                color: $colorBlueLight;
+            }
+        }
+    }
 }
 
 
@@ -115,20 +132,30 @@
 // KEYFRAMES
 
 @keyframes switchAnimation {
-    0%      {left: 0px;}
-    100%    {left: 28px;}
+    0% {
+        left: 0px;
+    }
+
+    100% {
+        left: 28px;
+    }
 }
 
 @keyframes switchAnimationRev {
-    0%      {left: 28px;}
-    100%    {left: 0px;}
+    0% {
+        left: 28px;
+    }
+
+    100% {
+        left: 0px;
+    }
 }
 
 
 @media(max-width:1200px) {
-    
+
     .priceBox {
-        @include dflex($fd:column);
+        @include dflex($fd: column);
         width: 60%;
     }
 
@@ -142,7 +169,7 @@
 }
 
 @media(max-width:1000px) {
-    
+
     .priceBox {
         width: 100%;
     }
@@ -150,7 +177,7 @@
 }
 
 @media(max-width:600px) {
-    
+
     .priceBox {
         font-size: 14px;
     }
@@ -172,7 +199,7 @@
 }
 
 @media(max-width:450px) {
-    
+
     .priceBox {
         font-size: 12px;
     }
@@ -190,6 +217,7 @@
 
     .typeBox {
         width: 100%;
+
         >h2 {
             font-size: 16px;
         }
@@ -204,7 +232,7 @@
 }
 
 @media(max-width:375px) {
-    
+
     .priceBox {
         font-size: 11px;
     }

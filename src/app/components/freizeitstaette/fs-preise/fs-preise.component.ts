@@ -90,6 +90,7 @@ export class FsPreiseComponent {
   switchClassType: string = 'switchButton';
   switchClassYear: string = 'switchButton';
   template: any = '';
+  dlLink:string = 'Selbstversorger 2025'
 
   changeType() {
     if (this.type == 1) {
@@ -102,6 +103,7 @@ export class FsPreiseComponent {
       this.switchClassType = 'switchChangeRev';
       this.pricelist = this.preiseSV;
     }
+    this.generateDownload();
   }
 
   changeYear() {
@@ -113,7 +115,24 @@ export class FsPreiseComponent {
       this.year = 1;
       this.switchClassYear = 'switchChangeRev';
     }
+    this.generateDownload();
   }
+
+  generateDownload() {
+    if(this.type == 1) {
+      if(this.year == 1) {
+        this.dlLink = "Selbstversorger " + this.preiseSV[0].year;
+      } else {
+        this.dlLink = "Selbstversorger " + this.preiseSV[1].year;
+      }
+    } else {
+      if(this.year == 1) {
+        this.dlLink = "Verpfleger " + this.preiseVP[0].year;
+      } else {
+        this.dlLink = "Verpfleger " + this.preiseVP[1].year;
+      }
+    }
+  };
 
   setValue(file: string, value: number) {
     if (file == "year") {
