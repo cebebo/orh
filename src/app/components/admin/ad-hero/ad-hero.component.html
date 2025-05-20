@@ -1,0 +1,22 @@
+<div class="videoContainer">
+    <img class="vid" src="assets/img/orh-top.jpg">
+</div>
+<div class="container">
+    <img class="heroWave" src="assets/img/hero-wave.png">
+    <div class="heroGreyField">
+        <div class="heroWaveOverlay">
+            <div class="textBoxes">
+                <img src="assets/img/lock.png">
+                <h2>Administrationsbereich</h2>
+                <div class="singleTextBox" *ngIf="!perm.access">
+                    <span><b>Zugriff nur für autorisierte Mitarbeiter des ORH!</b></span>
+                    <label for="name" *ngIf="!alert">Admin-Passwort</label>
+                    <label class="wrong" for="name" *ngIf="alert">Falsches Passwort</label>
+                    <input #name="ngModel" [(ngModel)]="perm.pwInput" type="password" id="pwd"
+                        name="pwd" required>
+                    <div class="button" (click)="checkPwd()">Einloggen</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

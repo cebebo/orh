@@ -1,0 +1,7 @@
+<div class="greyBox">
+    <div class="line" [class.activeLine]="main.admSection == 3" (click)="main.admSection = 3">
+        <h2>Hauspreise</h2>
+    </div>
+    <div class="mainBox"  *ngIf="main.admSection == 3">
+    </div>
+</div>

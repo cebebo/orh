@@ -20,6 +20,114 @@
     }
 }
 
+.group {
+    @include dflex();
+}
+
+.groupThree {
+    @include dflex();
+    width: 80%;
+}
+
+.line {
+    @include dflex($fd: column);
+    margin-bottom: 12px;
+}
+
+.veryshort {
+    width: 64%;
+}
+
+.short {
+    width: 80%;
+}
+
+.long {
+    width: 180%;
+}
+
+form {
+    @include dflex($fd: column, $ai: center);
+    width: 100%;
+
+    >h3 {
+        color: $colorBlue !important;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    >.line {
+
+        >input,
+        textarea {
+            font-size: 16px !important;
+        }
+    }
+
+    >.group {
+        .line {
+            >input {
+                font-size: 16px !important;
+            }
+        }
+    }
+}
+
+.borderbox {
+    @include dflex($jc: flex-start);
+}
+
+input,
+textarea {
+    width: 80%;
+    border: solid 1px $colorBlue;
+    border-radius: 10px;
+    padding: 14px 16px 8px 16px;
+    background-color: white;
+    transition: border .15s ease-in-out;
+    color: $colorDark;
+    scale: 1;
+    font-size: 20px;
+    font-family: 'Almarai', sans-serif;
+
+}
+
+.button {
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorBlue;
+    border-radius: 20px;
+    padding: 12px;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border: 0;
+    margin-top: 32px;
+
+    &:hover {
+        background-color: $colorBlueLight;
+        cursor: pointer;
+    }
+}
+
+label {
+    width: 200px;
+    margin-bottom: -10px;
+    z-index: 1;
+    background-color: $colorBlue;
+    border: 1px solid $colorBlue;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.birthWidth {
+    width: 235px;
+    margin-left: 10px;
+}
+
 span {
     color: white;
 }
@@ -34,6 +142,7 @@ span {
     border-radius: 12px;
     margin-top: 48px;
     @include dflex();
+
     >h3 {
         color: white;
     }
@@ -50,6 +159,7 @@ span {
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
     @include dflex($ai: flex-end);
+
     &:hover {
         cursor: pointer;
         filter: brightness(2);
@@ -60,6 +170,14 @@ span {
     width: 100%;
     @include dflex();
     flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.thumbnailBox {
+    background-color: white;
+    border-radius: 16px;
+    border: 2px solid black;
+    margin: 4px;
 }
 
 .thumbnail {
@@ -68,10 +186,10 @@ span {
     @include dflex($fd: column);
     background-size: cover;
     background-position: center;
-    margin: 12px;
+    // margin: 12px;
     border-radius: 50%;
     rotate: -15deg;
-    margin-bottom: 56px;
+    // margin-bottom: 56px;
 
     >span {
         font-size: 20px;
@@ -101,10 +219,22 @@ span {
     border: 5px solid orange !important;
 }
 
+.catKidsBg {
+    background-color: $colorBlue !important;
+}
+
+.catTeensBg {
+    background-color: green !important;
+}
+
+.catEduBg {
+    background-color: orange !important;
+}
+
 .popUp {
-    position: fixed;
+    position: absolute;
     width: 800px;
-    top: 50%;
+    top: 140%;
     left: 50%;
     @include dflex($fd: column);
     transform: translate(-50%, -50%);
@@ -141,8 +271,60 @@ td {
     font-size: 20px;
 }
 
+.optBox {
+    @include dflex($jc: space-around);
+    width: 75%;
+}
+
 button {
     margin-top: 64px;
+}
+
+.dropbtn {
+    background-color: $colorDark;
+    width: 240px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    top: 32px;
+    z-index: 10;
+}
+
+.dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    width: 80%;
+}
+
+.dropdown-content p:hover {
+    background-color: $colorBlueBright;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: $colorBlueLight;
 }
 
 .roundBtn {
@@ -178,10 +360,109 @@ button {
     display: none;
 }
 
+.wSmall {
+    width: 68%;
+
+    >h3 {
+        line-height: 18px;
+
+        >a {
+            text-decoration: none;
+            color: $colorBlue;
+
+            &:hover {
+                color: $colorBlueLight;
+            }
+        }
+    }
+}
+
 .signUp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     >span {
         color: $colorDark;
+        margin-bottom: 48px;
+        text-align: center;
     }
+}
+
+.checkpoint {
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: solid 1px $colorBlue;
+
+    >h2 {
+        line-height: 20px;
+        color: $colorBlue;
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-color: $colorBlueLight;
+    }
+}
+
+.checkBox {
+    width: 150px;
+}
+
+.blueContainer {
+    padding: 0px 4px 0px 12px;
+    height: 74px;
+    border-radius: 16px;
+    background-color: white;
+    border: 1px solid $colorBlue;
+    @include dflex();
+    margin-right: 20px;
+
+    >img {
+        height: 42px;
+        background-color: rgb(82, 233, 82);
+        border-radius: 30%;
+        padding: 6px;
+        margin-top: 10px;
+        margin-right: 8px;
+        z-index: 3;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $colorBlueLight !important;
+        }
+    }
+}
+
+.bolFalse {
+    background-color: red !important;
+    opacity: 0.65;
+}
+
+.no {
+    position: relative;
+    left: -54px;
+    font-size: 57px;
+    top: 6px;
+    margin-right: -38px;
+    color: #bc9a9a;
+    ;
+}
+
+.permInfo {
+    width: 70%;
+    margin-left: 48px;
+    padding: 8px;
+    background-color: $colorBlueBright;
+    border-radius: 12px;
+    position: fixed;
+    bottom: 250px;
+    text-align: center;
+    @include dflex();
+    border: 1px solid $colorBlue;
+    z-index: 50;
 }
 
 
@@ -227,6 +508,52 @@ button {
         width: 85%;
     }
 
+    .line {
+        width: 90%;
+    }
+
+    .long,
+    .short,
+    .group {
+        width: 100%;
+    }
+
+    .group {
+        flex-direction: column;
+    }
+
+    .birthWidth {
+        margin-left: 0;
+    }
+
+    .wSmall {
+        flex-direction: row !important;
+        width: 90%;
+    }
+
+    h2,
+    span {
+        text-align: center;
+    }
+
+    .optBox {
+        width: 100%;
+    }
+
+    .popUp {
+        top: 160%;
+    }
+
+    .back {
+        left: -43%;
+        top: -25px;
+    }
+
+    .permInfo {
+        bottom: 310px;
+        margin-left: 0;
+    }
+
 }
 
 @media(max-width: 600px) {
@@ -237,18 +564,104 @@ button {
 
     .categoryBox {
         width: 95%;
+
         >h3 {
             font-size: 12px;
         }
     }
 
+    .optBox {
+        flex-direction: column;
+    }
+
+    .wSmall {
+        >h3 {
+            font-size: 16px;
+        }
+    }
+
+    .mainInfo {
+        width: 90%;
+    }
+
 }
+
+@media(max-width: 530px) {
+
+    .permInfo {
+        bottom: 330px;
+    }
+
+}
+
+@media(max-width: 430px) {
+
+    .permInfo {
+        bottom: 345px;
+    }
+
+}
+
 
 @media(max-width: 400px) {
 
     .categoryBox {
         >h3 {
             font-size: 10px;
+        }
+    }
+
+    .blueContainer {
+        margin-right: 0;
+
+        >img {
+            height: 32px;
+
+            &:hover {
+                background-color: none !important;
+            }
+        }
+    }
+
+    .no {
+        left: -47px;
+        top: 5px;
+        font-size: 50px;
+    }
+
+    .signUp {
+        width: 95%;
+    }
+
+    .wSmall {
+        >h3 {
+            font-size: 15px;
+        }
+    }
+
+    .mainInfo {
+        >table {
+            width: 100% !important;
+
+            >tbody {
+                >tr {
+                    >td {
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+    }
+
+    .detailContainer {
+        >h2 {
+            font-size: 18px;
+        }
+    }
+
+    .description {
+        >span {
+            font-size: 17px;
         }
     }
 

@@ -19,19 +19,19 @@ export class UebuNamenComponent implements OnInit {
 
   rotateInfo() {
     // setInterval(() => {
-    //   this.nextInfo++;
-    //   if (this.nextInfo == 8) { this.nextInfo = 1 }
-    // }, 15000);
+    //     this.nextInfo++;
+    //     if (this.nextInfo == 8) { this.nextInfo = 1 }
+    // }, 2000);
   }
 
-  changeInfo(direction:string) {
-    if (direction == 'minus') { 
+  changeInfo(direction: string) {
+    if (direction == 'minus') {
       this.nextInfo--;
-      if(this.nextInfo == 0) { this.nextInfo = 7 }
+      if (this.nextInfo == 0) { this.nextInfo = 7 }
     }
-    if (direction == 'plus') { 
+    if (direction == 'plus') {
       this.nextInfo++;
-      if(this.nextInfo == 8) { this.nextInfo = 1 }
+      if (this.nextInfo == 8) { this.nextInfo = 1 }
     }
   }
 

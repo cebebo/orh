@@ -1,78 +1,107 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-ang-freizeiten',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './ang-freizeiten.component.html',
   styleUrl: './ang-freizeiten.component.scss'
 })
 export class AngFreizeitenComponent {
 
-freizeiten = [
-  {
-    "title":"Osterfreizeit",
-    "category":"kids",
-    "date":"21. – 26.04.2025",
-    "location":"Weidenthal",
-    "age":"8 – 12",
-    "price":"177",
-    "description":"6 Tage voller Erlebnisse erwarten dich bei uns auf der Osterfreizeit. Du wirst eine spannende Geschichte aus der Bibel hören, spielen, basteln, singen und auch sportlich aktiv sein. Wir freuen uns, wenn Du dabei bist und eine super Ferienzeit gemeinsam mit anderen Kindern und den Mitarbeitenden erlebst.",
-    "img":"kids_1.jpg"
-  },
-  {
-    "title":"JULEICA-Schulung",
-    "category":"education",
-    "date":"24. - 29.05.2025",
-    "location":"Weidenthal",
-    "age":"ab 14",
-    "price":"135",
-    "description":"Wir machen Dich fit für die Arbeit mit Kindern und Jugendarbeit. In sechs Tagen werden Dir Basics und Skills der Jugendarbeit vermittelt. Du lernst Neues über Dich selbst und die Jugendarbeit. Du beschäftigst Dich mit Deiner Rolle als Vorbild und Leiter, lernst Spiele anzuleiten und in kreativer Weise biblische Geschichten zu erzählen. Dazu beleuchten wir Hintergründe und probieren verschiedene Dinge vor Ort aus. Neben allem Lernen werden wir als Gruppe zusammenwachsen, gemeinsam essen, spielen, lachen, Fragen stellen und Freizeit genießen. Bist du dabei? Mach Dich stark für Deine Mitmenschen!",
-    "img":"edu_.jpg"
-  },
-  {
-    "title":"Sommerfreizeit",
-    "category":"kids",
-    "date":"02. – 09.08.2025",
-    "location":"Weidenthal",
-    "age":"8 – 12",
-    "price":"208",
-    "description":"Es ist Sommer und das wollen wir in vollen Zügen gemeinsam mit dir genießen. Auf unserem großen Gelände wollen wir viel draußen sein. Basteln, Freunde kennenlernen, gemeinsam mit anderen Zeit verbringen, Geschichten über Gott und die Welt hören, schaukeln, essen, spannende Aktionen erleben und noch mehr erwartet dich bei der Sommerfreizeit. Bist du dabei?",
-    "img":"kids_2.jpg"
-  },
-  {
-    "title":"Sport- und Kreativfreizeit",
-    "category":"kids",
-    "date":"19. – 25.10.2025",
-    "location":"Weidenthal",
-    "age":"8 – 12",
-    "price":"198",
-    "description":"Auch dieses Jahr gibt es wieder die Sport- und Kreativfreizeit. In den Herbstferien hast du bei uns die Möglichkeit, gemeinsam mit anderen Kindern Sport zu machen, Geländespiele zu erleben, kreative Angebote auszuprobieren oder zwischendurch einfach mal entspannt Spiele zu spielen und spannende Geschichten aus der Bibel zu hören. Natürlich gibt es auch Zeiten, um einfach mal entspannt die Seele baumeln zu lassen. Wir freuen uns, wenn wir gemeinsam mit dir eine schöne Zeit verbringen.",
-    "img":"kids_3.jpg"
-  },
-  {
-    "title":"Jugendfreizeit ",
-    "category":"teens",
-    "date":"19 – 25.10.2025",
-    "location":"Weidenthal",
-    "age":"13 – 15",
-    "price":"205",
-    "description":"Du willst unvergessliche Ferien erleben? Dann komm in den Herbstferien zur Jugendfreizeit ins Otto-Riethmüller-Haus. Hier kannst du neue Leute kennenlernen, Zeit mit Freunden verbringen, tiefe Gespräche über Gott und die Welt führen und coole Aktionen erleben. Spiele, Aktionen, Bibelarbeiten und Begegnungsmöglichkeiten werden von den Mitarbeitenden für dich vorbereitet. Wir freuen uns auf dich!",
-    "img":"teens_.jpg"
-  },
-];
+main = inject(MainService);
 
+anmeldung = {
+    camp:"",
+    date:"",
+    firstName:"",
+    lastName:"",
+    address:"",
+    zip:"",
+    city:"",
+    phone:"",
+    email:"",
+    birthday:"",
+    age:"",
+    gender:"",
+    nationality:"",
+    county:"",
+    confession:"",
+    info:"",
+    permission_swim:true,
+    permission_hike:true,
+    permission_ski:true,
+    permission_independence:true,
+    permission_photo:true,
+    swimskill:"",
+    agreement:false
+  };
+
+optGender = [
+  "Geschlecht",
+  "Weiblich",
+  "Männlich",
+  "Divers"
+]
+
+optConfession = [
+  "Konfession",
+  "evangelisch",
+  "röm. katholisch",
+  "orthodox",
+  "freikirchlich",
+  "islamisch",
+  "andere Konfession",
+  "ohne Konfession"
+]
+
+optSwimskill = [
+  "Schwimmerfahrung",
+  "Nichtschwimmer",
+  "Schwimmanfänger",
+  "Schwimmer",
+  "Rettungsschwimmer"
+]
+
+infos = [
+  "Mein Kind darf bei Schwimmveranstaltungen teilnehmen.",
+  "Mein Kind darf bei Bergtouren teilnehmen.",
+  "Mein Kind darf beim Skifahren teilnehmen.",
+  "Mein Kind darf sich nach Abmeldung bei der Freizeitleitung von der Freizeitgruppe entfernen.",
+  "Ich willige ein, dass Bilder-/Videoaufnahmen, auf dem mein minderjähriges Kind während der Freizeitmaßnahme zu sehen ist, unentgeltlich im Freizeitprospekt und im Internet verwendet werden darf. Die Zustimmung ist unbefristet und schließt das Recht zur Bearbeitung der Bilder ein."
+]
+
+confession = this.optConfession[0];
+gender = this.optGender[0];
+swimSkill = this.optSwimskill[0];
 year:number = 2025;
-activeCamp = this.freizeiten[0];
+activeCamp = this.main.freizeiten[0];
 popup = false;
 register:string = 'all';
 none = false;
+permInfo = false;
+infoText = "Info";
 
 chooseCamp(camp:any) {
   this.activeCamp = camp;
   this.popup = true;   
 }
+
+changeBol(vari:number) {
+  if (vari==1) { this.anmeldung.permission_swim = !this.anmeldung.permission_swim };
+  if (vari==2) { this.anmeldung.permission_hike = !this.anmeldung.permission_hike };
+  if (vari==3) { this.anmeldung.permission_ski = !this.anmeldung.permission_ski };
+  if (vari==4) { this.anmeldung.permission_independence = !this.anmeldung.permission_independence };
+  if (vari==5) { this.anmeldung.permission_photo = !this.anmeldung.permission_photo };
+  if (vari==6) { this.anmeldung.agreement = !this.anmeldung.agreement };
+}
+
+showInfo(v:number) {
+  this.infoText = this.infos[v];
+} 
 
 
 }

@@ -34,7 +34,7 @@
 
 </div>
 
-<img class="overlayMenu" src="./../../../../assets/img/menu-bar.png" (click)="toggleMenu(); main.noScroll(overlayOpen)">
+<img class="overlayMenu" src="assets/img/menu-bar.png" (click)="toggleMenu(); main.noScroll(overlayOpen)">
 <div class="mobileMenu" *ngIf="overlayOpen || overlayClosing" [ngClass]="{'openMobileMenu': overlayOpen && !overlayClosing, 'closeMobileMenu': overlayClosing}">
     <div class="closer" (click)="toggleMenu(); main.noScroll(false); main.overlay=false">X</div>
     <a routerLink="/">

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-uebu-verein',
@@ -10,32 +11,6 @@ import { Component } from '@angular/core';
 })
 export class UebuVereinComponent {
 
-vorstand = [
-  {
-    "amt":"1. Vorsitzender",
-    "name":"Pascal Wilking",
-    "city":"Kaiserslautern"
-  },
-  {
-    "amt":"2. Vorsitzende",
-    "name":"Marlies Franck",
-    "city":"Winnweiler"
-  },
-  {
-    "amt":"Kassenwartin",
-    "name":"Kerstin Klein",
-    "city":"Trippstadt"
-  },
-  {
-    "amt":"Schriftführer",
-    "name":"Harald Dröge",
-    "city":"Ottersheim"
-  },
-  {
-    "amt":"Beisitzerin",
-    "name":"Annika Klein",
-    "city":"Kaiserslautern"
-  }
-]
+main = inject(MainService);
 
 }

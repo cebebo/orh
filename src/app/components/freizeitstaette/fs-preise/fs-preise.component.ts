@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-fs-preise',
@@ -10,83 +11,11 @@ import { Component } from '@angular/core';
 })
 export class FsPreiseComponent {
 
-  preiseSV = [
-    {
-      "year": 2025,
-      "to60kids": 1050.00,
-      "to60adults": 1560.00,
-      "up60kids": 17.50,
-      "up60adults": 26.00,
-      "cleanUp": 450.00,
-      "sheets": 7.50,
-      "towelBig": 2.50,
-      "towelSmall": 2.00,
-      "apron": 2.50,
-      "teaTowel": 1.00,
-      "dishcloth": 0.50
-    },
-    {
-      "year": 2026,
-      "to60kids": 1110.00,
-      "to60adults": 1620.00,
-      "up60kids": 18.50,
-      "up60adults": 27.00,
-      "cleanUp": 500.00,
-      "sheets": 7.50,
-      "towelBig": 2.50,
-      "towelSmall": 2.00,
-      "apron": 2.50,
-      "teaTowel": 1.00,
-      "dishcloth": 0.50
-    }
-  ];
-
-  preiseVP = [
-    {
-      "year": 2025,
-      "kids": 35.80,
-      "teens": 38.80,
-      "adults": 44.00,
-      "counselor": 51.00,
-      "seniorAdults": 57.51,
-      "singleRoom": 7.00,
-      "doubleRoom": 4.00,
-      "singleNight": 4.00,
-      "churchGroup": 2.00,
-      "coffeeCakeKids": 4.50,
-      "coffeeCakeTeens": 5.00,
-      "coffeeCakeAdults": 5.50,
-      "grill": 2.50,
-      "kitchenDuty": 2.50,
-      "sheets": 7.50,
-      "towelBig": 2.50,
-      "towelSmall": 2.00
-    },
-    {
-      "year": 2026,
-      "kids": 37.60,
-      "teens": 40.60,
-      "adults": 46.00,
-      "counselor": 53.50,
-      "seniorAdults": 60.31,
-      "singleRoom": 7.00,
-      "doubleRoom": 4.00,
-      "singleNight": 4.00,
-      "churchGroup": 2.00,
-      "coffeeCakeKids": 4.50,
-      "coffeeCakeTeens": 5.00,
-      "coffeeCakeAdults": 5.50,
-      "grill": 2.50,
-      "kitchenDuty": 2.50,
-      "sheets": 7.50,
-      "towelBig": 2.50,
-      "towelSmall": 2.00
-    }
-  ];
+  main = inject(MainService);
 
   year: number = 1;
   type: number = 1;
-  pricelist: any = this.preiseSV;
+  pricelist: any = this.main.preiseSV;
   switchClassType: string = 'switchButton';
   switchClassYear: string = 'switchButton';
   template: any = '';
@@ -96,12 +25,12 @@ export class FsPreiseComponent {
     if (this.type == 1) {
       this.type = 2;
       this.switchClassType = 'switchChange';
-      this.pricelist = this.preiseVP;
+      this.pricelist = this.main.preiseVP;
     }
     else {
       this.type = 1;
       this.switchClassType = 'switchChangeRev';
-      this.pricelist = this.preiseSV;
+      this.pricelist = this.main.preiseSV;
     }
     this.generateDownload();
   }
@@ -121,15 +50,15 @@ export class FsPreiseComponent {
   generateDownload() {
     if(this.type == 1) {
       if(this.year == 1) {
-        this.dlLink = "Selbstversorger " + this.preiseSV[0].year;
+        this.dlLink = "Selbstversorger " + this.main.preiseSV[0].year;
       } else {
-        this.dlLink = "Selbstversorger " + this.preiseSV[1].year;
+        this.dlLink = "Selbstversorger " + this.main.preiseSV[1].year;
       }
     } else {
       if(this.year == 1) {
-        this.dlLink = "Verpfleger " + this.preiseVP[0].year;
+        this.dlLink = "Verpfleger " + this.main.preiseVP[0].year;
       } else {
-        this.dlLink = "Verpfleger " + this.preiseVP[1].year;
+        this.dlLink = "Verpfleger " + this.main.preiseVP[1].year;
       }
     }
   };

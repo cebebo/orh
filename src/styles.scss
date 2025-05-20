@@ -9,18 +9,21 @@ $colorBlueBright: #7fc7f7;
 
 
 body {
-    margin: 0;
-    overflow-x: hidden;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 html {
-    font-family: 'Almarai', sans-serif;
-    scroll-behavior: smooth;
+  font-family: 'Almarai', sans-serif;
+  scroll-behavior: smooth;
 }
 
-h1, h2, h3, p {
-    margin-block-start: 0;
-    margin-block-end: 0;
+h1,
+h2,
+h3,
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .videoContainer {
@@ -48,9 +51,10 @@ button {
   height: 24px;
   letter-spacing: 1px;
   font-size: 20px;
+
   &:hover {
-      cursor: pointer;
-      background-color: $colorBlueLight;
+    cursor: pointer;
+    background-color: $colorBlueLight;
   }
 }
 
@@ -69,9 +73,10 @@ button {
   border-bottom-left-radius: 20%;
   border-top-right-radius: 20%;
   border-bottom-right-radius: 80%;
+
   &:hover {
-      cursor: pointer;
-      background-color: $colorBlue;
+    cursor: pointer;
+    background-color: $colorBlue;
   }
 }
 
@@ -91,18 +96,18 @@ button {
   transition: filter .15s, border-bottom-color .15s, border-top-color .15s ease-in-out;
 
   &:hover {
-      filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.4));
-      border-bottom: solid 3px $colorBlueBright;
-      border-top: solid 3px $colorBlueBright;
-      border-left: 0;
-      border-right: 0;
-      color: yellow;
-      cursor: pointer;
+    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.4));
+    border-bottom: solid 3px $colorBlueBright;
+    border-top: solid 3px $colorBlueBright;
+    border-left: 0;
+    border-right: 0;
+    color: yellow;
+    cursor: pointer;
   }
 
   &:active {
-      background-color: $colorBlueBright;
-      color: red;
+    background-color: $colorBlueBright;
+    color: red;
   }
 }
 
@@ -113,27 +118,46 @@ button {
   color: $colorBlueLight;
 }
 
+.line {
+  width: 100%;
+  background: linear-gradient(90deg, $colorBlue 0%, $colorDark 20%, $colorDark 80%, $colorBlue 100%);
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    color: $colorBlueBright;
+  }
+}
 
+.activeLine {
+  background: linear-gradient(90deg, $colorDark 0%, $colorBlue 20%, $colorBlue 80%, $colorDark 100%);
+  cursor:auto;
+  &:hover {
+    color: white;
+  }
+}
 
 
 
 // MIXINS
 
-@mixin dflex($jc:center, $ai:center, $fd:row) {
+@mixin dflex($jc: center, $ai: center, $fd: row) {
   display: flex;
   justify-content: $jc;
   align-items: $ai;
   flex-direction: $fd;
 }
 
-@mixin textBox($w:50%, $p:16px, $lh:22px) {
+@mixin textBox($w: 50%, $p: 16px, $lh: 22px) {
   background-color: white;
   border-radius: 16px;
   text-align: justify;
   padding: $p;
   width: $w;
-  >p, span {
-      line-height: $lh;
+
+  >p,
+  span {
+    line-height: $lh;
   }
 }
 
@@ -142,61 +166,82 @@ button {
 
 /* almarai-300 - latin */
 @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Almarai';
-    font-style: normal;
-    font-weight: 300;
-    src: url('./assets/fonts/almarai-v18-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Almarai';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./assets/fonts/almarai-v18-latin-300.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* almarai-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Almarai';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/almarai-v18-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* almarai-700 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Almarai';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./assets/fonts/almarai-v18-latin-700.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* almarai-800 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Almarai';
+  font-style: normal;
+  font-weight: 800;
+  src: url('./assets/fonts/almarai-v18-latin-800.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+
+
+//  RESPONSIVNESS
+
+@media(max-width: 1500px) {
+
+  .heroWave {
+    height: 120px;
   }
-  /* almarai-regular - latin */
-  @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Almarai';
-    font-style: normal;
-    font-weight: 400;
-    src: url('./assets/fonts/almarai-v18-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-  /* almarai-700 - latin */
-  @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Almarai';
-    font-style: normal;
-    font-weight: 700;
-    src: url('./assets/fonts/almarai-v18-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-  /* almarai-800 - latin */
-  @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Almarai';
-    font-style: normal;
-    font-weight: 800;
-    src: url('./assets/fonts/almarai-v18-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+
+}
+
+
+@media(max-width: 700px) {
+
+  .heroWave {
+    height: 50px;
   }
 
-
-
-
-  //  RESPONSIVNESS
-
-  @media(max-width: 1500px) {
-
-    .heroWave {
-      height: 120px;
-    }
-
+  .greyField {
+    height: 50px;
+    margin-top: -10px;
+    background-color: $colorGrey;
   }
 
+}
 
-  @media(max-width: 700px) {
 
-    .heroWave {
-      height: 50px;
-    }
+@media(max-width: 400px) {
 
-    .greyField {
-      height: 50px;
-      margin-top: -10px;
-      background-color: $colorGrey;
-    }
-
+  .link {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
   }
+
+}

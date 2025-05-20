@@ -1,0 +1,7 @@
+<div class="greyBox">
+    <div class="line" [class.activeLine]="main.admSection == 4" (click)="main.admSection = 4">
+        <h2>Vorstand</h2>
+    </div>
+    <div class="mainBox" *ngIf="main.admSection == 4">
+    </div>
+</div>

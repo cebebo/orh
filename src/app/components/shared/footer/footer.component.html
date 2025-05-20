@@ -1,12 +1,23 @@
 <div class="background">
-    <div class="line">
-        <a routerLink="/">
+    <div class="liner">
+        <a routerLink="/impressum">
             <p class="link" [class.currentSite]="main.current == 6" (click)="main.current = 6">Impressum</p>
         </a>
-        <a routerLink="/" *ngIf="main.adminCount >= 5" class="secretLink"><h3>&copy; 2025 by ORH</h3></a>
-        <h3 *ngIf="main.adminCount < 5">&copy; 2025 by ORH</h3>
-        <a routerLink="/">
-            <p class="link" [class.currentSite]="main.current == 7" (click)="main.current = 7">Spenden</p>
+        <a routerLink="/admin" *ngIf="main.adminCount >= 5" class="secretLink">
+            <h3>&copy; 2025 by ORH</h3>
         </a>
+        <h3 *ngIf="main.adminCount < 5">&copy; 2025 by ORH</h3>
+        <p class="link" [class.currentSite]="main.current == 7" (click)="main.current = 7">Spenden</p>
     </div>
 </div>
+<a routerLink="/">
+    <div class="popUp" *ngIf="main.current == 7" (click)="main.current = 1">
+        <h1>Spenden</h1>
+        <span>Wenn Sie die Arbeit des Otto-Riethmüller-Hauses mit einer Spende unterstützen möchten,
+            können Sie dies gerne unter folgenden Angaben tun:</span>
+        <h3>Evangelische Bank eG</h3>
+        <span>IBAN: DE58 5206 0410 0007 0004 21<br>BIC: GENODEF1EK1</span>
+        <h3>Sparkasse Rhein-Haardt</h3>
+        <span>IBAN: DE23 5465 1240 0002 5018 23<br>BIC: MALADE51DKH</span>
+    </div>
+</a>

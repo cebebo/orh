@@ -1,0 +1,76 @@
+@import './../../../../styles.scss';
+
+
+.heroGreyField {
+    width: 100%;
+    background-color: $colorGrey;
+    margin-top: -4px;
+}
+
+.textBoxes {
+    max-width: 1440px;
+    width: 60%;
+    height: auto;
+    @include dflex($fd: column);
+    margin-bottom: 48px;
+
+    >h2 {
+        color: $colorBlue;
+        padding-bottom: 32px;
+    }
+
+    >h3 {
+        margin: 32px;
+    }
+}
+
+.singleTextBox {
+    @include textBox($w: 100%);
+
+    >div {
+        @include dflex($jc: flex-start);
+    }
+
+    >h3 {
+        margin-top: 12px;
+    }
+}
+
+.heroWaveOverlay {
+    margin-top: -36px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    margin: 32px;
+}
+
+
+@media (max-width: 1100px) {
+
+    .textBoxes {
+        width: 90%;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 850px) {
+
+    .singleTextBox {
+        >div {
+            flex-direction: column;
+        }
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .heroWaveOverlay {
+        margin-top: -16px;
+    }
+
+}

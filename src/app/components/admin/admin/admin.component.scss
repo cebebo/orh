@@ -1,0 +1,72 @@
+@import './../../../../styles.scss';
+
+.greyBox {
+    width: 100%;
+    // padding-top: 32px;
+    padding-bottom: 1px;
+    background-color: $colorGrey;
+    @include dflex($fd:column);
+}
+
+.mainBox {
+    width: 90%;
+    max-width: 1200px;
+    @include dflex($fd: column);
+
+    >h2 {
+        color: $colorBlue;
+    }
+
+    >h2,
+    span {
+        padding-bottom: 32px;
+    }
+}
+
+.bg {
+    padding-bottom: 64px;
+    background-color: $colorGrey;
+}
+
+input, textarea {
+    width: 80%;
+    border: solid 1px $colorBlue;
+    border-radius: 10px;
+    padding: 15px 25px;
+    background-color: white;
+    margin-bottom: 20px;
+    transition: border .15s ease-in-out;
+    color: $colorDark;
+    font-size: 20px;
+    font-family: 'Almarai', sans-serif;
+    scale: 1;
+}
+
+label {
+    width: 200px;
+    margin-bottom: -10px;
+    z-index: 1;
+    background-color: $colorBlue;
+    border: 1px solid $colorBlue;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.button {
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorBlue;
+    border-radius: 20px;
+    padding: 12px;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border: 0;
+    &:hover {
+        background-color: $colorBlueLight;
+        cursor: pointer;
+    }
+}

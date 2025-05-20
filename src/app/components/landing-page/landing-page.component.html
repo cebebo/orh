@@ -1,13 +1,20 @@
 <div class="container">
-    <img class="heroWave" src="./../../../assets/img/hero-wave.png">
+    <img class="heroWave" src="assets/img/hero-wave.png">
     <div class="greyField"></div>
     <div class="heroWaveOverlay">
        <div class="button" [routerLink]="['/freizeitstaette']" fragment="booking">Hausbuchung</div> 
     </div>
     
     <div class="newsTicker">
-        <h3>Nächste Freizeit:</h3>
-        <p>21.-24.04.2025 - Osterfreizeit für Kinder (8-12 Jahre)</p>
+        <h3>{{ currentNews.head }}</h3>
+        <p>{{ currentNews.body }}</p>
+        <div class="dots">
+            <span
+                *ngFor="let info of main.news; let i = index"
+                [ngClass]="{ 'dot':true, 'active': i === count}"
+                (click)="selectNews(i)">
+            </span>
+        </div>
     </div>    
 </div>
 <div class="background">

@@ -31,7 +31,7 @@
             <span>Der Vorstand unseres Vereins besteht aus fünf Personen:</span>
             <table>
                 <tbody>
-                    <tr *ngFor="let person of vorstand">
+                    <tr *ngFor="let person of main.vorstand">
                         <td><b>{{ person.amt }}:</b></td>
                         <td>{{ person.name }} aus {{ person.city }}</td>
                     </tr>
@@ -39,7 +39,7 @@
             </table>
             <table class="tableResponsiv">
                 <tbody>
-                    <tr *ngFor="let person of vorstand">
+                    <tr *ngFor="let person of main.vorstand">
                         <td><b>{{ person.amt }}:</b><br>
                         {{ person.name }} aus {{ person.city }}</td>
                     </tr>

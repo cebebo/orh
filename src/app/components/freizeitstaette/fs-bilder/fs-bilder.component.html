@@ -10,29 +10,29 @@
             </div>
             <div class="thumbnailBox" *ngIf="chosen == 0">
                 <div class="thumbnail" *ngFor="let pic of outside">
-                    <img class="thumbnail thumb" [class.activeThumb]="pic.id == screenPic.id" src="./../../../../assets/img/gallery/{{ pic.img }}" (click)="screenPic = pic">
+                    <img class="thumbnail thumb" [class.activeThumb]="pic.id == screenPic.id" src="assets/img/gallery/{{ pic.img }}" (click)="screenPic = pic">
                 </div>
             </div>
             <div class="thumbnailBox" *ngIf="chosen == 1">
                 <div class="thumbnail" *ngFor="let pic of house1">
-                    <img class="thumbnail thumb" [class.activeThumb]="pic.id == screenPic.id" src="./../../../../assets/img/gallery/{{ pic.img }}" (click)="screenPic = pic">
+                    <img class="thumbnail thumb" [class.activeThumb]="pic.id == screenPic.id" src="assets/img/gallery/{{ pic.img }}" (click)="screenPic = pic">
                 </div>
             </div>
             <div class="thumbnailBox" *ngIf="chosen == 2">
                 <div class="thumbnail" *ngFor="let pic of house2">
-                    <img class="thumbnail thumb" [class.activeThumb]="pic.id == screenPic.id" src="./../../../../assets/img/gallery/{{ pic.img }}" (click)="screenPic = pic">
+                    <img class="thumbnail thumb" [class.activeThumb]="pic.id == screenPic.id" src="assets/img/gallery/{{ pic.img }}" (click)="screenPic = pic">
                 </div>
             </div>
             <div class="screen">
                 <div class="screenBox">
                     <h2 (click)="changePic('back')">&#8249;</h2>
-                    <img class="screenPic" src="./../../../../assets/img/gallery/{{ screenPic.img }}">
+                    <img class="screenPic" src="assets/img/gallery/{{ screenPic.img }}">
                     <h2 (click)="changePic('forward')">&#8250;</h2>
                 </div>
                 <span>{{subtitle[chosen][screenPic.id]}}</span>
             </div>
             <h3>Virtueller Rundgang in 360° durch unser Gelände und unsere Gästehäuser</h3>
-            <a href="http://orh.de/neu/assets/virtualtour/index.html" target="_blanc"><img class="icon" src="./../../../../assets/img/virtual-tour.png"></a>
+            <a href="http://orh.de/neu/assets/virtualtour/index.html" target="_blanc"><img class="icon" src="assets/img/virtual-tour.png"></a>
         </div>
     </div>
 </div>
