@@ -9,8 +9,8 @@
     height: 400px;
     width: 120%;
     text-align: center;
-    border-top-left-radius: 100%; 
-    border-top-right-radius: 100%; 
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
     margin-left: -10%;
     display: flex;
     justify-content: center;
@@ -26,9 +26,10 @@
 .textBoxes {
     max-width: 1440px;
     width: 60%;
-    height: auto;    
-    @include dflex($fd:column);
+    height: auto;
+    @include dflex($fd: column);
     margin-bottom: 48px;
+
     >h2 {
         color: $colorBlue;
         padding-bottom: 32px;
@@ -36,9 +37,10 @@
 }
 
 .singleTextBox {
-    @include textBox($w:100%);
-    @include dflex($fd:column);
+    @include textBox($w: 100%);
+    @include dflex($fd: column);
     text-align: center;
+
     >span {
         margin-bottom: 32px;
     }
@@ -46,7 +48,7 @@
 
 .heroWaveOverlay {
     margin-top: -36px;
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -91,12 +93,23 @@ label {
     letter-spacing: 1px;
     font-size: 20px;
     border: 0;
+
     &:hover {
-        background-color: $colorBlueLight;
+        background-color: $colorBlueLightText;
         cursor: pointer;
     }
 }
 
 .wrong {
     background-color: red !important;
+}
+
+// RESPONSIVNESS
+
+@media(min-width:1500px) {
+
+    .heroWave {
+        height: 120px;
+    }
+
 }

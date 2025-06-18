@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-uebu-namen',
@@ -11,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class UebuNamenComponent implements OnInit {
 
   nextInfo: number = 1;
+
+  main = inject(MainService);
 
   ngOnInit(): void {
     this.rotateInfo();

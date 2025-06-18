@@ -3,10 +3,49 @@
 $colorBlue: #0071BC;
 $colorGrey: #ececec;
 $colorDark: #302f2f;
-$colorBlueLight: #44b1fa;
-$colorBlueBright: #7fc7f7;
+$colorBlueLightText: #44b1fa;
+$colorBlueBrightText: #7fc7f7;
+$colorBlueLight: rgba(255,255,255,0.25);
+$colorBlueBright: rgba(255,255,255,0.4);
 
 
+.helleresGrau {
+  background-color: #a3a3a3 !important;
+  >.mainBox {
+    >h2 {
+      color: $colorBlue;
+    }
+
+    >h3, span, td {
+      color: black;
+    }
+  }
+  >h3, span, p {
+      color: black;
+    }
+}
+
+.allesHell {
+  background-color: $colorGrey !important;
+
+  >.mainBox {
+    >h2 {
+      color: $colorBlue;
+    }
+
+    >h3, span, td {
+      color: black;
+    }
+  }
+}
+
+.keinBlau {
+  background-color: var(--maincolor) !important;
+}
+
+:root {
+  --maincolor: #1caa03;
+}
 
 body {
   margin: 0;
@@ -44,7 +83,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0071BC;
+  background-color: $colorBlue;
   border-radius: 20px;
   padding: 12px;
   color: white;
@@ -54,7 +93,7 @@ button {
 
   &:hover {
     cursor: pointer;
-    background-color: $colorBlueLight;
+    background-color: $colorBlueLightText;
   }
 }
 
@@ -97,25 +136,32 @@ button {
 
   &:hover {
     filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.4));
-    border-bottom: solid 3px $colorBlueBright;
-    border-top: solid 3px $colorBlueBright;
+    border-bottom: solid 3px $colorBlueBrightText;
+    border-top: solid 3px $colorBlueBrightText;
     border-left: 0;
     border-right: 0;
-    color: yellow;
+    // color: yellow;
     cursor: pointer;
   }
 
   &:active {
-    background-color: $colorBlueBright;
+    background-color: $colorBlueBrightText;
     color: red;
+
+
   }
 }
 
 .currentSite {
-  border-left: solid 2px white;
-  border-right: solid 2px white;
+  border-left: solid 3px white;
+  border-right: solid 3px white;
   background-color: rgba(0, 113, 188, 0.3);
-  color: $colorBlueLight;
+
+  &:hover {
+    border-bottom: solid 2px white;
+    border-top: solid 2px white;
+    filter: none !important;
+  }
 }
 
 .line {
@@ -124,16 +170,44 @@ button {
   color: white;
   text-align: center;
   cursor: pointer;
+
   &:hover {
-    color: $colorBlueBright;
+    color: $colorBlueBrightText;
   }
 }
 
 .activeLine {
   background: linear-gradient(90deg, $colorDark 0%, $colorBlue 20%, $colorBlue 80%, $colorDark 100%);
-  cursor:auto;
+  cursor: auto;
+
   &:hover {
     color: white;
+  }
+}
+
+.btUplaod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c7d40d;
+  border-radius: 20px;
+  padding: 12px;
+  height: 24px;
+  letter-spacing: 1px;
+  font-size: 20px;
+
+  >img {
+    height: 32px;
+    margin-right: 12px;
+  }
+
+  >h2 {
+    font-size: 20px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $colorBlueLightText;
   }
 }
 

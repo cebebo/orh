@@ -6,6 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     color: white;
+    margin-bottom: 24px;
 }
 
 
@@ -39,4 +40,20 @@ h3 {
 .inputBox {
     @include dflex($fd:column);
     padding: 32px;
+}
+
+.margTop {
+    margin-bottom: 32px;
+    margin-top: 32px;
+}
+
+.addNew {
+    background-color: white;
+    font-size: 60px;
+    color: $colorBlue;
+    @include dflex();
+    &:hover {
+        cursor: pointer;
+        background-color: $colorBlueBright;
+    }
 }

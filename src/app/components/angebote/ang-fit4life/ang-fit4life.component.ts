@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-ang-fit4life',
@@ -11,5 +12,7 @@ import { Component } from '@angular/core';
 export class AngFit4lifeComponent {
 
 register:string = 'forest';
+
+main = inject(MainService);
 
 }

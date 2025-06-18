@@ -14,7 +14,7 @@
     margin: 32px 0px 32px 0px;
     @include dflex($fd:column);
     >h2 {
-        color: $colorBlueLight;        
+        color: $colorBlueLightText;        
     }
     >h2, span {
         padding-bottom: 32px;

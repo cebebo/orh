@@ -1,1 +1,168 @@
 @import './../admin/admin.component.scss';
+
+.contextContainer {
+    width: 100%;
+    max-width: 1440px;
+    @include dflex($fd: column, $ai: flex-start);
+}
+
+h3 {
+    color: $colorBlue;
+    font-size: 22px;
+    margin-top: 16px;
+}
+
+p {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.regBox {
+    @include dflex();
+    z-index: 5;
+    margin-left: 32px;
+}
+
+.addReg {
+    @include dflex();
+    width: 60px;
+    background-color: rgb(244, 244, 195);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border: 1px solid $colorDark;
+    margin: 4px 4px 0px 4px;
+    cursor: pointer;
+    height: 48px;
+    &:hover {
+        background-color: $colorBlueLightText;
+    }
+
+    >p {
+        font-size: 40px;
+        margin-right: 0;
+    }
+}
+
+.reg {
+    @include dflex();
+    width: 160px;
+    background-color: rgb(189, 189, 189);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border: 1px solid $colorDark;
+    margin: 4px 4px 0px 4px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $colorBlueLightText;
+    }
+}
+
+.activeReg {
+    border-bottom: 1px solid white !important;
+    background-color: white !important;
+    cursor: default;
+}
+
+.inpPrice {
+    padding: 4px 12px;
+    width: 64px;
+    margin-bottom: 0;
+    margin-left: 8px;
+    border: 1px dotted grey;
+    margin: 8px 0px 8px 0px;
+}
+
+.context {
+    width: 100%;
+    @include dflex($ai: flex-start);
+    position: relative;
+    margin-top: -1px;
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid $colorDark;
+    margin-bottom: 24px;
+}
+
+.partBox {
+    width: 100%;
+    padding: 12px;
+
+    >p {
+        margin-top: 16px;
+        color: $colorBlueLightText;
+    }
+
+}
+
+.lin {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    >span {
+        padding: 0px 0px 0px 12px;
+    }
+
+    >p {
+        font-size: 18px;
+        margin-right: 0;
+        color: rgb(181, 11, 11);
+    }
+
+    >img {
+        height: 28px;
+        margin-right: 8px;
+        &:hover {
+            cursor: pointer;
+            filter:drop-shadow(0px 0px .5px black);
+        }
+    }
+}
+
+.activeBg {
+    background-color: rgb(199, 249, 197) !important;
+}
+
+.checkpoint {
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: solid 1px $colorBlue;
+
+    >h2 {
+        line-height: 20px;
+        color: $colorBlue;
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-color: $colorBlueLightText;
+    }
+}
+
+.checkBox {
+    width: 30px;
+}
+
+.btnSave {
+    @include dflex();
+    height: auto;
+    background-color: #0071BC;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 11px;
+    border: 0;
+    &:hover {
+        background-color: $colorBlueLightText;
+        cursor: pointer;
+    }
+}
+
+.margTop {
+    margin-top: 24px;
+}

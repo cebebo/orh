@@ -30,7 +30,7 @@ export class FsBelegungsplanComponent {
     message: "",
     from: "",
     to: "",
-    house: "",
+    amount: "",
     catering: ""
   }
 

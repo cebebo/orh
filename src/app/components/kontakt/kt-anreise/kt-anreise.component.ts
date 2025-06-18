@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-kt-anreise',
@@ -11,5 +12,7 @@ import { Component } from '@angular/core';
 export class KtAnreiseComponent {
 
 register:number = 1;
+
+main = inject(MainService);
 
 }

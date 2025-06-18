@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { MainService } from '../main.service';
+import { FirebaseService } from '../firebase.service';
+import { NewsItem } from '../interfaces.model';
 
 
 @Component({
@@ -17,11 +19,26 @@ export class LandingPageComponent implements OnInit {
   main = inject(MainService);
 
   count = 0
-  currentNews = this.main.news[this.count];
+  currentNews = {
+      "head": "NEWSBOX",
+      "body": "News werden geladen...",
+      "edit": false
+      }
+
+  // constructor(private firebaseService: FirebaseService) {
+  //   this.main.news = this.getNews();
+  // }
+
+  // getNews(): NewsItem[] {
+  //   return this.firebaseService.newsList;
+  // }
 
 
   ngOnInit(): void {
     this.rotateInfo();
+    setTimeout(() => {
+      this.currentNews = this.main.news[this.count];
+    }, 1000);
   }
 
 

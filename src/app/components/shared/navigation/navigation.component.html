@@ -1,9 +1,9 @@
-<div class="mainContainer">
+<div class="mainContainer" id="top" [class.col2]="clickcolor==2" [class.col3]="clickcolor==3" [class.col4]="clickcolor==4">
     <div class="nav">
         <img src="assets/img/orh-logo.png" (click)="adminCounter()">
         <div class="text">
             <div class="name">
-                <h2>Otto-Riethmüller-Haus</h2>
+                <h2 (click)="colormix()">Otto-Riethmüller-Haus</h2>
                 <div class="subname">
                     <h3>Freizeit- und Bildungsstätte</h3>
                     <h3>der ev. Gemeindejugend e.V.</h3>
@@ -63,3 +63,4 @@
         </div>
     </a>
 </div>
+<div class="topper" (click)="scrollToTop()">&uArr;</div>

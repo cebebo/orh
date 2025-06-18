@@ -2,6 +2,151 @@
     <div class="line" [class.activeLine]="main.admSection == 3" (click)="main.admSection = 3">
         <h2>Hauspreise</h2>
     </div>
-    <div class="mainBox"  *ngIf="main.admSection == 3">
+    <div class="mainBox" *ngIf="main.admSection == 3">
+        <h3>Anpassung der Hauspreise:</h3>
+        <div class="contextContainer">
+            <div class="regBox">
+                <div class="reg" *ngFor="let price of main.preise; let i = index" [class.activeReg]="regYear == i"
+                    (click)="startEdit(i)">
+                    <p>Jahr:</p>
+                    <input class="inpPrice" [class.activeBg]="main.preise[i].temp?.active == 1" type="number" minlength="4"
+                        maxlength="4" [(ngModel)]="main.preise[i].year">
+                </div>
+                <div class="addReg" (click)="addNewYear()">
+                    <p>+</p>
+                </div>
+                <div class="btnSave" style="margin-left:24px;" (click)="savePriceList()">
+                    <h2>Speichern</h2>
+                </div>
+            </div>
+            <div class="context" *ngIf="editPrices as pr">
+                <div class="partBox">
+                    <h3>Selbstversorgerpreise</h3>
+                    <div class="lin">
+                        <span>Bis 60 Personen (Kinder)</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.to60kids">
+                    </div>
+                    <div class="lin">
+                        <span>Bis 60 Personen (Erwachsene)</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.to60adults">
+                    </div>
+                    <div class="lin">
+                        <span>Ab 60 Personen (Kinder)</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.up60kids">
+                    </div>
+                    <div class="lin">
+                        <span>Ab 60 Personen (Erwachsene)</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.up60adults">
+                    </div>
+                    <div class="lin">
+                        <span>Endreinigung</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.cleanUp">
+                    </div>
+                    <p>Leihgebühren:</p>
+                    <div class="lin">
+                        <span>Bettwäsche</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.sheets">
+                    </div>
+                    <div class="lin">
+                        <span>Badehandtuch</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.towelBig">
+                    </div>
+                    <div class="lin">
+                        <span>Handtuch</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.towelSmall">
+                    </div>
+                    <div class="lin">
+                        <span>Schürze</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.apron">
+                    </div>
+                    <div class="lin">
+                        <span>Geschirrtuch</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.teaTowel">
+                    </div>
+                    <div class="lin">
+                        <span>Spüllappen</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.dishcloth">
+                    </div>
+                    <div class="lin" style="margin-top: 128px">
+                        <p>Diese Preisliste auf der Webseite aktiv schalten!</p>
+                        <div class="checkBox" (click)="changeBol(regYear)">
+                            <div class="checkpoint">
+                                <h2 *ngIf="main.preise[regYear].temp?.active == 1">✔</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lin margTop">
+                        <p>Preisliste löschen</p>
+                        <img src="assets/img/delete.png" *ngIf="pr.id" (click)="main.deleteItem('preise', pr.id)">
+                    </div>
+                </div>
+                <div class="partBox">
+                    <h3>Verpflegungspreise</h3>
+                    <div class="lin">
+                        <span>Kinder 4-10 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.kids">
+                    </div>
+                    <div class="lin">
+                        <span>Kinder 11-17 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.teens">
+                    </div>
+                    <div class="lin">
+                        <span>Erwachsene bis 26 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.adults">
+                    </div>
+                    <div class="lin">
+                        <span>Erwachsene ab 27 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.seniorAdults">
+                    </div>
+                    <div class="lin">
+                        <span>Betreuer ab 27 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.counselor">
+                    </div>
+                    <div class="lin">
+                        <span>Einzelzimmer</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.singleRoom">
+                    </div>
+                    <div class="lin">
+                        <span>Doppelzimmer</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.doubleRoom">
+                    </div>
+                    <div class="lin">
+                        <span>Eine Übernachtung</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.singleNight">
+                    </div>
+                    <p>Ermäßigungen:</p>
+                    <div class="lin">
+                        <span>Gruppen Landeskirche</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.churchGroup">
+                    </div>
+                    <p>Sonderleistungen:</p>
+                    <div class="lin">
+                        <span>NM-Kaffee 4-10 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.coffeeCakeKids">
+                    </div>
+                    <div class="lin">
+                        <span>NM-Kaffee 11-17 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.coffeeCakeTeens">
+                    </div>
+                    <div class="lin">
+                        <span>NM-Kaffee ab 18 Jahre</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.coffeeCakeAdults">
+                    </div>
+                    <div class="lin">
+                        <span>Grillen</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.grill">
+                    </div>
+                    <div class="lin">
+                        <span>Ohne Küchendienst</span>
+                        <input class="inpPrice" type="number" [(ngModel)]="pr.kitchenDuty">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="btUplaod" style="margin-bottom:24px;">
+            <img src="assets/img/upload.png">
+            <h2 (click)="main.onPublishClick()">Veröffentlichen</h2>
+        </div>
     </div>
 </div>

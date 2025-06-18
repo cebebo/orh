@@ -1,4 +1,4 @@
-<div class="darkBox">
+<div class="darkBox" [class.allesHell]="main.version==3" [class.helleresGrau]="main.version==1">
     <div class="mainBox">
         <h2>Jugend in Aktion</h2>
         <span>Die Evangelische Gemeindejugend der Pfalz bietet überregionale Veranstaltungen wie Freizeiten,
@@ -76,12 +76,12 @@
             <span>Hiermit möchte ich mein Kind verbindlich zur {{ activeCamp.title }} vom {{ activeCamp.date }}
                 in {{ activeCamp.location }} anmelden.</span>
             <div class="group">
-                <div class="line">
+                <div class="lines">
                     <label>Vorname*</label>
                     <input type="text" [(ngModel)]="anmeldung.firstName" minlength="3" class="short"
                         placeholder="Vorname Teilnehmer:in" required>
                 </div>
-                <div class="line">
+                <div class="lines">
                     <label>Nachname*</label>
                     <input type="text" [(ngModel)]="anmeldung.lastName" minlength="3" class="short"
                         placeholder="Nachname Teilnehmer:in" required>
@@ -126,59 +126,59 @@
                     </div>
                 </div>
             </div>
-            <div class="line">
+            <div class="lines">
                 <label>Adresse*</label>
                 <input type="text" [(ngModel)]="anmeldung.address" minlength="3" class="long"
                     placeholder="Straße, Hausnummer" required>
             </div>
             <div class="group">
-                <div class="line">
+                <div class="lines">
                     <label>PLZ*</label>
                     <input type="number" [(ngModel)]="anmeldung.zip" minlength="3" class="short" placeholder="PLZ"
                         required>
                 </div>
-                <div class="line">
+                <div class="lines">
                     <label>Wohnort*</label>
                     <input type="text" [(ngModel)]="anmeldung.city" minlength="3" class="short" placeholder="Wohnort"
                         required>
                 </div>
             </div>
             <div class="group">
-                <div class="line">
+                <div class="lines">
                     <label>Geburtstag*</label>
                     <input type="date" [(ngModel)]="anmeldung.birthday" class="short birthWidth"
                         placeholder="Geburtstag Teilnehmer:in" required>
                 </div>
-                <div class="line">
+                <div class="lines">
                     <label>Telefon*</label>
                     <input type="text" [(ngModel)]="anmeldung.phone" minlength="8" class="short"
                         placeholder="Telefon-/Handynummer">
                 </div>
             </div>
-            <div class="line">
+            <div class="lines">
                 <label>Email*</label>
                 <input type="email" [(ngModel)]="anmeldung.email" minlength="6" class="long"
                     placeholder="E-Mail-Adresse" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" required>
             </div>
             <div class="group">
-                <div class="line">
+                <div class="lines">
                     <label>Staatsangehörigkeit</label>
                     <input type="text" [(ngModel)]="anmeldung.nationality" class="short" placeholder="Staatsang."
                         required>
                 </div>
-                <div class="line">
+                <div class="lines">
                     <label>Landkreis</label>
                     <input type="text" [(ngModel)]="anmeldung.county" minlength="8" class="short"
                         placeholder="Landreis/Kreisfreie Stadt">
                 </div>
             </div>
-            <div class="line">
+            <div class="lines">
                 <label>Besondere Hinweise</label>
                 <input type="text" [(ngModel)]="anmeldung.info" minlength="6" class="long"
                     placeholder="Krankheit / Allergien / Medikamente / etc.">
             </div>
             <div class="group">
-                <div class="line">
+                <div class="lines">
                     <label>Erlaubnisse</label>
                     <div class="blueContainer">
                         <img (click)="changeBol(1)" [class.bolFalse]="anmeldung.permission_swim == false"
@@ -199,7 +199,7 @@
                     </div>
                     <div class="permInfo" *ngIf="permInfo">{{ infoText }}</div>
                 </div>
-                <div class="line">
+                <div class="lines">
                     <div class="dropdown">
                         <button class="dropbtn" style="margin-top:0; width:190px">{{ swimSkill }}</button>
                         <div class="dropdown-content">

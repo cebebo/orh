@@ -5,9 +5,9 @@
        <div class="button" [routerLink]="['/freizeitstaette']" fragment="booking">Hausbuchung</div> 
     </div>
     
-    <div class="newsTicker">
-        <h3>{{ currentNews.head }}</h3>
-        <p>{{ currentNews.body }}</p>
+    <div class="newsTicker" [class.helleresGrau]="main.version==1">
+        <h3>{{ currentNews?.head }}</h3>
+        <p>{{ currentNews?.body }}</p>
         <div class="dots">
             <span
                 *ngFor="let info of main.news; let i = index"

@@ -17,7 +17,14 @@ export class NavigationComponent {
 
   public overlayOpen = false;
   public overlayClosing = false;
-  
+
+  clickcolor = 1;
+
+  colormix() {
+    this.clickcolor++;
+    if(this.clickcolor == 5) {this.clickcolor = 1}
+  }
+
   toggleMenu(): void {
     if (this.overlayOpen) {
       // Starte Schließen-Animation
@@ -31,21 +38,25 @@ export class NavigationComponent {
       this.overlayClosing = false;
     }
   }
-  
 
-  changeSite(num:number) {
+
+  changeSite(num: number) {
     this.main.current = num;
     this.main.overlay = false;
-    this.toggleMenu(); 
+    this.toggleMenu();
   }
 
   adminCounter() {
     this.main.adminCount++;
     if (this.main.adminCount >= 1) {
-      setTimeout( () => {
+      setTimeout(() => {
         this.main.adminCount = 0;
       }, 15000);
     }
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 }

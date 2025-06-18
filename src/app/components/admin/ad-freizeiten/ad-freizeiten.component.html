@@ -3,6 +3,74 @@
         <h2>Freizeitangebote</h2>
     </div>
     <div class="mainBox" *ngIf="main.admSection == 2">
-        <p>Huhu</p>
+        <h3>Aktive Freizeitangebote:</h3>
+        <div class="contextContainer">
+            <div *ngFor="let camp of main.freizeiten; let i = index" class="singleBox"
+                [class.kids]="main.freizeiten[i].category=='kids'" [class.teens]="main.freizeiten[i].category=='teens'"
+                [class.education]="main.freizeiten[i].category=='education'">
+                <div class="iconBoxes">
+                    <img src="assets/img/edit.png" (click)="startEdit(i)">
+                    <img src="assets/img/delete.png" *ngIf="camp.id" (click)="main.deleteItem('freizeiten', camp.id)">
+                </div>
+                <p><b>{{camp.title}}</b></p>
+                <p>{{camp.date}}</p>
+            </div>
+            <div class="singleBox addCon" (click)="newCamp=true; editMode=false;">+</div>
+        </div>
+
+        <div class="detailBox" *ngIf="newCamp && !editMode">
+            <h3>Freizeiten hinzufügen</h3>
+            <div class="inputBox">
+                <label>Freizeitname</label>
+                <input type="text" required [(ngModel)]="freizeiten.title">
+                <label>Datum</label>
+                <input type="text" required [(ngModel)]="freizeiten.date">
+                <label>Kategorie</label>
+                <select id="category" name="category" [(ngModel)]="freizeiten.category">
+                    <option value="kids">Kinder</option>
+                    <option value="teens">Jugendliche</option>
+                    <option value="education">Schulungen</option>
+                </select>
+                <label>Alter</label>
+                <input type="text" required [(ngModel)]="freizeiten.age">
+                <label>Veranstaltungsort</label>
+                <input type="text" required [(ngModel)]="freizeiten.location">
+                <label>Teilnehmerkosten</label>
+                <input type="text" required [(ngModel)]="freizeiten.price">
+                <label>Freizeitbeschreibung</label>
+                <textarea type="text" required [(ngModel)]="freizeiten.description"></textarea>
+                <div class="button" (click)="addCamp()">Freizeit hinzufügen</div>
+            </div>
+        </div>
+
+        <div class="detailBox" *ngIf="editMode && editingCamp as camp">
+            <h3>Freizeit bearbeiten</h3>
+            <div class="inputBox">
+                <label>Freizeitname</label>
+                <input type="text" required [(ngModel)]="camp.title">
+                <label>Datum</label>
+                <input type="text" required [(ngModel)]="camp.date">
+                <label>Kategorie</label>
+                <select id="category" name="category" [(ngModel)]="camp.category">
+                    <option value="kids">Kinder</option>
+                    <option value="teens">Jugendliche</option>
+                    <option value="education">Schulungen</option>
+                </select>
+                <label>Alter</label>
+                <input type="text" required [(ngModel)]="camp.age">
+                <label>Veranstaltungsort</label>
+                <input type="text" required [(ngModel)]="camp.location">
+                <label>Teilnehmerkosten</label>
+                <input type="text" required [(ngModel)]="camp.price">
+                <label>Freizeitbeschreibung</label>
+                <textarea type="text" required [(ngModel)]="camp.description"></textarea>
+                <div class="button" (click)="saveCamp()">Änderung speichern</div>
+            </div>
+        </div>
+        <div class="btUplaod margTop">
+            <img src="assets/img/upload.png">
+            <h2 (click)="main.onPublishClick()">Veröffentlichen</h2>
+        </div>
+
     </div>
 </div>

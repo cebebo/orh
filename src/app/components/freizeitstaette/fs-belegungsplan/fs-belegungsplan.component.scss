@@ -32,7 +32,7 @@
     z-index: 30;
 }
 
-.line {
+.liner {
     @include dflex($fd: column);
     margin-bottom: 16px;
     width: 100%;
@@ -218,7 +218,7 @@ label {
 }
 
 .optionBox {
-    margin-bottom: 36px;
+    // margin-bottom: 36px;
     width: 100%;
     @include dflex($jc:space-between);
 }

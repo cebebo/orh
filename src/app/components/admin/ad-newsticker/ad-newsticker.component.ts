@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MainService } from '../../main.service';
 import { FormsModule } from '@angular/forms';
+import { NewsItem } from '../../interfaces.model';
 
 @Component({
   selector: 'app-ad-newsticker',
@@ -14,28 +15,56 @@ export class AdNewstickerComponent {
 
   main = inject(MainService);
 
-  news = {
+  news: NewsItem = {
     head: "",
     body: "",
     edit: false
   };
 
+  newMode = false;
+
+
   saveChanges(i: number) {
+    const item = this.main.news[i];
+    if (item.temp) {
+      item.head = item.temp.head;
+      item.body = item.temp.body;
+      item.edit = false;
+      delete item.temp;
 
-    this.main.news[i].head = this.news.head;
-    this.main.news[i].body = this.news.body;
-    this.eraseNews();
-
+    }
   }
 
+
+  startEdit(i: number) {
+    const item = this.main.news[i];
+    item.temp = { head: item.head, body: item.body };
+    item.edit = true;
+  }
+
+
+  cancelEdit(i: number) {
+    this.main.news[i].edit = false;
+    delete this.main.news[i].temp;
+  }
+
+
   addNews() {
-    this.main.news.push(this.news)
+    this.main.news.push({ ...this.news });
     this.eraseNews();
   }
 
   eraseNews() {
-    // this.news.head = "";
-    // this.news.body = "";
+    this.news = {
+      head: '',
+      body: '',
+      edit: false
+    };
+    this.newMode = false;
   }
 
+  
+
+
 }
+

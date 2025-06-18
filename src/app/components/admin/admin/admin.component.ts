@@ -6,16 +6,19 @@ import { AdPreiseComponent } from '../ad-preise/ad-preise.component';
 import { AdVorstandComponent } from '../ad-vorstand/ad-vorstand.component';
 import { CommonModule } from '@angular/common';
 import { MainService } from '../../main.service';
+import { AdPasswordComponent } from "../ad-password/ad-password.component";
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [AdHeroComponent, AdNewstickerComponent, AdFreizeitenComponent, AdPreiseComponent, AdVorstandComponent, CommonModule],
+  imports: [AdHeroComponent, AdNewstickerComponent, AdFreizeitenComponent, AdPreiseComponent, AdVorstandComponent, CommonModule, AdPasswordComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent {
 
 perm = inject(MainService);
+auth = inject(AuthService);
 
 }

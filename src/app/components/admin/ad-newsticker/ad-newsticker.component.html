@@ -7,24 +7,29 @@
         <div class="contextContainer">
             <div *ngFor="let info of main.news; let i = index" class="singleBox">
                 <div class="iconBox">
-                    <img src="assets/img/edit.png" *ngIf="!main.news[i].edit" (click)="main.news[i].edit = true">
-                    <img src="assets/img/save.png" *ngIf="main.news[i].edit" (click)="main.news[i].edit = false; saveChanges(i)">
-                    <img src="assets/img/delete.png" *ngIf="!main.news[i].edit" (click)="main.news.splice(i,1)">
-                    <img src="assets/img/back.png" *ngIf="main.news[i].edit" (click)="main.news[i].edit = false">
+                    <img src="assets/img/edit.png" *ngIf="!info.edit" (click)="startEdit(i)">
+                    <img src="assets/img/save.png" *ngIf="info.edit" (click)="info.edit = false; saveChanges(i)">
+                    <img src="assets/img/delete.png" *ngIf="!info.edit && info.id" (click)="main.deleteItem('news', info.id)">
+                    <img src="assets/img/back.png" *ngIf="info.edit" (click)="cancelEdit(i)">
                 </div>
-                <p *ngIf="!main.news[i].edit"><b>{{info.head}}</b></p>
-                <input type="text" *ngIf="main.news[i].edit" value="{{ main.news[i].head }}" [(ngModel)]="news.head">
-                <p *ngIf="!main.news[i].edit">{{info.body}}</p>
-                <input type="text" *ngIf="main.news[i].edit" value="{{ main.news[i].body }}" [(ngModel)]="news.body">
+                <p *ngIf="!info.edit"><b>{{info.head}}</b></p>
+                <input type="text" *ngIf="info.edit && info.temp" value="{{ info.head }}" [(ngModel)]="info.temp.head">
+                <p *ngIf="!info.edit">{{info.body}}</p>
+                <input type="text" *ngIf="info.edit && info.temp" value="{{ info.body }}" [(ngModel)]="info.temp.body">
             </div>
+            <div class="singleBox addNew" (click)="newMode=true;">+</div>
         </div>
-        <h3>News hinzufügen</h3>
-        <div class="inputBox">
+        <h3 *ngIf="newMode">News hinzufügen</h3>
+        <div class="inputBox" *ngIf="newMode">
             <label>Titel</label>
             <input type="text" required [(ngModel)]="news.head">
             <label>Infotext</label>
             <textarea type="text" required [(ngModel)]="news.body"></textarea>
             <div class="button" (click)="addNews()">Hinzufügen</div>
+        </div>
+        <div class="btUplaod margTop">
+            <img src="assets/img/upload.png">
+            <h2 (click)="main.onPublishClick()">Veröffentlichen</h2>
         </div>
     </div>
 </div>

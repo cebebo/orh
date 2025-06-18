@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-fs-bilder',
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './fs-bilder.component.scss'
 })
 export class FsBilderComponent implements OnInit {
+
+  main = inject(MainService);
 
   house1: any = [];
   house2: any = [];

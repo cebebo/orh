@@ -1,1 +1,95 @@
+@import './../../../../styles.scss';
 @import './../admin/admin.component.scss';
+
+.contextContainer {
+    width: 100%;
+    max-width: 1440px;
+    flex-wrap: wrap;
+    @include dflex($jc: flex-start);
+    margin-bottom: 24px;
+}
+
+h3 {
+    color: $colorBlue;
+    font-size: 22px;
+    margin-top: 16px;
+}
+
+.singleBox {
+    width: 250px;
+    margin: 8px;
+    padding: 12px;
+    border-radius: 50%;
+    text-align: center;
+    border: 2px dotted $colorBlue;
+}
+
+.iconBoxes {
+    @include dflex($jc: space-around);
+
+    >img {
+        height: 24px;
+        cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0px 0px 1px white);
+        }
+    }
+}
+
+.kids {
+    background-color: $colorBlueLightText;
+}
+
+.teens {
+    background-color: rgb(143, 221, 143);
+}
+
+.education {
+    background-color: rgb(247, 187, 75);
+}
+
+.detailBox {
+    width: 100%;
+    @include dflex($fd:column, $ai:center);
+    >h3 {
+        color: $colorBlueLightText;
+    }
+}
+
+.inputBox {
+    @include dflex($fd: column);
+    padding: 32px;
+    width: 70%;
+}
+
+.margTop {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+select {
+    width: 240px;
+    border-radius: 10px;
+    padding: 15px 25px;
+    border: solid 1px #0071BC;
+    color: #302f2f;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 150px;
+}
+
+.addCon {   
+    height: 66px;
+    @include dflex();
+    background-color: white;
+    font-size: 50px;
+    cursor: pointer;
+    color: $colorBlue;
+    &:hover {
+        background-color: $colorBlueBrightText;
+    }
+}

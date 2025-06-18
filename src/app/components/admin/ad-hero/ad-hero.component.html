@@ -10,12 +10,14 @@
                 <h2>Administrationsbereich</h2>
                 <div class="singleTextBox" *ngIf="!perm.access">
                     <span><b>Zugriff nur für autorisierte Mitarbeiter des ORH!</b></span>
-                    <label for="name" *ngIf="!alert">Admin-Passwort</label>
+                    <label for="name" *ngIf="!alert">Admin-Email</label>
                     <label class="wrong" for="name" *ngIf="alert">Falsches Passwort</label>
-                    <input #name="ngModel" [(ngModel)]="perm.pwInput" type="password" id="pwd"
-                        name="pwd" required>
-                    <div class="button" (click)="checkPwd()">Einloggen</div>
+                    <input [(ngModel)]="email" type="email" placeholder="E-Mail">
+                    <label for="name" *ngIf="!alert">Admin-Passwort</label>
+                    <input [(ngModel)]="password" type="password" placeholder="Passwort">
+                    <div class="button" (click)="checkPwd()">Einloggen</div>                  
                 </div>
+                <div class="button" (click)="auth.logout()" *ngIf="perm.access">Ausloggen</div>
             </div>
         </div>
     </div>

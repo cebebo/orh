@@ -3,5 +3,40 @@
         <h2>Vorstand</h2>
     </div>
     <div class="mainBox" *ngIf="main.admSection == 4">
+        <h3>Der aktuelle Vorstand:</h3>
+        <div class="contextContainer">
+            <div class="lin" style="width:100%; justify-content: space-around;">
+                <h3>Amt</h3>
+                <h3>Name</h3>
+                <h3>Wohnort</h3>
+            </div>
+            <div class="lin" *ngFor="let person of main.vorstand, let i = index">
+                <p>{{ i + 1 }})</p>
+                <input class="liste" type="text" value="{{ person.amt }}" [disabled]="!person.enabled"
+                    [class.disabled]="!person.enabled">
+                <input class="liste" type="text" value="{{ person.name }}" [disabled]="!person.enabled"
+                    [class.disabled]="!person.enabled">
+                <input class="liste" type="text" value="{{ person.city }}" [disabled]="!person.enabled"
+                    [class.disabled]="!person.enabled">
+                <img src="assets/img/edit.png" *ngIf="!person.enabled" (click)="changeEdit(i)">
+                <img src="assets/img/delete.png" *ngIf="!person.enabled && person.id" (click)="main.deleteItem('vorstand', person.id)">
+                <img src="assets/img/save.png" *ngIf="person.enabled" (click)="changeEdit(i)">
+            </div>
+            <div class="addPerson">
+                <h2>Weitere Personen hinzufügen:</h2>
+
+                <label>Amt:</label>
+                <input type="text" [(ngModel)]="addPers.amt" required>
+                <label>Name:</label>
+                <input type="text" [(ngModel)]="addPers.name" required>
+                <label>Wohnort:</label>
+                <input type="text" [(ngModel)]="addPers.city" required>
+                <div class="button" (click)="addPerson()">Person hinzufügen</div>
+                <div class="btUplaod margTop">
+                    <img src="assets/img/upload.png">
+                    <h2 (click)="main.onPublishClick()">Veröffentlichen</h2>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -77,6 +77,14 @@
     animation: switchAnimation .25s forwards;
 }
 
+.switchChangeFirst {
+    animation: switchAnimationFirst .25s forwards;
+}
+
+.switchChangeSecond {
+    animation: switchAnimationSecond .25s forwards;
+}
+
 .switchChangeRev {
     animation: switchAnimationRev .25s forwards;
 }
@@ -127,6 +135,18 @@
     }
 }
 
+.bonusYear {
+    background-color: $colorBlue;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    cursor: pointer;
+    color: white;
+    padding: 0px 24px 0px 24px;
+    >h2:hover {
+        color: red;
+    }
+}
+
 
 
 // KEYFRAMES
@@ -134,6 +154,26 @@
 @keyframes switchAnimation {
     0% {
         left: 0px;
+    }
+
+    100% {
+        left: 28px;
+    }
+}
+
+@keyframes switchAnimationFirst {
+    0% {
+        left: 0px;
+    }
+
+    100% {
+        left: 13px;
+    }
+}
+
+@keyframes switchAnimationSecond {
+    0% {
+        left: 13px;
     }
 
     100% {
