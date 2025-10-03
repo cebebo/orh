@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-kt-formular',
@@ -19,10 +20,11 @@ export class KtFormularComponent {
   inputMessage = false;
   validCheck = false;
   success = false;
+  sended = false;
 
-  // mailTest = false;
 
   http = inject(HttpClient);
+  main = inject(MainService);
 
   contactData = {
     name: "",
@@ -30,10 +32,9 @@ export class KtFormularComponent {
     message: ""
   }
 
-    mailTest = false;
 
   post = {
-    endPoint: 'https://www.becker-christian.de/sndml.php',
+    endPoint: 'https://www.becker-christian.de/orh/sndml.php',
     body: (payload: any) => JSON.stringify(payload),
     options: {
       headers: {
@@ -43,72 +44,55 @@ export class KtFormularComponent {
     },
   };
 
-//   onSubmit(ngForm: NgForm) {
-//   if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
-//     const url = `${this.post.endPoint}?2f=${encodeURIComponent(this.contactData.email)}`;
-//     this.http.post(url, this.post.body(this.contactData), this.post.options)
-//       .subscribe({
-//         next: (response) => {
-//           console.log('Erfolgreich versendet:', response);
-//           ngForm.resetForm();
-//         },
-//         error: (error) => {
-//           console.error('Fehler beim Senden:', error);
-//         },
-//         complete: () => console.info('Sendevorgang abgeschlossen'),
-//       });
-//   } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-//     console.log('Klappt!');
-//     ngForm.resetForm();
-//   }
-// }
 
-  // onSubmit(ngForm: NgForm) {
-  //   if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
-  //     this.http.post(this.post.endPoint, this.post.body(this.contactData))
-  //       .subscribe({
-  //         next: (response) => {
+  correctCheck(title: string, val: boolean) {
+    if (val) {
+      switch (title) {
+        case 'name': this.inputName = true;
+          break;
+        case 'email': this.inputEmail = true;
+          break;
+        case 'message': this.inputMessage = true;
+          break;
+        default: break;
+      }
+    } else {
+      switch (title) {
+        case 'name': this.inputName = false;
+          break;
+        case 'email': this.inputEmail = false;
+          break;
+        case 'message': this.inputMessage = false;
+          break;
+        default: break;
+      }
+    } ''
+    this.checkValidation();
+  }
 
-  //           ngForm.resetForm();
-  //         },
-  //         error: (error) => {
-  //           console.error(error);
-  //         },
-  //         complete: () => console.info('send post complete'),
-  //       });
-  //   } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-  //     console.log('Klappt!');
-  //     ngForm.resetForm();
-  //   }
-  // }
-
-  // checkValidation() {
-  //   if (this.inputName && this.inputEmail && this.inputMessage) {
-  //     this.validCheck = true;
-  //   } else { this.validCheck = false; }
-  // }
 
   onSubmit(ngForm: NgForm) {
-    if (ngForm.submitted && ngForm.form.valid && !this.mailTest && this.checkPolicy) {
-
+    if (ngForm.submitted && ngForm.form.valid && this.checkPolicy) {
       this.http.post(this.post.endPoint, this.post.body(this.contactData),
         { params: { '2f': this.contactData.email } })
         .subscribe({
-          next: (response) => {
-            this.success = true;
-            ngForm.resetForm();
+          next: (response) => {            
           },
           error: (error) => {
             console.error(error);
           },
-          complete: () => console.info(''),
+          complete: () => { }
         });
-    } else if (ngForm.submitted && ngForm.form.valid && this.mailTest && this.checkPolicy) {
-      ngForm.resetForm();
-      this.success = true;
-      setTimeout(() => { this.success = false; }, 2000);
-      this.checkPolicy = false;
-      this.validCheck = false;
+      this.sended = true;
+      setTimeout(() => {
+        this.contactData = {
+          name: "",
+          email: "",
+          message: ""
+        }
+        this.checkPolicy = false
+        this.sended = false
+      }, 5000);
     }
   }
 

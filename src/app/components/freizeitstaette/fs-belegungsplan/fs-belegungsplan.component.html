@@ -1,4 +1,4 @@
-<div class="blueBox" id="booking" [class.allesHell]="main.version == 3" [class.keinBlau]="main.version == 2">
+<div class="greyBackground" id="booking">
     <div class="mainBox">
         <h2>Belegungsanfrage</h2>
         <h3>Wählen Sie den Zeitraum, in dem Sie unser Haus buchen möchten:</h3>
@@ -15,46 +15,70 @@
             </div>
             <div *ngIf="isBookingValid()" class="button dark" style="margin-top:24px" (click)="popup=true">
                 Buchungszeitraum anfragen</div>
-            <p *ngIf="isBookingInvalid()" class="alert">Gewählter Zeitraum ungültig!</p>
+            <p *ngIf="isBookingInvalid() && !sended" class="alert">Gewählter Zeitraum ungültig!</p>
         </div>
         <div class="popUp" *ngIf="popup">
-            <div class="contactBox">
+            <div class="contactBox formular">
                 <div class="borderBox">
-                    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
-                        <h3>Anfrage für den Zeitraum: <u><b>{{ bookingData.from | date: 'dd. MMMM yyyy':'':'de' }}</b></u> bis <u><b>{{ bookingData.to | date: 'dd. MMMM yyyy':'':'de' }}</b></u></h3>
+                    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" *ngIf="!sended">
+                        <h3>Anfrage für den Zeitraum: <u><b>{{ bookingData.from | date: 'dd. MMMM yyyy':'':'de'
+                                    }}</b></u> bis <u><b>{{ bookingData.to | date: 'dd. MMMM yyyy':'':'de' }}</b></u>
+                        </h3>
                         <div class="liner">
                             <label for="name">Organisation / Verein</label>
-                            <input class="long" #name="ngModel" [(ngModel)]="bookingData.organisation" minlength="3"
-                                type="text" id="name" name="name" placeholder="Ihre Organisation / Ihr Verein">
+                            <input class="long" #orga="ngModel" [(ngModel)]="bookingData.organisation" minlength="3"
+                                type="text" id="orga" name="orga" placeholder="Ihre Organisation / Ihr Verein">
                         </div>
 
                         <div class="group">
                             <div class="liner">
+
                                 <label for="name">Vorname*</label>
-                                <input class="short" #name="ngModel" [(ngModel)]="bookingData.firstName" minlength="3"
-                                    type="text" id="name" name="name" placeholder="Ihr Vorname" required>
+                                <input class="short" #fname="ngModel" [(ngModel)]="bookingData.firstName" minlength="3"
+                                    type="text" id="fname" name="fname" placeholder="Ihr Vorname" required>
+                                <span class="alert" *ngIf="!fname.valid && fname.touched">Bitte Vornamen
+                                    eintragen!</span>
                             </div>
+
+                            @if(fname.valid && fname.touched) { {{correctCheck('vorname', true) }} }
+                            @else if(!fname.valid && fname.touched) { {{correctCheck('vorname', false) }} }
+
                             <div class="liner">
+
                                 <label for="name">Nachname*</label>
-                                <input class="short" #name="ngModel" [(ngModel)]="bookingData.lastName" minlength="3"
-                                    type="text" id="name" name="name" placeholder="Ihr Nachname" required>
+                                <input class="short" #lname="ngModel" [(ngModel)]="bookingData.lastName" minlength="3"
+                                    type="text" id="lname" name="lname" placeholder="Ihr Nachname" required>
+                                <span class="alert" *ngIf="!lname.valid && lname.touched">Bitte Nachnamen
+                                    eintragen!</span>
                             </div>
+
+                            @if(lname.valid && lname.touched) { {{correctCheck('nachname', true) }} }
+                            @else if(!lname.valid && lname.touched) { {{correctCheck('nachname', false) }} }
+
                         </div>
                         <div class="optionBox">
                             <div class="liner">
-                            <label for="name">Personananzahl</label>
-                            <input class="long" style="width: 240px;" #name="ngModel" [(ngModel)]="bookingData.amount" minlength="3"
-                                type="text" id="name" name="name" placeholder="Für wie viele Personen?">
-                        </div>
-                            <div class="dropdown">
-                                <button class="dropbtn">{{ optCatering }}</button>
-                                <div class="dropdown-content">
-                                    <p (click)="optCatering = options[1][1]; bookingData.catering = optCatering">{{
-                                        options[1][1] }}</p>
-                                    <p (click)="optCatering = options[1][2]; bookingData.catering = optCatering">{{
-                                        options[1][2] }}</p>
-                                </div>
+                                <label for="name">Personananzahl</label>
+                                <input class="long" style="width: 240px;" #name="ngModel"
+                                    [(ngModel)]="bookingData.amount" minlength="3" type="number" id="name" name="name"
+                                    placeholder="Für wie viele Personen?">
                             </div>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn" type="button">{{ optCatering }}</button>
+                                    <div class="dropdown-content">
+                                        <p (click)="optCatering = options[1][1]; bookingData.catering = optCatering">{{
+                                            options[1][1] }}</p>
+                                        <p (click)="optCatering = options[1][2]; bookingData.catering = optCatering">{{
+                                            options[1][2] }}</p>
+                                    </div>
+                                </div>
+                                <span class="alert" *ngIf="optCatering == options[1][0]">Verpflegung wählen!</span>
+                            </div>
+
+                            @if(optCatering != options[1][0]) { {{correctCheck('catering', true) }} }
+                            @else if(optCatering == options[1][0]) { {{correctCheck('catering', false) }} }
+
                         </div>
                         <div class="liner">
                             <label for="name">Adresszusatz</label>
@@ -63,43 +87,84 @@
                         </div>
                         <div class="liner">
                             <label for="name">Straße, Hausnummer*</label>
-                            <input class="long" #name="ngModel" [(ngModel)]="bookingData.adress" minlength="3"
-                                type="text" id="name" name="name" placeholder="Straße, Hausnummer" required>
+                            <input class="long" #street="ngModel" [(ngModel)]="bookingData.adress" minlength="3"
+                                type="text" id="street" name="street" placeholder="Straße, Hausnummer" required>
+                            <span class="alert" *ngIf="!street.valid && street.touched">Bitte Straße und Hausnummer
+                                eintragen!</span>
                         </div>
+
+                        @if(street.valid && street.touched) { {{correctCheck('adresse', true) }} }
+                        @else if(!street.valid && street.touched) { {{correctCheck('adresse', false) }} }
+
                         <div class="group">
                             <div class="liner">
                                 <label for="name">PLZ*</label>
-                                <input class="short" #name="ngModel" [(ngModel)]="bookingData.zip" length="5"
-                                    type="number" id="name" name="name" placeholder="PLZ" required>
+                                <input class="short" #zip="ngModel" [(ngModel)]="bookingData.zip" minlength="5"
+                                    type="text" id="zip" name="zip" placeholder="PLZ" required>
+                                <span class="alert" *ngIf="!zip.valid && zip.touched">Bitte PLZ eintragen!</span>
                             </div>
+
+                            @if(zip.valid && zip.touched) { {{correctCheck('plz', true) }} }
+                            @else if(!zip.valid && zip.touched) { {{correctCheck('plz', false) }} }
+
                             <div class="liner">
                                 <label for="name">Wohnort*</label>
-                                <input class="short" #name="ngModel" [(ngModel)]="bookingData.city" minlength="3"
-                                    type="text" id="name" name="name" placeholder="Wohnort" required>
+                                <input class="short" #city="ngModel" [(ngModel)]="bookingData.city" minlength="3"
+                                    type="text" id="city" name="city" placeholder="Wohnort" required>
+                                <span class="alert" *ngIf="!city.valid && city.touched">Bitte Wohnort eintragen!</span>
                             </div>
+
+                            @if(city.valid && city.touched) { {{correctCheck('ort', true) }} }
+                            @else if(!city.valid && city.touched) { {{correctCheck('ort', false) }} }
+
                         </div>
                         <div class="liner">
                             <label for="email">E-Mail-Adresse*</label>
-                            <input class="long" [(ngModel)]="bookingData.email" minlength="6" type="email" id="email"
-                                name="email" placeholder="Ihre E-Mail-Adresse" required
+                            <input class="long" #email="ngModel" [(ngModel)]="bookingData.email" minlength="6"
+                                type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required
                                 pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+                            <span class="alert" *ngIf="!email.valid && email.touched">Bitte E-Mail-Adresse
+                                eintragen!</span>
                         </div>
+
+                        @if(email.valid && email.touched) { {{correctCheck('email', true) }} }
+                        @else if(!email.valid && email.touched) { {{correctCheck('email', false) }} }
+
                         <div class="liner">
-                            <label for="name">Telefon / Mobil</label>
-                            <input class="long" #name="ngModel" [(ngModel)]="bookingData.phone" minlength="3" type="tel"
-                                id="name" name="name" placeholder="Ihre Telefonnummer">
+                            <label for="name">Telefon / Mobil*</label>
+                            <input class="long" #phone="ngModel" [(ngModel)]="bookingData.phone" minlength="5" type="text"
+                                id="phone" name="phone" placeholder="Ihre Telefonnummer" required>
+                            <span class="alert" *ngIf="!phone.valid && phone.touched">Bitte Telefonnummer
+                                eintragen!</span>    
                         </div>
+
+                        @if(phone.valid && phone.touched) { {{correctCheck('phone', true) }} }
+                        @else if(!phone.valid && phone.touched) { {{correctCheck('phone', false) }} }
+
                         <div class="liner">
                             <label for="message">Bemerkung</label>
                             <textarea class="long" #message="ngModel" minlength="5" [(ngModel)]="bookingData.message"
                                 id="message" name="message" placeholder="Bemerkung" style="height:64px"></textarea>
                         </div>
-                        @if (!message.valid && message.touched) {
-                        <span>Bitte eine Nachricht eintragen!</span>
-                        }
 
-                        <input class="button" type="submit" value="Versenden" (click)="popup=false">
+                        <div class="policyLine">
+                            <div (click)="changePolicy()"
+                                [ngStyle]="{'border': checkPolicy === true ? '1px solid #0071BC' : '1px solid #0071BC'}"
+                                class="checkPol">
+                                @if (checkPolicy) {<p class="checked">&#10004;</p>}
+                            </div>
+                            <span>Ich habe die <a routerLink="/datenschutz">&nbsp;Datenschutzerklärung&nbsp;</a> gelesen
+                                und
+                                stimme dieser mit
+                                meinen angegeben Daten zu.</span>
+                        </div>
+
+                        <input class="button" type="submit" value="Anfrage versenden" *ngIf="validCheck">
                     </form>
+                    <div class="confirmation" *ngIf="sended">
+                        <h3>Die Belegungsanfrage wurde versendet! Wir melden uns, sobald wir die Anfrage bearbeitet
+                            haben!</h3>
+                    </div>
                 </div>
             </div>
         </div>

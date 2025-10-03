@@ -10,11 +10,12 @@
 .mainBox {
     width: 100%;
     max-width: 1440px;
-    color: white;
+    color: black;
     margin: 32px 0px 32px 0px;
+    padding-top: 64px;
     @include dflex($fd:column);
     >h2 {
-        color: $colorBlueLightText;        
+        color: $colorBlue;        
     }
     >h2, span {
         padding-bottom: 32px;

@@ -17,8 +17,10 @@ export class MainService {
   version: number = 0;
 
   current: number = 1;
+  currentPH: number = 0;
   overlay = false;
   mobileMenu = false;
+  
 
   adminCount: number = 0;
 
@@ -74,6 +76,11 @@ export class MainService {
     this.publishData().then(() => {
       alert('Daten erfolgreich veröffentlicht!');
     });
+  }
+
+  currentPlaceholder() {
+    this.currentPH = this.current;
+    this.current = 7;
   }
 
   async publishData() {

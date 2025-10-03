@@ -20,9 +20,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		$message = $params->message;
 		
 		if($twoMail == $email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$recipient = 'mail@becker-christian.de';  
-			$subject = "Kontaktanfrage von <$email>"; 
-			$message = "Name:" . $name . "<br>" . $message ;
+			$recipient = 'orh@becker-christian.de';  
+			$subject = "Kontaktanfrage von $name <$email>"; 
+			$message = "-------------------- <i>Nachricht von der ORH-Webseite</i> ---------------<br><br>Nachricht von: <b>" . $name . "</b><br>E-Mail: <b>" . $email . "</b><br><br>" . $message ;
 
 			$headers   = array();
 			$headers[] = 'MIME-Version: 1.0';

@@ -5,47 +5,10 @@ $colorGrey: #ececec;
 $colorDark: #302f2f;
 $colorBlueLightText: #44b1fa;
 $colorBlueBrightText: #7fc7f7;
+$colorBlueShine: #aedefd;
 $colorBlueLight: rgba(255,255,255,0.25);
 $colorBlueBright: rgba(255,255,255,0.4);
 
-
-.helleresGrau {
-  background-color: #a3a3a3 !important;
-  >.mainBox {
-    >h2 {
-      color: $colorBlue;
-    }
-
-    >h3, span, td {
-      color: black;
-    }
-  }
-  >h3, span, p {
-      color: black;
-    }
-}
-
-.allesHell {
-  background-color: $colorGrey !important;
-
-  >.mainBox {
-    >h2 {
-      color: $colorBlue;
-    }
-
-    >h3, span, td {
-      color: black;
-    }
-  }
-}
-
-.keinBlau {
-  background-color: var(--maincolor) !important;
-}
-
-:root {
-  --maincolor: #1caa03;
-}
 
 body {
   margin: 0;
@@ -120,47 +83,31 @@ button {
 }
 
 .link {
-  padding-left: 24px;
-  padding-right: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
   font-weight: bold;
   color: white;
-  border: solid 0px rgba(0, 0, 0, 0);
   filter: drop-shadow(0px 0px 2px black);
-  border-bottom-color: rgba(0, 0, 0, 0);
-  border-bottom-left-radius: 20%;
-  border-bottom-right-radius: 80%;
-  border-top-color: rgba(0, 0, 0, 0);
-  border-top-left-radius: 80%;
-  border-top-right-radius: 20%;
-  transition: filter .15s, border-bottom-color .15s, border-top-color .15s ease-in-out;
+  transition: color .15s ease-in-out;
+  transition: border-bottom .15s ease-in-out;
 
   &:hover {
-    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.4));
-    border-bottom: solid 3px $colorBlueBrightText;
-    border-top: solid 3px $colorBlueBrightText;
-    border-left: 0;
-    border-right: 0;
-    // color: yellow;
+    color: rgb(252, 86, 86);
+    border-bottom: solid 3px white;
+    filter: drop-shadow(0px 0px 2px rgb(0, 0, 0));
     cursor: pointer;
   }
 
   &:active {
-    background-color: $colorBlueBrightText;
     color: red;
-
-
   }
 }
 
 .currentSite {
-  border-left: solid 3px white;
-  border-right: solid 3px white;
-  background-color: rgba(0, 113, 188, 0.3);
-
+  border-bottom: solid 3px white;
   &:hover {
-    border-bottom: solid 2px white;
-    border-top: solid 2px white;
     filter: none !important;
+    color: white !important;
   }
 }
 
@@ -211,6 +158,20 @@ button {
   }
 }
 
+.greyBackground {
+  background-color: $colorGrey;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  color: red;
+}
+
+.confirmation {
+  padding: 100px 24px 100px 24px;
+}
 
 
 // MIXINS

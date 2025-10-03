@@ -5,20 +5,21 @@
 }
 
 .ovalOverlay {
-    
     background-color: $colorGrey;
     height: 300px;
     width: 100%;
     text-align: center;
-    border-top-left-radius: 150%; 
-    border-top-right-radius: 150%; 
+    border-top-left-radius: 150%;
+    border-top-right-radius: 150%;
     // margin-left: 0%;
     display: flex;
     justify-content: center;
+
     >div {
         margin-top: 64px;
         padding-top: 12px;
     }
+
     margin-bottom: -125px;
 }
 
@@ -44,6 +45,8 @@
     height: 24px;
     letter-spacing: 1px;
     font-size: 20px;
+    width: 160px;
+
     &:hover {
         cursor: pointer;
         background-color: $colorBlueLightText;
@@ -60,9 +63,11 @@
     color: white;
     flex-direction: column;
     margin-top: 30px;
+
     >h3 {
         font-size: 26px;
     }
+
     >p {
         font-size: 24px;
     }
@@ -79,27 +84,53 @@
 
 
 .singleTextBox {
-    @include textBox($w:30%);
+    @include textBox($w: 30%);
+}
+
+.textLink {
+    margin-top: 32px;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: solid 4px $colorGrey;
+    transition: border-bottom .15s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        border-bottom: solid 4px black;
+    }
 }
 
 .dots {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #ccc;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .dot.active {
-  background-color: $colorBlue; 
+    background-color: $colorBlue;
+}
+
+.homeBtns {
+    @include dflex($jc: space-between);
+    width: 500px;
+}
+
+.homeBtnsBox {
+    width: 100%;
+    @include dflex();
+    background-color: $colorGrey;
+    padding-top: 36px;
 }
 
 
@@ -123,9 +154,11 @@
 
     .newsTicker {
         height: 96px;
+
         >h3 {
             font-size: 18px;
         }
+
         >p {
             font-size: 16px;
         }
@@ -144,6 +177,7 @@
     .singleTextBox {
         width: 93%;
         margin-bottom: 12px;
+
         >p {
             font-size: 14px;
             line-height: 15px;
@@ -155,8 +189,9 @@
     }
 
     .ovalOverlay {
-        height:100px;
+        height: 100px;
         margin-top: -250px;
+
         >div {
             margin-top: 30px;
         }
@@ -169,19 +204,29 @@
     .newsTicker {
         margin-top: 18px;
         height: 80px;
+
         >h3 {
             font-size: 14px;
         }
+
         >p {
             font-size: 12px;
         }
+    }
+
+    .homeBtns {
+        width: 400px;
+    }
+
+    .textLink {
+        font-size: 20px;
     }
 
 }
 
 .heroWaveOverlay {
     margin-top: -81px;
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -194,6 +239,15 @@
     }
 
     .button {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .homeBtns {
+        width: 290px;
+    }
+
+    .textLink {
         font-size: 16px;
     }
 

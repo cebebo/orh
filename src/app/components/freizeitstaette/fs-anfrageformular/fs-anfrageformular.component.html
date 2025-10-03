@@ -1,0 +1,86 @@
+<div class="contactBox">
+    <div class="borderBox">
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+            <h3>Anfrage für den Zeitraum: <u><b>{{ bookingData.from | date: 'dd. MMMM yyyy':'':'de' }}</b></u> bis
+                <u><b>{{ bookingData.to | date: 'dd. MMMM yyyy':'':'de' }}</b></u>
+            </h3>
+            <div class="liner">
+                <label for="name">Organisation / Verein</label>
+                <input class="long" #name="ngModel" [(ngModel)]="bookingData.organisation" minlength="3" type="text"
+                    id="name" name="name" placeholder="Ihre Organisation / Ihr Verein">
+            </div>
+
+            <div class="group">
+                <div class="liner">
+                    <label for="name">Vorname*</label>
+                    <input class="short" #name="ngModel" [(ngModel)]="bookingData.firstName" minlength="3" type="text"
+                        id="name" name="name" placeholder="Ihr Vorname" required>
+                </div>
+                <div class="liner">
+                    <label for="name">Nachname*</label>
+                    <input class="short" #name="ngModel" [(ngModel)]="bookingData.lastName" minlength="3" type="text"
+                        id="name" name="name" placeholder="Ihr Nachname" required>
+                </div>
+            </div>
+            <div class="optionBox">
+                <div class="liner">
+                    <label for="name">Personananzahl</label>
+                    <input class="long" style="width: 240px;" #name="ngModel" [(ngModel)]="bookingData.amount"
+                        minlength="3" type="text" id="name" name="name" placeholder="Für wie viele Personen?">
+                </div>
+                <div class="dropdown">
+                    <div class="dropbtn" type="button" (click)="toggleDropdown('catering')">
+                        {{ optCatering }}
+                    </div>
+                    <div class="dropdown-content" *ngIf="openDropdown === 'catering'">
+                        <p (click)="selectOption('catering', options[1][1])">{{ options[1][1] }}</p>
+                        <p (click)="selectOption('catering', options[1][2])">{{ options[1][2] }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="liner">
+                <label for="name">Adresszusatz</label>
+                <input class="long" #name="ngModel" [(ngModel)]="bookingData.adressAdd" minlength="3" type="text"
+                    id="name" name="name" placeholder="Adresszusatz">
+            </div>
+            <div class="liner">
+                <label for="name">Straße, Hausnummer*</label>
+                <input class="long" #name="ngModel" [(ngModel)]="bookingData.adress" minlength="3" type="text" id="name"
+                    name="name" placeholder="Straße, Hausnummer" required>
+            </div>
+            <div class="group">
+                <div class="liner">
+                    <label for="name">PLZ*</label>
+                    <input class="short" #name="ngModel" [(ngModel)]="bookingData.zip" length="5" type="number"
+                        id="name" name="name" placeholder="PLZ" required>
+                </div>
+                <div class="liner">
+                    <label for="name">Wohnort*</label>
+                    <input class="short" #name="ngModel" [(ngModel)]="bookingData.city" minlength="3" type="text"
+                        id="name" name="name" placeholder="Wohnort" required>
+                </div>
+            </div>
+            <div class="liner">
+                <label for="email">E-Mail-Adresse*</label>
+                <input class="long" [(ngModel)]="bookingData.email" minlength="6" type="email" id="email" name="email"
+                    placeholder="Ihre E-Mail-Adresse" required
+                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+            </div>
+            <div class="liner">
+                <label for="name">Telefon / Mobil</label>
+                <input class="long" #name="ngModel" [(ngModel)]="bookingData.phone" minlength="3" type="tel" id="name"
+                    name="name" placeholder="Ihre Telefonnummer">
+            </div>
+            <div class="liner">
+                <label for="message">Bemerkung</label>
+                <textarea class="long" #message="ngModel" minlength="5" [(ngModel)]="bookingData.message" id="message"
+                    name="message" placeholder="Bemerkung" style="height:64px"></textarea>
+            </div>
+            @if (!message.valid && message.touched) {
+            <span>Bitte eine Nachricht eintragen!</span>
+            }
+
+            <input class="button" type="submit" value="Versenden" (click)="popup=false">
+        </form>
+    </div>
+</div>

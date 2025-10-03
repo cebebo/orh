@@ -12,14 +12,15 @@
     max-width: 1440px;
     @include dflex($fd: column);
     text-align: center;
+    padding-top: 64px;
     >h2 {
-        color: white;
+        color: $colorBlue;
         padding-bottom: 32px;
     }
 }
 
 .textBox {
-    background-color: $colorBlueLight;
+    background-color: $colorBlueLightText;
     padding: 12px;
     width: 90%;
     border-radius: 16px;

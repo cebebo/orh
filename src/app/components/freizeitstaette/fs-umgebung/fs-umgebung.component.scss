@@ -67,6 +67,9 @@ a {
     color: black;
     cursor: pointer;
     text-decoration: none;
+    &:hover {
+        color: $colorBlue;
+    }
 }
 
 .quarders {

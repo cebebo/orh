@@ -2,9 +2,10 @@
 
 .blueBox {
     width: 100%;
-    background-color: $colorBlue;
+    background-color: $colorGrey;
     @include dflex();
     padding: 64px 0px 64px 0px;
+    padding-top: 100px;
 }
 
 .mainBox {
@@ -14,20 +15,20 @@
     text-align: center;
 
     >h2 {
-        color: white;
+        color: $colorBlue;
         padding-bottom: 32px;
     }
 }
 
 span {
-    color: white;
+    color: black;
     margin-bottom: 12px;
 }
 
 .fotoBox {
     width: 90%;
     border-radius: 16px;
-    background-color: $colorBlueLight;
+    background-color: $colorBlueLightText;
     @include dflex($fd: column);
     border-radius: 16px;
 }
@@ -81,6 +82,9 @@ span {
     border-bottom-right-radius: 16px;
     margin-bottom: 48px;
     @include dflex($fd: column);
+    >span {
+        color: white;
+    }
 }
 
 .screenBox {
@@ -92,7 +96,7 @@ span {
 
         &:hover {
             cursor: pointer;
-            color: $colorBlueLight;
+            color: $colorBlueLightText;
         }
     }
 }
@@ -108,7 +112,7 @@ span {
 }
 
 .activeThumb {
-    border: 3px solid $colorBlueLight !important;
+    border: 3px solid $colorBlueLightText !important;
 }
 
 .icon {

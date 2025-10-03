@@ -93,3 +93,36 @@ textarea {
         background-color: $colorBlueBrightText;
     }
 }
+
+.permissionBox {
+    @include dflex($jc:space-around);
+    border: solid 1px $colorBlue;
+    border-radius: 12px;
+    width: 80%;
+    padding: 24px;
+    background-color: white;
+    margin-bottom: 32px;
+}
+
+.singlePermission {
+    @include dflex($fd:column);
+    >img {
+        height: 32px;
+    }
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid $colorBlue;
+    background-color: rgb(122, 122, 122);
+    &:hover {
+        cursor: pointer;
+        filter: drop-shadow(0px 0px 3px $colorBlue);
+    }
+}
+
+// .permAus {
+//     background-color: rgb(122, 122, 122);
+// }
+
+.permJa {
+    background-color: $colorBlueLightText !important;
+}

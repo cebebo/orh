@@ -39,6 +39,29 @@
                 <input type="text" required [(ngModel)]="freizeiten.price">
                 <label>Freizeitbeschreibung</label>
                 <textarea type="text" required [(ngModel)]="freizeiten.description"></textarea>
+                <label>Erlaubnisse anzeigen</label>
+                <div class="permissionBox">
+                    <div class="singlePermission" [class.permJa]="freizeiten.perm_swim == 'ja'" (click)="changePerm('swim')">
+                        <p>Schwimmen</p>
+                        <img src="assets/img/schwimmen.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="freizeiten.perm_hike == 'ja'" (click)="changePerm('hike')">
+                        <p>Bergsteigen</p>
+                        <img src="assets/img/wandern.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="freizeiten.perm_ski == 'ja'" (click)="changePerm('ski')">
+                        <p>Skifahren</p>
+                        <img src="assets/img/skifahren.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="freizeiten.perm_ind == 'ja'" (click)="changePerm('ind')">
+                        <p>Eigenstädigkeit</p>
+                        <img src="assets/img/laufen.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="freizeiten.perm_photo == 'ja'" (click)="changePerm('photo')">
+                        <p>Foto/Video</p>
+                        <img src="assets/img/kamera.png">
+                    </div>
+                </div>
                 <div class="button" (click)="addCamp()">Freizeit hinzufügen</div>
             </div>
         </div>
@@ -64,6 +87,29 @@
                 <input type="text" required [(ngModel)]="camp.price">
                 <label>Freizeitbeschreibung</label>
                 <textarea type="text" required [(ngModel)]="camp.description"></textarea>
+                <label>Erlaubnisse anzeigen</label>
+                <div class="permissionBox">
+                    <div class="singlePermission" [class.permJa]="camp.perm_swim == 'ja'" (click)="changeEditPerm('swim', camp)">
+                        <p>Schwimmen</p>
+                        <img src="assets/img/schwimmen.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="camp.perm_hike == 'ja'" (click)="changeEditPerm('hike', camp)">
+                        <p>Bergsteigen</p>
+                        <img src="assets/img/wandern.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="camp.perm_ski == 'ja'" (click)="changeEditPerm('ski', camp)">
+                        <p>Skifahren</p>
+                        <img src="assets/img/skifahren.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="camp.perm_ind == 'ja'" (click)="changeEditPerm('ind', camp)">
+                        <p>Eigenstädigkeit</p>
+                        <img src="assets/img/laufen.png">
+                    </div>
+                    <div class="singlePermission" [class.permJa]="camp.perm_photo == 'ja'" (click)="changeEditPerm('photo', camp)">
+                        <p>Foto/Video</p>
+                        <img src="assets/img/kamera.png">
+                    </div>
+                </div>
                 <div class="button" (click)="saveCamp()">Änderung speichern</div>
             </div>
         </div>

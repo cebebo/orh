@@ -6,6 +6,9 @@ import { UeberunsComponent } from './components/ueberuns/ueberuns/ueberuns.compo
 import { KontaktComponent } from './components/kontakt/kontakt/kontakt.component';
 import { ImprintComponent } from './components/shared/imprint/imprint.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
+import { DatenschutzComponent } from './components/shared/datenschutz/datenschutz.component';
+import { GrundsatzComponent } from './components/shared/grundsatz/grundsatz.component';
+import { BedingungenComponent } from './components/shared/bedingungen/bedingungen.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,6 +17,9 @@ export const routes: Routes = [
     { path: 'ueberuns', component: UeberunsComponent },
     { path: 'kontakt', component: KontaktComponent },
     { path: 'impressum', component: ImprintComponent },
+    { path: 'datenschutz', component: DatenschutzComponent },
+    { path: 'grundsatz', component: GrundsatzComponent },
+    { path: 'bedingungen', component: BedingungenComponent },
     { path: 'admin', component: AdminComponent },
 ];
 

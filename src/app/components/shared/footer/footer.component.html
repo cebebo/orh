@@ -3,20 +3,14 @@
         <a routerLink="/impressum">
             <p class="link" [class.currentSite]="main.current == 6" (click)="main.current = 6">Impressum</p>
         </a>
-        <a routerLink="/admin" *ngIf="main.adminCount >= 5" class="secretLink">
+        <a routerLink="/admin" *ngIf="main.adminCount >= 5" class="secretLink" (click)="main.current = 9">
             <h3>&copy; 2025 by ORH</h3>
         </a>
         <h3 *ngIf="main.adminCount < 5">&copy; 2025 by ORH</h3>
-        <p class="link" [class.currentSite]="main.current == 7" (click)="main.current = 7">Spenden</p>
+        <p class="link" [class.currentSite]="main.current == 7" (click)="main.currentPlaceholder()">Spenden</p>
     </div>
-    
-    <div class="miniBtn" (click)="main.version=1">Helleres Grau</div>
-    <input type="color" id="favcolor" name="favcolor" value="#ff0000" [(ngModel)]="main.selectedColor">
-    <div class="miniBtn" (click)="main.version=2; main.changeMainColor()"><- Diese Farbe</div>
-    <div class="miniBtn" (click)="main.version=3">Einfarbig Hell</div>
 </div>
-<a routerLink="/">
-    <div class="popUp" *ngIf="main.current == 7" (click)="main.current = 1">
+    <div class="popUp" *ngIf="main.current == 7" (click)="main.current = main.currentPH">
         <h1>Spenden</h1>
         <span>Wenn Sie die Arbeit des Otto-Riethmüller-Hauses mit einer Spende unterstützen möchten,
             können Sie dies gerne unter folgenden Angaben tun:</span>
@@ -25,4 +19,3 @@
         <h3>Sparkasse Rhein-Haardt</h3>
         <span>IBAN: DE23 5465 1240 0002 5018 23<br>BIC: MALADE51DKH</span>
     </div>
-</a>

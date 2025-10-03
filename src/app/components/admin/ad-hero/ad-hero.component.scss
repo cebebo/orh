@@ -29,6 +29,7 @@
     height: auto;
     @include dflex($fd: column);
     margin-bottom: 48px;
+    margin-top: 48px;
 
     >h2 {
         color: $colorBlue;

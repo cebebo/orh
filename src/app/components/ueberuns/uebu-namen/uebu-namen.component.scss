@@ -10,6 +10,7 @@
     width: 100%;
     max-width: 1440px;
     color: white;
+    padding-top: 64px;
     @include dflex($fd: column);
     >h2 {
         padding-top: 32px;
@@ -26,6 +27,10 @@
     border-radius: 12px;
     @include dflex();
     margin-bottom: 16px;
+}
+
+.title {
+    color: $colorBlue;
 }
 
 .infoBox {
@@ -67,7 +72,7 @@ span {
     padding: 0px 24px 0px 24px;
     height: 300px;
     border-radius: 32px;
-    background-color: $colorBlueLight;
+    background-color: $colorBlueLightText;
     @include dflex($jc:space-around);
     margin-bottom: 64px;
     >h2 {
@@ -78,6 +83,15 @@ span {
             cursor: pointer;
             color: $colorDark;
         }
+    }
+}
+
+.rotateBtn {
+    margin-bottom: 12px;
+    cursor: pointer;
+    padding-top: 0;
+    &:hover {
+        color: white;
     }
 }
 

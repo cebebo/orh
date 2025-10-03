@@ -2,46 +2,43 @@
     <div class="mainBox">
         <h2>Kontaktformular</h2>
         <div class="contactBox">
-            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" *ngIf="!sended">
                 <label for="name">Vor- und Nachname</label>
                 <input #name="ngModel" [(ngModel)]="contactData.name" minlength="3" type="text" id="name" name="name"
                     placeholder="Ihr Vor- und Nachname" required>
-
+                <span class="alert" *ngIf="!name.valid && name.touched">Bitte Namen eintragen!</span>
+                @if(name.valid && name.touched) { {{correctCheck('name', true) }} }
+                @else if(!name.valid && name.touched) { {{correctCheck('name', false) }} }
                 <label for="email">E-Mail-Adresse</label>
-                <input [(ngModel)]="contactData.email" minlength="6" type="text" id="email" name="email"
-                    placeholder="Ihre E-Mail-Adresse" required
+                <input [(ngModel)]="contactData.email" #email="ngModel" minlength="6" type="text" id="email"
+                    name="email" placeholder="Ihre E-Mail-Adresse" required
                     pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
-
+                <span class="alert" *ngIf="!email.valid && email.touched">Bitte eine korrekte E-Mail-Adresse
+                    eintragen!</span>
+                @if(email.valid && email.touched) { {{correctCheck('email', true) }} }
+                @else if(!email.valid && email.touched) { {{correctCheck('email', false) }} }
                 <label for="message">Nachricht</label>
                 <textarea #message="ngModel" minlength="5" [(ngModel)]="contactData.message" id="message" name="message"
                     placeholder="Ihre Nachricht" style="height:200px" required></textarea>
-                @if (!message.valid && message.touched) {
-                <span>Bitte eine Nachricht eintragen!</span>
-                }
+                <span class="alert" *ngIf="!message.valid && message.touched">Bitte eine Nachricht eintragen!</span>
+                @if(message.valid && message.touched) { {{correctCheck('message', true) }} }
+                @else if(!message.valid && message.touched) { {{correctCheck('message', false) }} }
                 <div class="policyLine">
-                        <div (click)="changePolicy()"
-                            [ngStyle]="{'border': checkPolicy === true ? '1px solid #0071BC' : '1px solid #0071BC'}"
-                            class="checkPol">
-                            @if (checkPolicy) {<p class="checked">&#10004;</p>}
-                        </div>
-                        <span>Ich habe die <a routerLink="">&nbsp;Datenschutzerklärung&nbsp;</a> gelesen und stimme dieser mit
-                            meinen angegeben Daten zu.</span>
+                    <div (click)="changePolicy()"
+                        [ngStyle]="{'border': checkPolicy === true ? '1px solid #0071BC' : '1px solid #0071BC'}"
+                        class="checkPol">
+                        @if (checkPolicy) {<p class="checked">&#10004;</p>}
                     </div>
-                
-                <input class="button" type="submit" value="Versenden">
+                    <span>Ich habe die <a routerLink="/datenschutz">&nbsp;Datenschutzerklärung&nbsp;</a> gelesen und
+                        stimme dieser mit
+                        meinen angegeben Daten zu.</span>
+                </div>
+
+                <input class="button" type="submit" value="Versenden" *ngIf="validCheck">
             </form>
+            <div class="confirmation" *ngIf="sended">
+                <h3>Die Nachricht wurde versendet!</h3>
+            </div>
         </div>
-        <!-- <div class="form"> 
-            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
-                <input #name="ngModel" minlength="3" [(ngModel)]="contactData.name" type="text" id="name" name="name"
-                    placeholder="Vor- und Nachname" required
-                    (blur)="inputName = !name.valid || !name.touched ? false : true; checkValidation()">
-                @if (!name.valid && name.touched) {
-                <img class="inputCheck" src="assets/img/invalid.png">
-                <input type="submit" class="submitButton" [class.enabled]="!validCheck" [disabled]="!validCheck"
-                    value="Versenden">
-                }
-            </form>
-        </div> -->
     </div>
 </div>

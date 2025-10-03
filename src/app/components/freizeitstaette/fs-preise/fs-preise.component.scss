@@ -9,6 +9,7 @@
 }
 
 .mainBox {
+    padding-top: 100px;
     width: 90%;
     max-width: 1200px;
     @include dflex($fd: column);
@@ -101,6 +102,7 @@
     @include dflex($ai: flex-start);
     margin-top: 32px;
     margin-bottom: 48px;
+    width: 100%;
 }
 
 .rightBox {
@@ -146,6 +148,7 @@
         color: red;
     }
 }
+
 
 
 

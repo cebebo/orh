@@ -2,7 +2,6 @@
 
 .container {
     width: 100%;
-    margin-bottom: 100px;
 }
 
 .ovalOverlay {
@@ -30,6 +29,7 @@
     height: auto;    
     @include dflex($fd:column);
     margin-bottom: 48px;
+    margin-top: 48px;
     >h2 {
         color: $colorBlue;
         padding-bottom: 32px;

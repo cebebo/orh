@@ -1,6 +1,6 @@
-<div class="blueBox" [class.allesHell]="main.version==3" [class.keinBlau]="main.version == 2">
+<div class="greyBackground">
     <div class="mainBox">
-             <h2>Wer war Otto Riethmüller?</h2>
+             <h2 class="title">Wer war Otto Riethmüller?</h2>
             <div class="screen">
                 <h2 (click)="changeInfo('minus')">&#8249;</h2>
                 <div class="infoBox">
@@ -158,6 +158,8 @@
                         </div>
                         <p>&#x25CB;&#x25CB;&#x25CB;&#x25CB;&#x25CB;&#x25CB;&#10128;</p>
                     </div>
+                    <p class="rotateBtn" *ngIf="!autoRotate" (click)="changeAutoRotate()">&#x23F5;</p>
+                    <p class="rotateBtn" *ngIf="autoRotate" (click)="changeAutoRotate()">&#x23F8;</p>
                 </div>
                 <h2 (click)="changeInfo('plus')">&#8250;</h2>
             </div>

@@ -18,12 +18,6 @@ export class NavigationComponent {
   public overlayOpen = false;
   public overlayClosing = false;
 
-  clickcolor = 1;
-
-  colormix() {
-    this.clickcolor++;
-    if(this.clickcolor == 5) {this.clickcolor = 1}
-  }
 
   toggleMenu(): void {
     if (this.overlayOpen) {

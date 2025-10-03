@@ -1,4 +1,4 @@
-<div class="darkBox" [class.allesHell]="main.version==3" [class.helleresGrau]="main.version==1">
+<div class="greyBackground">
     <div class="mainBox">
         <h2>Jugend in Aktion</h2>
         <span>Die Evangelische Gemeindejugend der Pfalz bietet überregionale Veranstaltungen wie Freizeiten,
@@ -19,15 +19,15 @@
                 (click)="register = 'education'">Schulungen</h3>
         </div>
 
-        <div class="campContainer">
+        <div class="campContainer" *ngIf="!popup">
             <div *ngFor="let camp of main.freizeiten">
                 <div class="thumbnailBox" [class.catKidsBg]="camp.category == 'kids'"
                     [class.catTeensBg]="camp.category == 'teens'" [class.catEduBg]="camp.category == 'education'"
                     *ngIf="register == camp.category || register == 'all'">
                     <div class="thumbnail" [class.catKids]="camp.category == 'kids'"
                         [class.catTeens]="camp.category == 'teens'" [class.catEdu]="camp.category == 'education'"
-                        [ngStyle]="{'background-image':'url(assets/img/' + camp.img + ')'}"
-                        (click)="chooseCamp(camp)" *ngIf="register == camp.category || register == 'all'">
+                        [ngStyle]="{'background-image':'url(assets/img/' + camp.img + ')'}" (click)="chooseCamp(camp)"
+                        *ngIf="register == camp.category || register == 'all'">
                         <span class="blue">{{ camp.date }}</span>
                         <h3>{{ camp.title }}</h3>
                         <span>{{ camp.age }} Jahre</span>
@@ -36,196 +36,272 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="popUp" *ngIf="popup">
-    <div class="detailContainer" [class.catKids]="activeCamp.category == 'kids'"
-        [class.catTeens]="activeCamp.category == 'teens'" [class.catEdu]="activeCamp.category == 'education'">
-        <div class="roundBtn closer" (click)="popup = false; none = false">X</div>
-        <div class="roundBtn back" (click)="none = false" *ngIf="none">‹
-        </div>
-        <h2 *ngIf="none">Anmeldung zur {{ activeCamp.title }}</h2>
-        <h2 *ngIf="!none">{{ activeCamp.title }}</h2>
-        <div class="mainInfo" [class.none]="none">
-            <table style="width: 120%;">
-                <tbody>
-                    <tr>
-                        <td>Zeitraum:</td>
-                        <td>{{ activeCamp.date }}</td>
-                    </tr>
-                    <tr>
-                        <td>Teilnahmealter:</td>
-                        <td>{{ activeCamp.age }} Jahre</td>
-                    </tr>
-                    <tr>
-                        <td>Veranstaltungsort:</td>
-                        <td>{{ activeCamp.location }}</td>
-                    </tr>
-                    <tr>
-                        <td>Kosten:</td>
-                        <td>{{ activeCamp.price }},- Euro</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="description" [class.none]="none">
-            <span>{{ activeCamp.description }}</span>
-        </div>
-        <div class="button" (click)="none = true" *ngIf="!none">Zur Anmeldung</div>
-        <div class="signUp" *ngIf="none">
-            <span>Hiermit möchte ich mein Kind verbindlich zur {{ activeCamp.title }} vom {{ activeCamp.date }}
-                in {{ activeCamp.location }} anmelden.</span>
-            <div class="group">
-                <div class="lines">
-                    <label>Vorname*</label>
-                    <input type="text" [(ngModel)]="anmeldung.firstName" minlength="3" class="short"
-                        placeholder="Vorname Teilnehmer:in" required>
-                </div>
-                <div class="lines">
-                    <label>Nachname*</label>
-                    <input type="text" [(ngModel)]="anmeldung.lastName" minlength="3" class="short"
-                        placeholder="Nachname Teilnehmer:in" required>
-                </div>
-            </div>
-            <div class="optBox">
-                <div class="dropdown">
-                    <button class="dropbtn" style="margin-top:0;">{{ gender }}</button>
-                    <div class="dropdown-content">
-                        <p (click)="gender = optGender[1]; anmeldung.gender = gender">{{ optGender[1]
-                            }}</p>
-                        <p (click)="gender = optGender[2]; anmeldung.gender = gender">{{ optGender[2]
-                            }}</p>
-                        <p (click)="gender = optGender[3]; anmeldung.gender = gender">{{ optGender[3]
-                            }}</p>
+
+        <div class="campContainer" *ngIf="popup">
+            <div class="popUp" *ngIf="popupContent">
+                <div class="detailContainer" [class.catKids]="activeCamp.category == 'kids'"
+                    [class.catTeens]="activeCamp.category == 'teens'"
+                    [class.catEdu]="activeCamp.category == 'education'">
+                    <div class="roundBtn closer" (click)="popup = false; none = false">X</div>
+                    <div class="roundBtn back" (click)="none = false" *ngIf="none">‹
+                    </div>
+                    <h2 *ngIf="none">Anmeldung zur {{ activeCamp.title }}</h2>
+                    <h2 *ngIf="!none">{{ activeCamp.title }}</h2>
+                    <div class="mainInfo" [class.none]="none">
+                        <table style="width: 120%;">
+                            <tbody>
+                                <tr>
+                                    <td>Zeitraum:</td>
+                                    <td>{{ activeCamp.date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Teilnahmealter:</td>
+                                    <td>{{ activeCamp.age }} Jahre</td>
+                                </tr>
+                                <tr>
+                                    <td>Veranstaltungsort:</td>
+                                    <td>{{ activeCamp.location }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Kosten:</td>
+                                    <td>{{ activeCamp.price }},- Euro</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="description" [class.none]="none">
+                        <span>{{ activeCamp.description }}</span>
+                    </div>
+                    <div class="button" (click)="none = true" *ngIf="!none">Zur Anmeldung</div>
+                    <div class="signUp" *ngIf="none">
+                        <span>Hiermit möchte ich mein Kind verbindlich zur {{ activeCamp.title }} vom {{ activeCamp.date
+                            }}
+                            in {{ activeCamp.location }} anmelden.</span>
+                        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+                            <div class="group">
+                                <div class="lines">
+                                    <label>Vorname*</label>
+                                    <input type="text" [(ngModel)]="anmeldung.firstName" minlength="3" class="short"
+                                        name="fname" #fname="ngModel" placeholder="Vorname Teilnehmer:in" required>
+                                    <span class="alert" *ngIf="!fname.valid && fname.touched">Bitte Vornamen
+                                        eintragen!</span>
+                                </div>
+
+                                @if(fname.valid && fname.touched) { {{correctCheck('vorname', true) }} }
+                                @else if(!fname.valid && fname.touched) { {{correctCheck('vorname', false) }} }
+
+                                <div class="lines">
+                                    <label>Nachname*</label>
+                                    <input type="text" [(ngModel)]="anmeldung.lastName" minlength="3" class="short"
+                                        name="lname" #lname="ngModel" placeholder="Nachname Teilnehmer:in" required>
+                                    <span class="alert" *ngIf="!lname.valid && lname.touched">Bitte Nachnamen
+                                        eintragen!</span>
+                                </div>
+
+                                @if(lname.valid && lname.touched) { {{correctCheck('nachname', true) }} }
+                                @else if(!lname.valid && lname.touched) { {{correctCheck('nachname', false) }} }
+
+                            </div>
+                            <div class="optBox">
+                                <div class="dropdown">
+                                    <button class="dropbtn" type="button" style="margin-top:0;">{{ gender }}</button>
+                                    <div class="dropdown-content">
+                                        <p (click)="gender = optGender[1]; anmeldung.gender = gender">{{ optGender[1]
+                                            }}</p>
+                                        <p (click)="gender = optGender[2]; anmeldung.gender = gender">{{ optGender[2]
+                                            }}</p>
+                                        <p (click)="gender = optGender[3]; anmeldung.gender = gender">{{ optGender[3]
+                                            }}</p>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="dropbtn" type="button" style="margin-top:0;">{{ confession }}</button>
+                                    <div class="dropdown-content">
+                                        <p (click)="confession = optConfession[1]; anmeldung.confession = confession">{{
+                                            optConfession[1]
+                                            }}</p>
+                                        <p (click)="confession = optConfession[2]; anmeldung.confession = confession">{{
+                                            optConfession[2]
+                                            }}</p>
+                                        <p (click)="confession = optConfession[3]; anmeldung.confession = confession">{{
+                                            optConfession[3]
+                                            }}</p>
+                                        <p (click)="confession = optConfession[4]; anmeldung.confession = confession">{{
+                                            optConfession[4]
+                                            }}</p>
+                                        <p (click)="confession = optConfession[5]; anmeldung.confession = confession">{{
+                                            optConfession[5]
+                                            }}</p>
+                                        <p (click)="confession = optConfession[6]; anmeldung.confession = confession">{{
+                                            optConfession[6]
+                                            }}</p>
+                                        <p (click)="confession = optConfession[7]; anmeldung.confession = confession">{{
+                                            optConfession[7]
+                                            }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lines">
+                                <label>Adresse*</label>
+                                <input type="text" [(ngModel)]="anmeldung.address" minlength="3" class="long"
+                                    name="address" #street="ngModel" placeholder="Straße, Hausnummer" required>
+                                <span class="alert" *ngIf="!street.valid && street.touched">Bitte Straße und Hausnummer
+                                    eintragen!</span>
+                            </div>
+
+                            @if(street.valid && street.touched) { {{correctCheck('adresse', true) }} }
+                            @else if(!street.valid && street.touched) { {{correctCheck('adresse', false) }} }
+
+                            <div class="group">
+                                <div class="lines">
+                                    <label>PLZ*</label>
+                                    <input type="text" [(ngModel)]="anmeldung.zip" minlength="5" class="short"
+                                        placeholder="PLZ" name="zip" #zip="ngModel" required>
+                                    <span class="alert" *ngIf="!zip.valid && zip.touched">Bitte PLZ eintragen!</span>
+                                </div>
+
+                                @if(zip.valid && zip.touched) { {{correctCheck('plz', true) }} }
+                                @else if(!zip.valid && zip.touched) { {{correctCheck('plz', false) }} }
+
+                                <div class="lines">
+                                    <label>Wohnort*</label>
+                                    <input type="text" [(ngModel)]="anmeldung.city" minlength="3" class="short"
+                                        placeholder="Wohnort" name="city" #city="ngModel" required>
+                                    <span class="alert" *ngIf="!city.valid && city.touched">Bitte Wohnort
+                                        eintragen!</span>
+                                </div>
+
+                                @if(city.valid && city.touched) { {{correctCheck('ort', true) }} }
+                                @else if(!city.valid && city.touched) { {{correctCheck('ort', false) }} }
+
+                            </div>
+                            <div class="group">
+                                <div class="lines">
+                                    <label>Geburtstag*</label>
+                                    <input type="date" [(ngModel)]="anmeldung.birthday" class="short birthWidth"
+                                        name="birthday" placeholder="Geburtstag Teilnehmer:in"
+                                        (ngModelChange)="calculateAge($event)" #birthday="ngModel" required>
+                                    <span class="alert" *ngIf="!birthday.valid && birthday.touched">Bitte Geburtsdatum
+                                        eintragen!</span>
+                                </div>
+
+                                @if(birthday.valid && birthday.touched) { {{correctCheck('geb', true) }} }
+                                @else if(!birthday.valid && birthday.touched) { {{correctCheck('geb', false) }} }
+
+                                <div class="lines">
+                                    <label>Telefon*</label>
+                                    <input type="text" [(ngModel)]="anmeldung.phone" minlength="8" class="short"
+                                        name="phone" placeholder="Telefon-/Handynummer" #phone="ngModel" required>
+                                    <span class="alert" *ngIf="!phone.valid && phone.touched">Bitte Telefonnummer
+                                        eintragen!</span>
+                                </div>
+
+                                @if(phone.valid && phone.touched) { {{correctCheck('tel', true) }} }
+                                @else if(!phone.valid && phone.touched) { {{correctCheck('tel', false) }} }
+
+                            </div>
+                            <div class="lines">
+                                <label>Email*</label>
+                                <input type="email" [(ngModel)]="anmeldung.email" minlength="6" class="long"
+                                    name="email" placeholder="E-Mail-Adresse" #email="ngModel"
+                                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" required>
+                                <span class="alert" *ngIf="!email.valid && email.touched">Bitte E-Mail-Adresse
+                                    eintragen!</span>
+                            </div>
+
+                            @if(email.valid && email.touched) { {{correctCheck('email', true) }} }
+                            @else if(!email.valid && email.touched) { {{correctCheck('email', false) }} }
+
+                            <div class="group">
+                                <div class="lines">
+                                    <label>Staatsangehörigkeit</label>
+                                    <input type="text" [(ngModel)]="anmeldung.nationality" class="short"
+                                        placeholder="Staatsang." name="country" required>
+                                </div>
+                                <div class="lines">
+                                    <label>Landkreis</label>
+                                    <input type="text" [(ngModel)]="anmeldung.county" minlength="8" class="short"
+                                        name="county" placeholder="Landreis/Kreisfreie Stadt">
+                                </div>
+                            </div>
+                            <div class="lines">
+                                <label>Besondere Hinweise</label>
+                                <input type="text" [(ngModel)]="anmeldung.info" minlength="6" class="long" name="info"
+                                    placeholder="Krankheit / Allergien / Medikamente / etc.">
+                            </div>
+                            <div class="group">
+                                <div class="lines">
+                                    <label>Erlaubnisse</label>
+                                    <div class="blueContainer">
+                                        <img (click)="changeBol(1)" *ngIf="activeCamp.perm_swim != 'aus'"
+                                            [class.bolFalse]="anmeldung.perm_swim == 'nein'" name="permSwim"
+                                            src="assets/img/schwimmen.png" (mouseenter)="permInfo=true; showInfo(0)"
+                                            (mouseleave)="permInfo=false">
+                                        <div class="no" *ngIf="activeCamp.perm_swim != 'aus'">X</div>
+                                        <img (click)="changeBol(2)" *ngIf="activeCamp.perm_hike != 'aus'"
+                                            [class.bolFalse]="anmeldung.perm_hike == 'nein'" name="permHike"
+                                            src="assets/img/wandern.png" (mouseenter)="permInfo=true; showInfo(1)"
+                                            (mouseleave)="permInfo=false">
+                                        <div class="no" *ngIf="activeCamp.perm_hike != 'aus'">X</div>
+                                        <img (click)="changeBol(3)" *ngIf="activeCamp.perm_ski != 'aus'"
+                                            [class.bolFalse]="anmeldung.perm_ski == 'nein'" name="permSki"
+                                            src="assets/img/skifahren.png" (mouseenter)="permInfo=true; showInfo(2)"
+                                            (mouseleave)="permInfo=false">
+                                        <div class="no" *ngIf="activeCamp.perm_ski != 'aus'">X</div>
+                                        <img (click)="changeBol(4)" *ngIf="activeCamp.perm_ind != 'aus'"
+                                            [class.bolFalse]="anmeldung.perm_ind == 'nein'" name="permInd"
+                                            src="assets/img/laufen.png" (mouseenter)="permInfo=true; showInfo(3)"
+                                            (mouseleave)="permInfo=false">
+                                        <div class="no" *ngIf="activeCamp.perm_ind != 'aus'">X</div>
+                                        <img (click)="changeBol(5)" *ngIf="activeCamp.perm_photo != 'aus'"
+                                            [class.bolFalse]="anmeldung.perm_photo == 'nein'" name="permPhoto"
+                                            src="assets/img/kamera.png" (mouseenter)="permInfo=true; showInfo(4)"
+                                            (mouseleave)="permInfo=false">
+                                        <div class="no" *ngIf="activeCamp.perm_photo != 'aus'">X</div>
+                                    </div>
+                                    <div class="permInfo" *ngIf="permInfo">{{ infoText }}</div>
+                                </div>
+                                <div class="lines">
+                                    <div class="dropdown" style="margin-left: 20px;">
+                                        <button class="dropbtn" type="button" style="margin-top:0; width:190px">{{ swimSkill
+                                            }}</button>
+                                        <div class="dropdown-content">
+                                            <p (click)="swimSkill = optSwimskill[1]; anmeldung.swimskill = swimSkill">{{
+                                                optSwimskill[1]
+                                                }}</p>
+                                            <p (click)="swimSkill = optSwimskill[2]; anmeldung.swimskill = swimSkill">{{
+                                                optSwimskill[2]
+                                                }}</p>
+                                            <p (click)="swimSkill = optSwimskill[3]; anmeldung.swimskill = swimSkill">{{
+                                                optSwimskill[3]
+                                                }}</p>
+                                            <p (click)="swimSkill = optSwimskill[4]; anmeldung.swimskill = swimSkill">{{
+                                                optSwimskill[4]
+                                                }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="group wSmall">
+                                <div class="checkBox" (click)="changeBol(6)">
+                                    <div class="checkpoint">
+                                        <h2 *ngIf="anmeldung.agreement == 'ja'">✔</h2>
+                                    </div>
+                                </div>
+                                <h3>Ich habe die  <a routerLink="/grundsatz">Grundsätze der Freizeitarbeit</a>, die  <a routerLink="/bedingungen">Anmelde-
+                                        und
+                                        Teilnahmebedingungen</a>
+                                    und die  <a routerLink="/datenschutz">Datenschutzerklärung</a> gelesen und stimme ihnen zu.</h3>
+                            </div>
+                            <input class="button" type="submit" value="Anmeldung versenden" *ngIf="validCheck">
+                        </form>
                     </div>
                 </div>
-                <div class="dropdown">
-                    <button class="dropbtn" style="margin-top:0;">{{ confession }}</button>
-                    <div class="dropdown-content">
-                        <p (click)="confession = optConfession[1]; anmeldung.confession = confession">{{
-                            optConfession[1]
-                            }}</p>
-                        <p (click)="confession = optConfession[2]; anmeldung.confession = confession">{{
-                            optConfession[2]
-                            }}</p>
-                        <p (click)="confession = optConfession[3]; anmeldung.confession = confession">{{
-                            optConfession[3]
-                            }}</p>
-                        <p (click)="confession = optConfession[4]; anmeldung.confession = confession">{{
-                            optConfession[4]
-                            }}</p>
-                        <p (click)="confession = optConfession[5]; anmeldung.confession = confession">{{
-                            optConfession[5]
-                            }}</p>
-                        <p (click)="confession = optConfession[6]; anmeldung.confession = confession">{{
-                            optConfession[6]
-                            }}</p>
-                        <p (click)="confession = optConfession[7]; anmeldung.confession = confession">{{
-                            optConfession[7]
-                            }}</p>
-                    </div>
-                </div>
             </div>
-            <div class="lines">
-                <label>Adresse*</label>
-                <input type="text" [(ngModel)]="anmeldung.address" minlength="3" class="long"
-                    placeholder="Straße, Hausnummer" required>
+            <div class="confirmation" *ngIf="sended">
+                <h3>Die Freizeitanmeldung wurde versendet! Die Anmeldung wird rechtskräftig, sobald wir diese per E-Mail
+                    bestätigen!</h3>
             </div>
-            <div class="group">
-                <div class="lines">
-                    <label>PLZ*</label>
-                    <input type="number" [(ngModel)]="anmeldung.zip" minlength="3" class="short" placeholder="PLZ"
-                        required>
-                </div>
-                <div class="lines">
-                    <label>Wohnort*</label>
-                    <input type="text" [(ngModel)]="anmeldung.city" minlength="3" class="short" placeholder="Wohnort"
-                        required>
-                </div>
-            </div>
-            <div class="group">
-                <div class="lines">
-                    <label>Geburtstag*</label>
-                    <input type="date" [(ngModel)]="anmeldung.birthday" class="short birthWidth"
-                        placeholder="Geburtstag Teilnehmer:in" required>
-                </div>
-                <div class="lines">
-                    <label>Telefon*</label>
-                    <input type="text" [(ngModel)]="anmeldung.phone" minlength="8" class="short"
-                        placeholder="Telefon-/Handynummer">
-                </div>
-            </div>
-            <div class="lines">
-                <label>Email*</label>
-                <input type="email" [(ngModel)]="anmeldung.email" minlength="6" class="long"
-                    placeholder="E-Mail-Adresse" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" required>
-            </div>
-            <div class="group">
-                <div class="lines">
-                    <label>Staatsangehörigkeit</label>
-                    <input type="text" [(ngModel)]="anmeldung.nationality" class="short" placeholder="Staatsang."
-                        required>
-                </div>
-                <div class="lines">
-                    <label>Landkreis</label>
-                    <input type="text" [(ngModel)]="anmeldung.county" minlength="8" class="short"
-                        placeholder="Landreis/Kreisfreie Stadt">
-                </div>
-            </div>
-            <div class="lines">
-                <label>Besondere Hinweise</label>
-                <input type="text" [(ngModel)]="anmeldung.info" minlength="6" class="long"
-                    placeholder="Krankheit / Allergien / Medikamente / etc.">
-            </div>
-            <div class="group">
-                <div class="lines">
-                    <label>Erlaubnisse</label>
-                    <div class="blueContainer">
-                        <img (click)="changeBol(1)" [class.bolFalse]="anmeldung.permission_swim == false"
-                            src="assets/img/schwimmen.png" (mouseenter)="permInfo=true; showInfo(0)" (mouseleave)="permInfo=false">
-                        <div class="no">X</div>
-                        <img (click)="changeBol(2)" [class.bolFalse]="anmeldung.permission_hike == false"
-                            src="assets/img/wandern.png" (mouseenter)="permInfo=true; showInfo(1)" (mouseleave)="permInfo=false">
-                        <div class="no">X</div>
-                        <img (click)="changeBol(3)" [class.bolFalse]="anmeldung.permission_ski == false"
-                            src="assets/img/skifahren.png" (mouseenter)="permInfo=true; showInfo(2)" (mouseleave)="permInfo=false">
-                        <div class="no">X</div>
-                        <img (click)="changeBol(4)" [class.bolFalse]="anmeldung.permission_independence == false"
-                            src="assets/img/laufen.png" (mouseenter)="permInfo=true; showInfo(3)" (mouseleave)="permInfo=false">
-                        <div class="no">X</div>
-                        <img (click)="changeBol(5)" [class.bolFalse]="anmeldung.permission_photo == false"
-                            src="assets/img/kamera.png" (mouseenter)="permInfo=true; showInfo(4)" (mouseleave)="permInfo=false">
-                        <div class="no">X</div>
-                    </div>
-                    <div class="permInfo" *ngIf="permInfo">{{ infoText }}</div>
-                </div>
-                <div class="lines">
-                    <div class="dropdown">
-                        <button class="dropbtn" style="margin-top:0; width:190px">{{ swimSkill }}</button>
-                        <div class="dropdown-content">
-                            <p (click)="swimSkill = optSwimskill[1]; anmeldung.swimskill = swimSkill">{{ optSwimskill[1]
-                                }}</p>
-                            <p (click)="swimSkill = optSwimskill[2]; anmeldung.swimskill = swimSkill">{{ optSwimskill[2]
-                                }}</p>
-                            <p (click)="swimSkill = optSwimskill[3]; anmeldung.swimskill = swimSkill">{{ optSwimskill[3]
-                                }}</p>
-                            <p (click)="swimSkill = optSwimskill[4]; anmeldung.swimskill = swimSkill">{{ optSwimskill[4]
-                                }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group wSmall">
-                <div class="checkBox" (click)="changeBol(6)">
-                    <div class="checkpoint">
-                        <h2 *ngIf="anmeldung.agreement">✔</h2>
-                    </div>
-                </div>
-                <h3>Ich habe die <a href="#">Grundsätze der Freizeitarbeit</a>, die <a href="#">Anmelde- und
-                        Teilnahmebedingungen</a>
-                    und die <a href="#">Datenschutzerklärung</a> gelesen und stimme ihnen zu.</h3>
-            </div>
-            <div class="button" (click)="none = true; popup = false" *ngIf="none">Anmeldung versenden</div>
         </div>
     </div>
 </div>

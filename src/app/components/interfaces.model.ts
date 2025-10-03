@@ -20,6 +20,11 @@ export interface FreizeitItem {
   description: string;
   img: string;
   edit: boolean;
+  perm_swim: string;
+  perm_hike: string;
+  perm_ski: string;
+  perm_ind: string;
+  perm_photo: string;
   temp?: {
     title: string;
     category: string;
@@ -29,6 +34,11 @@ export interface FreizeitItem {
     price: string;
     description: string;
     img: string;
+    perm_swim: string;
+    perm_hike: string;
+    perm_ski: string;
+    perm_ind: string;
+    perm_photo: string
   }
 }
 

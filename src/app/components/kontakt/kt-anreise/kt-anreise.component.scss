@@ -12,20 +12,21 @@
     max-width: 1440px;
     @include dflex($fd: column);
     text-align: center;
-
+    padding-top: 100px;
     >h2 {
-        color: white;
+        color: $colorBlue;
         padding-bottom: 12px;
     }
 }
 
 span {
-    color: white;
+    color: black;
     margin-bottom: 16px;
+    padding: 24px;
 }
 
 .navi {
-    background-color: $colorBlueLight;
+    background-color: $colorBlueLightText;
     width: 80%;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;

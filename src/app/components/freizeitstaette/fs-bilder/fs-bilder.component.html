@@ -1,4 +1,4 @@
-<div class="blueBox" [class.allesHell]="main.version==3" [class.keinBlau]="main.version == 2">
+<div class="blueBox">
     <div class="mainBox">
         <h2>Bilder unserer Einrichtung</h2>
         <span>Schauen Sie sich Aufnahmen unserer beiden Häuser und des Außenbereichs an.</span>
@@ -26,7 +26,7 @@
             <div class="screen">
                 <div class="screenBox">
                     <h2 (click)="changePic('back')">&#8249;</h2>
-                    <img class="screenPic" src="assets/img/gallery/{{ screenPic.img }}">
+                    <a href="assets/img/gallery/{{ screenPic.img }}" target="_blank"><img class="screenPic" src="assets/img/gallery/{{ screenPic.img }}"></a>
                     <h2 (click)="changePic('forward')">&#8250;</h2>
                 </div>
                 <span>{{subtitle[chosen][screenPic.id]}}</span>
