@@ -288,10 +288,8 @@
                                         <h2 *ngIf="anmeldung.agreement == 'ja'">✔</h2>
                                     </div>
                                 </div>
-                                <h3>Ich habe die  <a routerLink="/grundsatz">Grundsätze der Freizeitarbeit</a>, die  <a routerLink="/bedingungen">Anmelde-
-                                        und
-                                        Teilnahmebedingungen</a>
-                                    und die  <a routerLink="/datenschutz">Datenschutzerklärung</a> gelesen und stimme ihnen zu.</h3>
+                                <h3>Ich habe die <a (click)="main.stopScroll('g')">Grundsätze der Freizeitarbeit</a>, die  <a (click)="main.stopScroll('b')">Anmelde-
+                                        und Teilnahmebedingungen</a> und die  <a (click)="main.stopScroll('d')">Datenschutzerklärung</a> gelesen und stimme ihnen zu.</h3>
                             </div>
                             <input class="button" type="submit" value="Anmeldung versenden" *ngIf="validCheck">
                         </form>

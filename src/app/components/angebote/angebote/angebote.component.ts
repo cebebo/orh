@@ -4,11 +4,15 @@ import { AngFreizeitenComponent } from '../ang-freizeiten/ang-freizeiten.compone
 import { AngGemeindeComponent } from '../ang-gemeinde/ang-gemeinde.component';
 import { AngHeroComponent } from '../ang-hero/ang-hero.component';
 import { MainService } from '../../main.service';
+import { CommonModule } from '@angular/common';
+import { DatenschutzPopupComponent } from '../../shared/datenschutz-popup/datenschutz-popup.component';
+import { BedingungenPopupComponent } from '../../shared/bedingungen-popup/bedingungen-popup.component';
+import { GrundsatzPopupComponent } from '../../shared/grundsatz-popup/grundsatz-popup.component';
 
 @Component({
   selector: 'app-angebote',
   standalone: true,
-  imports: [AngFit4lifeComponent, AngFreizeitenComponent, AngGemeindeComponent, AngHeroComponent],
+  imports: [AngFit4lifeComponent, AngFreizeitenComponent, AngGemeindeComponent, AngHeroComponent, CommonModule, DatenschutzPopupComponent, BedingungenPopupComponent, GrundsatzPopupComponent],
   templateUrl: './angebote.component.html',
   styleUrl: './angebote.component.scss'
 })

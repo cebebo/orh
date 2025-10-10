@@ -20,6 +20,8 @@ export class MainService {
   currentPH: number = 0;
   overlay = false;
   mobileMenu = false;
+  scroll = true;
+  popup = 0;
   
 
   adminCount: number = 0;
@@ -156,12 +158,36 @@ export class MainService {
     document.documentElement.style.setProperty('--maincolor', this.selectedColor);
   }
 
+  
   noScroll(val: boolean) {
     if (val) {
       document.documentElement.style.overflow = 'hidden';
+      this.scroll = false;
     } else {
       document.documentElement.style.overflow = 'auto';
+      this.scroll = true;
     }
+  }
+
+
+  stopScroll(file:string) {
+    if (file == "b") { 
+      document.documentElement.style.overflow = 'hidden';
+      this.popup = 1;
+    }
+    if (file == "g") { 
+      document.documentElement.style.overflow = 'hidden';
+      this.popup = 2;
+    }
+    if (file == "d") { 
+      document.documentElement.style.overflow = 'hidden';
+      this.popup = 3;
+    }
+    if (file == "exit") { 
+      document.documentElement.style.overflow = 'auto';
+      this.popup = 0;
+    }
+    
   }
 
 }

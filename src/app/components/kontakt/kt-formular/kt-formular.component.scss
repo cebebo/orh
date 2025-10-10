@@ -88,6 +88,16 @@ label {
     margin-bottom: 32px;
     >span {
         margin-bottom: 0 !important;
+        &:hover {
+            color: $colorBlue;
+            cursor: pointer;
+        }
+    }
+    >p {
+        >a:hover {
+            cursor: pointer;
+            color: $colorBlue;
+        }
     }
 }
 
@@ -113,3 +123,4 @@ label {
     color: $colorBlue;
     font-size: 22px;
 }
+

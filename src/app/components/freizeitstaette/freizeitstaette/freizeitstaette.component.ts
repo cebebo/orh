@@ -6,11 +6,13 @@ import { FsBelegungsplanComponent } from "../fs-belegungsplan/fs-belegungsplan.c
 import { FsBilderComponent } from "../fs-bilder/fs-bilder.component";
 import { FsUmgebungComponent } from "../fs-umgebung/fs-umgebung.component";
 import { MainService } from '../../main.service';
+import { CommonModule } from '@angular/common';
+import { DatenschutzPopupComponent } from '../../shared/datenschutz-popup/datenschutz-popup.component';
 
 @Component({
   selector: 'app-freizeitstaette',
   standalone: true,
-  imports: [FsHeroComponent, FsPreiseComponent, FsGrundrissComponent, FsBelegungsplanComponent, FsBilderComponent, FsUmgebungComponent],
+  imports: [FsHeroComponent, FsPreiseComponent, FsGrundrissComponent, FsBelegungsplanComponent, FsBilderComponent, FsUmgebungComponent, DatenschutzPopupComponent,CommonModule],
   templateUrl: './freizeitstaette.component.html',
   styleUrl: './freizeitstaette.component.scss'
 })

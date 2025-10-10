@@ -1,0 +1,87 @@
+@import './../bedingungen/bedingungen.component.scss';
+
+.popupBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center;
+}
+
+.close {
+    position: fixed;
+    top: 48px;
+    right: 48px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    z-index: 101;
+    background-color: rgba(255,255,255,0.6);
+
+    &:hover {
+        background-color: $colorBlueBrightText;
+        cursor: pointer;
+    }
+}
+
+.textBoxes {
+    max-width: 1440px;
+    width: 100%;
+    height: auto;
+    @include dflex($fd: column, $ai: flex-start, $jc: flex-start);
+    padding: 48px 24px 0px 24px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.end {
+    padding-bottom: 64px;
+}
+
+
+@media(max-width:600px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .close {
+        height: 37px;
+        width: 37px;
+        right: 24px;
+    }
+
+}
+
+
+@media(max-width:450px) {
+
+    h1 {
+        font-size: 18px;
+        margin-left: 8px;
+    }
+
+    h2 {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .close {
+        height: 26px;
+        width: 26px;
+        right: 16px;
+    }
+
+}

@@ -29,9 +29,7 @@
                         class="checkPol">
                         @if (checkPolicy) {<p class="checked">&#10004;</p>}
                     </div>
-                    <span>Ich habe die <a routerLink="/datenschutz">&nbsp;Datenschutzerklärung&nbsp;</a> gelesen und
-                        stimme dieser mit
-                        meinen angegeben Daten zu.</span>
+                    <p>Ich habe die <a (click)="main.stopScroll('d')">Datenschutzerklärung</a> gelesen und stimme dieser mit meinen angegeben Daten zu.</p>
                 </div>
 
                 <input class="button" type="submit" value="Versenden" *ngIf="validCheck">

@@ -2,3 +2,6 @@
 <app-ang-freizeiten></app-ang-freizeiten>
 <app-ang-fit4life></app-ang-fit4life>
 <app-ang-gemeinde></app-ang-gemeinde>
+<app-datenschutz-popup *ngIf="!main.scroll"></app-datenschutz-popup>
+<app-bedingungen-popup *ngIf="main.popup==1"></app-bedingungen-popup>
+<app-grundsatz-popup *ngIf="main.popup==2"></app-grundsatz-popup>

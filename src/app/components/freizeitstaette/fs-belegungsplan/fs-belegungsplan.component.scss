@@ -39,6 +39,10 @@
     margin-bottom: 32px;
     >span {
         margin-bottom: 0 !important;
+        >a:hover {
+            cursor: pointer;
+            color: $colorBlue;
+        }
     }
 }
 
